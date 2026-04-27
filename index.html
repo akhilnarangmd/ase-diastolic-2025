@@ -187,7 +187,7 @@
   .algo-canvas {
     background: white;
     border-radius: 12px;
-    padding: 1.5rem;
+    padding: 1rem;
     box-shadow: var(--shadow-md);
     border: 1px solid var(--gray-200);
     overflow-x: auto;
@@ -829,143 +829,148 @@
 
   <div class="algo-wrapper">
     <div class="algo-canvas">
-      <!-- Figure 3 faithful HTML flow diagram -->
+      <!-- Figure 3 faithful HTML flow diagram — corrected logic -->
       <div class="flow-diagram">
 
         <!-- TOP: 3 criteria banner -->
-        <div class="fnode fnode-step" id="node-e-prime" onclick="selectNode('e-prime')" style="width:100%; background:var(--navy);">
-          <div class="fnode-title" style="font-size:1.05rem; margin-bottom:0.6rem;">Three Variables Assessed (Figure 3)</div>
-          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.5rem; font-size:0.88rem; text-align:left;">
-            <div style="background:rgba(255,255,255,0.1); border-radius:8px; padding:0.6rem 0.8rem;">
-              <div style="font-weight:700; margin-bottom:0.2rem;">① e' velocity</div>
-              <div style="opacity:0.8;">Septal ≤6 cm/s<br>Lateral ≤7 cm/s<br>Average ≤6.5 cm/s</div>
+        <div class="fnode fnode-step" id="node-e-prime" onclick="selectNode('e-prime')" style="width:100%;">
+          <div class="fnode-title" style="font-size:1rem; margin-bottom:0.5rem;">Three Variables Assessed Simultaneously (Figure 3)</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.4rem; font-size:0.84rem; text-align:left;">
+            <div style="background:rgba(255,255,255,0.12); border-radius:7px; padding:0.5rem 0.75rem;">
+              <div style="font-weight:700; margin-bottom:0.15rem;">① e' velocity</div>
+              <div style="opacity:0.8; font-size:0.78rem;">Sep ≤6 / Lat ≤7 / Avg ≤6.5 cm/s</div>
             </div>
-            <div style="background:rgba(255,255,255,0.1); border-radius:8px; padding:0.6rem 0.8rem;">
-              <div style="font-weight:700; margin-bottom:0.2rem;">② E/e' ratio</div>
-              <div style="opacity:0.8;">Septal ≥15<br>Lateral ≥13<br>Average ≥14</div>
+            <div style="background:rgba(255,255,255,0.12); border-radius:7px; padding:0.5rem 0.75rem;">
+              <div style="font-weight:700; margin-bottom:0.15rem;">② E/e' ratio</div>
+              <div style="opacity:0.8; font-size:0.78rem;">Sep ≥15 / Lat ≥13 / Avg ≥14</div>
             </div>
-            <div style="background:rgba(255,255,255,0.1); border-radius:8px; padding:0.6rem 0.8rem;">
-              <div style="font-weight:700; margin-bottom:0.2rem;">③ TR / PASP</div>
-              <div style="opacity:0.8;">TR vel ≥2.8 m/s<br>or PASP ≥35 mmHg</div>
+            <div style="background:rgba(255,255,255,0.12); border-radius:7px; padding:0.5rem 0.75rem;">
+              <div style="font-weight:700; margin-bottom:0.15rem;">③ TR / PASP</div>
+              <div style="opacity:0.8; font-size:0.78rem;">TR ≥2.8 m/s or PASP ≥35 mmHg</div>
             </div>
           </div>
         </div>
 
-        <div class="flow-arrow-down">
-          <div class="flow-arrow-line" style="height:20px;"></div>
-          <div class="flow-arrow-head"></div>
-        </div>
+        <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:16px;"></div><div class="flow-arrow-head"></div></div>
 
-        <!-- FOUR OUTCOME COLUMNS — matching Figure 3 exactly -->
-        <div style="width:100%; display:grid; grid-template-columns:1fr 1fr 1.4fr 1fr; gap:0.75rem; align-items:start;">
+        <!-- FOUR COLUMNS — matching Figure 3 exactly -->
+        <div style="width:100%; display:grid; grid-template-columns:1fr 1.1fr 1.3fr 1fr; gap:0.6rem; align-items:start;">
 
-          <!-- COL 1: All normal -->
+          <!-- COL 1: All normal → Normal DF -->
           <div class="branch-col">
-            <div class="fnode fnode-normal" id="node-normaldf" onclick="selectNode('normaldf')" style="width:100%;">
-              <div class="fnode-title">All Normal</div>
-              <div class="fnode-sub">All 3 variables within normal limits</div>
+            <div class="branch-label">ALL NORMAL</div>
+            <div class="fnode" id="node-normaldf" onclick="selectNode('normaldf')" style="width:100%; background:#d1fae5; border-color:#059669; color:#065f46; padding:0.65rem 0.75rem;">
+              <div class="fnode-title" style="font-size:0.9rem;">All 3 Variables Normal</div>
             </div>
-            <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:20px;"></div><div class="flow-arrow-head"></div></div>
-            <div class="fnode fnode-normal" style="width:100%; cursor:default; opacity:0.9;">
-              <div class="fnode-title">✅ Normal DF</div>
-              <div class="fnode-sub">Normal LAP</div>
+            <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:14px;"></div><div class="flow-arrow-head"></div></div>
+            <div class="fnode fnode-normal" style="width:100%; cursor:default; padding:0.65rem 0.75rem;">
+              <div class="fnode-title" style="font-size:0.95rem;">✅ Normal DF</div>
+              <div class="fnode-sub" style="font-size:0.8rem;">Normal LAP</div>
             </div>
           </div>
 
-          <!-- COL 2: Reduced e' only -->
+          <!-- COL 2: Reduced e' only → E/A split → Grade 1 → Exercise Echo -->
           <div class="branch-col">
-            <div class="fnode fnode-grade1" id="node-grade1" onclick="selectNode('grade1')" style="width:100%;">
-              <div class="fnode-title">Reduced e' Only</div>
-              <div class="fnode-sub">e' abnormal; E/e' and TR/PASP normal</div>
+            <div class="branch-label">REDUCED e' ONLY</div>
+            <div class="fnode fnode-grade1" id="node-grade1" onclick="selectNode('grade1')" style="width:100%; padding:0.65rem 0.75rem;">
+              <div class="fnode-title" style="font-size:0.9rem;">e' ↓ only</div>
+              <div class="fnode-sub" style="font-size:0.78rem;">E/e' and TR/PASP normal</div>
             </div>
-            <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:12px;"></div><div class="flow-arrow-head"></div></div>
+            <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:10px;"></div><div class="flow-arrow-head"></div></div>
             <!-- E/A sub-branch -->
-            <div style="width:100%; display:grid; grid-template-columns:1fr 1fr; gap:0.4rem;">
+            <div style="width:100%; display:grid; grid-template-columns:1fr 1fr; gap:0.35rem;">
               <div class="branch-col">
-                <div class="branch-label" style="font-size:0.72rem;">E/A ≤ 0.8</div>
-                <div class="fnode fnode-normal" style="width:100%; cursor:default; padding:0.6rem 0.75rem;">
-                  <div class="fnode-title" style="font-size:0.88rem;">Normal LAP</div>
+                <div class="branch-label" style="font-size:0.68rem;">E/A ≤ 0.8</div>
+                <div class="fnode fnode-normal" style="width:100%; cursor:default; padding:0.5rem 0.4rem;">
+                  <div class="fnode-title" style="font-size:0.8rem;">Normal LAP</div>
                 </div>
               </div>
               <div class="branch-col">
-                <div class="branch-label" style="font-size:0.72rem;">E/A &gt; 0.8</div>
-                <div class="fnode fnode-supp" style="width:100%; cursor:default; padding:0.6rem 0.75rem;">
-                  <div class="fnode-title" style="font-size:0.88rem;">Check Suppl.</div>
+                <div class="branch-label" style="font-size:0.68rem;">E/A &gt; 0.8</div>
+                <div class="fnode fnode-supp" style="width:100%; cursor:default; padding:0.5rem 0.4rem;" onclick="selectNode('supplemental')">
+                  <div class="fnode-title" style="font-size:0.8rem;">→ Suppl.</div>
                 </div>
               </div>
             </div>
-            <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:12px;"></div><div class="flow-arrow-head"></div></div>
-            <div class="fnode fnode-grade1" style="width:100%; cursor:default;">
-              <div class="fnode-title">🟡 Grade 1 DD</div>
-              <div class="fnode-sub">Impaired relaxation · Normal LAP</div>
+            <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:10px;"></div><div class="flow-arrow-head"></div></div>
+            <div class="fnode fnode-grade1" style="width:100%; cursor:default; padding:0.65rem 0.75rem;">
+              <div class="fnode-title" style="font-size:0.92rem;">🟡 Grade 1 DD</div>
+              <div class="fnode-sub" style="font-size:0.78rem;">Impaired relaxation · Normal LAP</div>
             </div>
-            <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:12px;"></div><div class="flow-arrow-head"></div></div>
-            <div class="fnode fnode-action" id="node-exercise-echo" onclick="selectNode('exercise-echo')" style="width:100%; padding:0.65rem 0.75rem;">
-              <div class="fnode-title" style="font-size:0.88rem;">🚴 Exercise Echo</div>
-              <div class="fnode-sub" style="font-size:0.78rem;">If symptomatic</div>
+            <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:10px;"></div><div class="flow-arrow-head"></div></div>
+            <div class="fnode fnode-action" id="node-exercise-echo" onclick="selectNode('exercise-echo')" style="width:100%; padding:0.55rem 0.65rem;">
+              <div class="fnode-title" style="font-size:0.85rem;">🚴 Exercise Echo</div>
+              <div class="fnode-sub" style="font-size:0.75rem;">If symptomatic</div>
             </div>
           </div>
 
-          <!-- COL 3: Indeterminate (1 or 2 abnormal) -->
+          <!-- COL 3: Indeterminate (1 or 2 abnormal) → Supplemental → Normal LAP or ↑LAP → Exercise Echo -->
           <div class="branch-col">
-            <div class="fnode fnode-decision" id="node-step2" onclick="selectNode('step2')" style="width:100%;">
-              <div class="fnode-title">↑TR/PASP only — or — ↑E/e' only — or — Any 2 abnormal</div>
-              <div class="fnode-sub" style="margin-top:0.35rem;">Indeterminate: check supplemental parameters</div>
+            <div class="branch-label">↑TR/PASP ONLY — or — ↑E/e' ONLY — or — ANY 2 ABNORMAL</div>
+            <div class="fnode fnode-decision" id="node-step2" onclick="selectNode('step2')" style="width:100%; padding:0.65rem 0.75rem;">
+              <div class="fnode-title" style="font-size:0.88rem;">Indeterminate</div>
+              <div class="fnode-sub" style="font-size:0.78rem; margin-top:0.2rem;">Check supplemental parameters</div>
             </div>
-            <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:12px;"></div><div class="flow-arrow-head"></div></div>
-            <div class="fnode fnode-supp" id="node-supplemental" onclick="selectNode('supplemental')" style="width:100%;">
-              <div class="fnode-title">📋 Supplemental Parameters</div>
-              <div class="fnode-sub">PV S/D ≤0.67 · LARS ≤18% · LAVi &gt;34 mL/m²<br>Alternatively: IVRT ≤70 ms<br>If none available: Supplemental methods†</div>
+            <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:10px;"></div><div class="flow-arrow-head"></div></div>
+            <div class="fnode fnode-supp" id="node-supplemental" onclick="selectNode('supplemental')" style="width:100%; padding:0.65rem 0.75rem;">
+              <div class="fnode-title" style="font-size:0.88rem;">📋 Supplemental Parameters</div>
+              <div class="fnode-sub" style="font-size:0.76rem; margin-top:0.2rem;">
+                PV S/D ≤0.67 · LARS ≤18% · LAVi &gt;34 mL/m²<br>
+                Alternatively: IVRT ≤70 ms
+              </div>
             </div>
-            <div style="width:100%; display:grid; grid-template-columns:1fr 1fr; gap:0.5rem; margin-top:0.4rem;">
+            <div style="width:100%; display:grid; grid-template-columns:1fr 1fr; gap:0.35rem; margin-top:0.35rem;">
               <div class="branch-col">
-                <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:12px;"></div><div class="flow-arrow-head"></div></div>
-                <div class="branch-label">None present</div>
-                <div class="fnode fnode-normal" style="width:100%; cursor:default; padding:0.6rem 0.75rem;">
-                  <div class="fnode-title" style="font-size:0.88rem;">✅ Normal LAP</div>
+                <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:10px;"></div><div class="flow-arrow-head"></div></div>
+                <div class="branch-label" style="font-size:0.68rem;">NONE PRESENT</div>
+                <div class="fnode fnode-grade1" style="width:100%; cursor:default; padding:0.55rem 0.4rem;">
+                  <div class="fnode-title" style="font-size:0.82rem;">🟡 Grade 1 DD</div>
+                  <div class="fnode-sub" style="font-size:0.73rem;">Normal LAP</div>
                 </div>
               </div>
               <div class="branch-col">
-                <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:12px;"></div><div class="flow-arrow-head"></div></div>
-                <div class="branch-label">≥1 present</div>
-                <div class="fnode fnode-grade2" style="width:100%; cursor:default; padding:0.6rem 0.75rem;">
-                  <div class="fnode-title" style="font-size:0.88rem;">🔴 ↑ LAP</div>
+                <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:10px;"></div><div class="flow-arrow-head"></div></div>
+                <div class="branch-label" style="font-size:0.68rem;">≥1 PRESENT</div>
+                <div class="fnode fnode-grade2" style="width:100%; cursor:default; padding:0.55rem 0.4rem;">
+                  <div class="fnode-title" style="font-size:0.82rem;">🔴 ↑ LAP</div>
+                  <div class="fnode-sub" style="font-size:0.73rem;">Grade by E/A</div>
                 </div>
               </div>
             </div>
-            <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:12px;"></div><div class="flow-arrow-head"></div></div>
-            <div class="fnode fnode-action" style="width:100%; cursor:default; padding:0.65rem 0.75rem;">
-              <div class="fnode-title" style="font-size:0.88rem;">🚴 Diastolic Exercise Echo</div>
-              <div class="fnode-sub" style="font-size:0.78rem;">If symptomatic + normal LAP at rest</div>
+            <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:10px;"></div><div class="flow-arrow-head"></div></div>
+            <div class="fnode fnode-action" style="width:100%; cursor:default; padding:0.55rem 0.65rem;">
+              <div class="fnode-title" style="font-size:0.85rem;">🚴 Exercise Echo</div>
+              <div class="fnode-sub" style="font-size:0.75rem;">If symptomatic + normal LAP at rest</div>
             </div>
           </div>
 
-          <!-- COL 4: All 3 abnormal → Increased LAP → Grade 2/3 -->
+          <!-- COL 4: All 3 abnormal → Increased LAP → Grade 2 or 3 by E/A -->
           <div class="branch-col">
-            <div class="fnode fnode-grade2" id="node-ea-ratio" onclick="selectNode('ea-ratio')" style="width:100%;">
-              <div class="fnode-title">All 3 Abnormal</div>
-              <div class="fnode-sub">↑ LAP confirmed</div>
+            <div class="branch-label">ALL 3 ABNORMAL</div>
+            <div class="fnode fnode-grade2" id="node-ea-ratio" onclick="selectNode('ea-ratio')" style="width:100%; padding:0.65rem 0.75rem;">
+              <div class="fnode-title" style="font-size:0.9rem;">All 3 Abnormal</div>
+              <div class="fnode-sub" style="font-size:0.78rem;">↑ LAP confirmed</div>
             </div>
-            <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:12px;"></div><div class="flow-arrow-head"></div></div>
-            <div class="fnode fnode-grade2" style="width:100%; cursor:default; background:#dc2626; border-color:#b91c1c; color:white;">
-              <div class="fnode-title" style="color:white;">🔴 Increased LAP</div>
-              <div class="fnode-sub" style="color:rgba(255,255,255,0.85);">Grade by E/A ratio</div>
+            <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:10px;"></div><div class="flow-arrow-head"></div></div>
+            <div class="fnode" style="width:100%; cursor:default; padding:0.6rem 0.75rem; background:#dc2626; border-color:#b91c1c; color:white; border-radius:10px; border:2.5px solid #b91c1c; text-align:center;">
+              <div style="font-family:'DM Serif Display',serif; font-size:0.9rem; margin-bottom:0.15rem;">🔴 Increased LAP</div>
+              <div style="font-size:0.78rem; opacity:0.85;">Grade by E/A ratio</div>
             </div>
-            <div style="width:100%; display:grid; grid-template-columns:1fr 1fr; gap:0.4rem; margin-top:0.4rem;">
+            <div style="width:100%; display:grid; grid-template-columns:1fr 1fr; gap:0.35rem; margin-top:0.35rem;">
               <div class="branch-col">
-                <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:12px;"></div><div class="flow-arrow-head"></div></div>
-                <div class="branch-label">E/A &lt; 2</div>
-                <div class="fnode fnode-grade2" id="node-grade2" onclick="selectNode('grade2')" style="width:100%; padding:0.65rem 0.5rem;">
-                  <div class="fnode-title" style="font-size:0.9rem;">Grade 2 DD</div>
-                  <div class="fnode-sub" style="font-size:0.78rem;">Mild–Mod ↑ LAP</div>
+                <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:10px;"></div><div class="flow-arrow-head"></div></div>
+                <div class="branch-label" style="font-size:0.68rem;">E/A &lt; 2</div>
+                <div class="fnode fnode-grade2" id="node-grade2" onclick="selectNode('grade2')" style="width:100%; padding:0.55rem 0.4rem;">
+                  <div class="fnode-title" style="font-size:0.82rem;">Grade 2 DD</div>
+                  <div class="fnode-sub" style="font-size:0.73rem;">Mild–Mod ↑ LAP</div>
                 </div>
               </div>
               <div class="branch-col">
-                <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:12px;"></div><div class="flow-arrow-head"></div></div>
-                <div class="branch-label">E/A ≥ 2</div>
-                <div class="fnode fnode-grade3" id="node-grade3" onclick="selectNode('grade3')" style="width:100%; padding:0.65rem 0.5rem;">
-                  <div class="fnode-title" style="font-size:0.9rem;">Grade 3 DD</div>
-                  <div class="fnode-sub" style="font-size:0.78rem;">Marked ↑ LAP</div>
+                <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:10px;"></div><div class="flow-arrow-head"></div></div>
+                <div class="branch-label" style="font-size:0.68rem;">E/A ≥ 2</div>
+                <div class="fnode fnode-grade3" id="node-grade3" onclick="selectNode('grade3')" style="width:100%; padding:0.55rem 0.4rem;">
+                  <div class="fnode-title" style="font-size:0.82rem;">Grade 3 DD</div>
+                  <div class="fnode-sub" style="font-size:0.73rem;">Marked ↑ LAP</div>
                 </div>
               </div>
             </div>
@@ -974,16 +979,15 @@
         </div>
 
         <!-- Exclusions bar -->
-        <div class="fnode fnode-exclude" id="node-exclusions" onclick="selectNode('exclusions')" style="width:100%; margin-top:1rem; flex-direction:row; display:flex; align-items:center; gap:1rem; text-align:left; padding:0.75rem 1.25rem;">
-          <span style="font-size:1.3rem; flex-shrink:0;">⚠</span>
+        <div class="fnode fnode-exclude" id="node-exclusions" onclick="selectNode('exclusions')" style="width:100%; margin-top:0.75rem; display:flex; align-items:center; gap:0.75rem; text-align:left; padding:0.65rem 1rem; border-radius:8px;">
+          <span style="font-size:1.1rem; flex-shrink:0;">⚠</span>
           <div>
-            <div class="fnode-title" style="font-size:0.9rem; margin-bottom:0.1rem;">Algorithm Exclusions — use special population algorithms instead</div>
-            <div class="fnode-sub" style="font-size:0.8rem;">Severe primary MR · Any MS · Moderate/severe MAC · Atrial fibrillation · Heart transplant · Non-cardiac PH · Pericardial constriction · LVAD · Mitral valve repair/replacement/TEER</div>
+            <div style="font-weight:600; font-size:0.85rem; margin-bottom:0.1rem;">Algorithm Exclusions — use Special Populations tab instead</div>
+            <div style="font-size:0.78rem; color:var(--gray-500);">Severe MR · Any MS · Moderate/severe MAC · Atrial fibrillation · Heart transplant · Non-cardiac PH · Pericardial constriction · LVAD · MV repair/replacement/TEER</div>
           </div>
         </div>
 
-        <!-- Click hint -->
-        <div style="margin-top:0.75rem; width:100%; background:var(--teal-pale); border-radius:8px; padding:0.65rem 1rem; text-align:center; font-size:0.84rem; color:var(--teal); border:1px solid #b0dce8;">
+        <div style="margin-top:0.6rem; width:100%; background:var(--teal-pale); border-radius:7px; padding:0.55rem 1rem; text-align:center; font-size:0.82rem; color:var(--teal); border:1px solid #b0dce8;">
           👆 <strong>Click any highlighted box</strong> for detailed cutoff values, physiologic rationale, and clinical pearls
         </div>
 
@@ -2071,8 +2075,8 @@ const nodeData = {
   },
   'step2': {
     tag: 'tag-indeterminate', tagText: 'INDETERMINATE',
-    title: 'Indeterminate: 1 or 2 Variables Abnormal',
-    content: `<p>When only TR/PASP is abnormal, only E/e' is abnormal, or any 2 of the 3 variables are abnormal — LAP is indeterminate. Check supplemental parameters:</p>
+    title: 'Indeterminate: Only TR/PASP, Only E/e\', or Any 2 Abnormal',
+    content: `<p>When only one non-e' variable is abnormal, or any 2 of the 3 variables are abnormal — LAP is indeterminate. Check supplemental parameters:</p>
     <table class="cutoff-table" style="margin-top:0.5rem;">
       <thead><tr><th>Supplemental Parameter</th><th>↑ LAP Cutoff</th></tr></thead>
       <tbody>
@@ -2083,9 +2087,9 @@ const nodeData = {
       </tbody>
     </table>
     <ul style="margin-top:0.75rem;">
-      <li><strong>None present → Normal LAP</strong> (if symptomatic: diastolic exercise echo)</li>
-      <li><strong>≥1 present → Increased LAP</strong> → grade by E/A ratio</li>
-      <li>If no supplemental parameters available: use supplemental methods (PR vel, L-wave, Ar-A, Valsalva)</li>
+      <li><strong>None present → Grade 1 DD</strong> (Normal LAP; if symptomatic → exercise echo)</li>
+      <li><strong>≥1 present → Increased LAP</strong> → grade by E/A ratio (Grade 2 or 3)</li>
+      <li>If no supplemental parameters available: use supplemental methods (PR vel ≥2 m/s, L-wave ≥50 cm/s, Ar-A &gt;30 ms, Valsalva E/A drop ≥50%)</li>
     </ul>`
   },
   'normaldf': {
