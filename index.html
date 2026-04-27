@@ -193,16 +193,149 @@
     overflow-x: auto;
   }
 
-  .algo-svg-container svg {
+  /* Flow diagram styles */
+  .flow-diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
     width: 100%;
-    height: auto;
-    display: block;
   }
 
-  /* SVG node styles */
-  .algo-node { cursor: pointer; transition: all 0.2s; }
-  .algo-node:hover rect, .algo-node:hover ellipse { filter: brightness(0.92); }
-  .algo-node.selected rect { stroke-width: 3 !important; stroke: var(--gold) !important; }
+  .flow-row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .fnode {
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+    position: relative;
+    border: 2.5px solid transparent;
+    min-width: 180px;
+  }
+  .fnode:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(15,31,61,0.18); }
+  .fnode.selected { border-color: var(--gold) !important; box-shadow: 0 0 0 3px rgba(201,153,62,0.3); }
+
+  .fnode-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: 0.3rem;
+  }
+  .fnode-sub {
+    font-size: 0.82rem;
+    line-height: 1.4;
+    opacity: 0.85;
+  }
+
+  /* Node color variants */
+  .fnode-step { background: var(--navy); border-color: var(--navy); color: white; }
+  .fnode-step .fnode-sub { opacity: 0.75; }
+  .fnode-decision { background: #dbeafe; border-color: #2563eb; color: #1e3a8a; }
+  .fnode-normal { background: var(--green-pale); border-color: var(--green); color: var(--green); }
+  .fnode-grade1 { background: var(--amber-pale); border-color: var(--amber); color: var(--amber); }
+  .fnode-grade2 { background: #fee2e2; border-color: #dc2626; color: #991b1b; }
+  .fnode-grade3 { background: #fecaca; border-color: #b91c1c; color: #7f1d1d; }
+  .fnode-action { background: #fef9c3; border-color: var(--gold); color: #713f12; }
+  .fnode-supp { background: var(--teal-pale); border-color: var(--teal); color: #0f5564; }
+  .fnode-exclude { background: var(--gray-100); border-color: var(--gray-500); color: var(--gray-700); border-style: dashed; }
+
+  /* Diamond decision shape */
+  .fnode-diamond {
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    border-radius: 0;
+    padding: 1.5rem 2rem;
+    min-width: 200px;
+  }
+
+  /* Arrows between nodes */
+  .flow-arrow-down {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    padding: 4px 0;
+  }
+  .flow-arrow-line { width: 2px; height: 28px; background: #94a3b8; }
+  .flow-arrow-head {
+    width: 0; height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 9px solid #94a3b8;
+  }
+  .flow-arrow-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #64748b;
+    background: var(--cream);
+    padding: 1px 6px;
+    border-radius: 4px;
+    margin-bottom: 2px;
+  }
+
+  /* Branch layout */
+  .flow-branches {
+    display: grid;
+    gap: 0.75rem;
+    width: 100%;
+    align-items: start;
+  }
+  .flow-branches-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .flow-branches-2 { grid-template-columns: 1fr 1fr; }
+
+  .branch-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+  .branch-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #64748b;
+    text-align: center;
+    margin-bottom: 4px;
+    letter-spacing: 0.03em;
+  }
+
+  /* Connector line across top of branches */
+  .branch-top-line {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+    margin-bottom: 0;
+  }
+  .branch-top-line::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 16.5%;
+    right: 16.5%;
+    height: 2px;
+    background: #94a3b8;
+  }
+
+  .step-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    border-radius: 4px;
+    padding: 1px 8px;
+    font-size: 0.7rem;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
 
   .info-panel {
     background: white;
@@ -696,176 +829,170 @@
 
   <div class="algo-wrapper">
     <div class="algo-canvas">
-      <div class="algo-svg-container">
-        <svg viewBox="0 0 760 900" xmlns="http://www.w3.org/2000/svg" id="mainAlgoSVG">
-          <defs>
-            <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-              <polygon points="0 0, 8 3, 0 6" fill="#64748b"/>
-            </marker>
-            <marker id="arrow-green" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-              <polygon points="0 0, 8 3, 0 6" fill="#1e7e5a"/>
-            </marker>
-            <marker id="arrow-red" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-              <polygon points="0 0, 8 3, 0 6" fill="#c0392b"/>
-            </marker>
-            <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
-              <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(15,31,61,0.12)"/>
-            </filter>
-          </defs>
+      <!-- Clean HTML flow diagram replacing SVG -->
+      <div class="flow-diagram">
 
-          <!-- Step 1: Assess e' velocity -->
-          <g class="algo-node" id="node-e-prime" onclick="selectNode('e-prime')" filter="url(#shadow)">
-            <rect x="200" y="20" width="360" height="62" rx="10" fill="#1a3260" stroke="#0f1f3d" stroke-width="1.5"/>
-            <text x="380" y="44" text-anchor="middle" fill="white" font-family="DM Serif Display,serif" font-size="13">Step 1: Assess e' Velocity</text>
-            <text x="380" y="62" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-family="DM Sans,sans-serif" font-size="11">Septal e' ≤6, Lateral e' ≤7, or Average e' ≤6.5 cm/s</text>
-          </g>
+        <!-- STEP 1 -->
+        <div class="fnode fnode-step" id="node-e-prime" onclick="selectNode('e-prime')" style="width:100%; max-width:600px;">
+          <div class="step-badge">Step 1</div>
+          <div class="fnode-title">Assess Mitral Annular e' Velocity</div>
+          <div class="fnode-sub">Septal e' · Lateral e' · Average e' — compared to age-specific cutoffs</div>
+        </div>
 
-          <!-- Arrow down from step 1 -->
-          <line x1="380" y1="82" x2="380" y2="118" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <div class="flow-arrow-down">
+          <div class="flow-arrow-line"></div>
+          <div class="flow-arrow-head"></div>
+        </div>
 
-          <!-- e' reduced? Decision -->
-          <g class="algo-node" id="node-eprime-q" onclick="selectNode('eprime-q')" filter="url(#shadow)">
-            <polygon points="380,120 470,152 380,184 290,152" fill="#eef4fb" stroke="#2563eb" stroke-width="1.5"/>
-            <text x="380" y="148" text-anchor="middle" fill="#1e40af" font-family="DM Sans,sans-serif" font-size="12" font-weight="600">e' reduced?</text>
-            <text x="380" y="164" text-anchor="middle" fill="#1e40af" font-family="DM Sans,sans-serif" font-size="10">(below cutoff for age)</text>
-          </g>
+        <!-- e' REDUCED? -->
+        <div class="fnode fnode-decision" id="node-eprime-q" onclick="selectNode('eprime-q')" style="width:100%; max-width:460px;">
+          <div class="fnode-title">🔷 Is e' reduced below age-specific cutoff?</div>
+          <div class="fnode-sub" style="margin-top:0.35rem;">
+            20–39y: Sep &lt;7 / Lat &lt;10 / Avg &lt;9 cm/s<br>
+            40–65y: Sep &lt;6 / Lat &lt;8 / Avg &lt;7 cm/s<br>
+            &gt;65y: Sep &lt;6 / Lat &lt;7 / Avg &lt;6.5 cm/s
+          </div>
+        </div>
 
-          <!-- YES arrow from e' reduced -->
-          <line x1="380" y1="184" x2="380" y2="218" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
-          <text x="387" y="205" font-family="DM Sans,sans-serif" font-size="11" fill="#64748b">Yes</text>
+        <!-- YES/NO branches -->
+        <div style="width:100%; display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:0.25rem;">
+          <!-- YES branch -->
+          <div class="branch-col">
+            <div class="branch-label">✅ YES — e' Reduced</div>
+            <div class="flow-arrow-down"><div class="flow-arrow-line"></div><div class="flow-arrow-head"></div></div>
+            <div class="fnode fnode-supp" id="node-need1" onclick="selectNode('need2')" style="width:100%; font-size:0.88rem; padding:0.75rem 1rem;">
+              <div class="fnode-title" style="font-size:0.95rem;">Need ≥1 abnormal LAP marker</div>
+              <div class="fnode-sub">Lower threshold for DD diagnosis</div>
+            </div>
+          </div>
+          <!-- NO branch -->
+          <div class="branch-col">
+            <div class="branch-label">❌ NO — e' Preserved</div>
+            <div class="flow-arrow-down"><div class="flow-arrow-line"></div><div class="flow-arrow-head"></div></div>
+            <div class="fnode fnode-supp" id="node-need2" onclick="selectNode('need2')" style="width:100%; font-size:0.88rem; padding:0.75rem 1rem;">
+              <div class="fnode-title" style="font-size:0.95rem;">Need ≥2 abnormal LAP markers</div>
+              <div class="fnode-sub">Higher threshold for DD diagnosis</div>
+            </div>
+          </div>
+        </div>
 
-          <!-- Step 2 box -->
-          <g class="algo-node" id="node-step2" onclick="selectNode('step2')" filter="url(#shadow)">
-            <rect x="160" y="220" width="440" height="72" rx="10" fill="#1b7a8c" stroke="#0f5564" stroke-width="1.5"/>
-            <text x="380" y="244" text-anchor="middle" fill="white" font-family="DM Serif Display,serif" font-size="12.5">Step 2: Assess LAP Markers</text>
-            <text x="380" y="261" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-family="DM Sans,sans-serif" font-size="10.5">① E/e' avg >14   ② TR vel ≥2.8 m/s or PASP ≥35mmHg</text>
-            <text x="380" y="277" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-family="DM Sans,sans-serif" font-size="10.5">③ LARS ≤18%  [need ≥1 abnormal]</text>
-          </g>
+        <div class="flow-arrow-down" style="margin-top:0.25rem;">
+          <div class="flow-arrow-line" style="height:20px;"></div>
+          <div class="flow-arrow-head"></div>
+        </div>
 
-          <!-- NO arrow from e' reduced (right) -->
-          <line x1="470" y1="152" x2="580" y2="152" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
-          <text x="505" y="145" font-family="DM Sans,sans-serif" font-size="11" fill="#64748b">No</text>
+        <!-- STEP 2 -->
+        <div class="fnode fnode-step" id="node-step2" onclick="selectNode('step2')" style="width:100%; max-width:640px; background:var(--teal); border-color:var(--teal);">
+          <div class="step-badge">Step 2</div>
+          <div class="fnode-title">Assess LAP Markers</div>
+          <div class="fnode-sub" style="margin-top:0.4rem; display:grid; grid-template-columns:1fr 1fr; gap:0.25rem 1rem; text-align:left;">
+            <span>① Average E/e' <strong>&gt;14</strong></span>
+            <span>② TR velocity <strong>≥2.8 m/s</strong></span>
+            <span>② PASP <strong>≥35 mmHg</strong></span>
+            <span>③ LARS <strong>≤18%</strong></span>
+          </div>
+        </div>
 
-          <!-- Need 2 abnormal box -->
-          <g class="algo-node" id="node-need2" onclick="selectNode('need2')" filter="url(#shadow)">
-            <rect x="582" y="124" width="160" height="60" rx="9" fill="#e8f4f7" stroke="#1b7a8c" stroke-width="1.5"/>
-            <text x="662" y="148" text-anchor="middle" fill="#0f5564" font-family="DM Sans,sans-serif" font-size="11" font-weight="600">Preserved e':</text>
-            <text x="662" y="164" text-anchor="middle" fill="#0f5564" font-family="DM Sans,sans-serif" font-size="10.5">Need ≥2 of Step 2</text>
-          </g>
+        <div class="flow-arrow-down">
+          <div class="flow-arrow-line"></div>
+          <div class="flow-arrow-head"></div>
+        </div>
 
-          <!-- Arrow down from need2 to step2 -->
-          <line x1="662" y1="184" x2="662" y2="242" stroke="#64748b" stroke-width="1.5"/>
-          <line x1="662" y1="242" x2="600" y2="242" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <!-- ALL NORMAL? -->
+        <div class="fnode fnode-decision" id="node-allnormal" onclick="selectNode('allnormal')" style="width:100%; max-width:460px;">
+          <div class="fnode-title">🔷 Do any LAP markers meet cutoff?</div>
+          <div class="fnode-sub" style="margin-top:0.25rem;">(considering threshold: ≥1 if e' reduced, ≥2 if e' preserved)</div>
+        </div>
 
-          <!-- Arrow down from Step 2 -->
-          <line x1="380" y1="292" x2="380" y2="326" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <!-- YES/NO branches -->
+        <div style="width:100%; display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:0.25rem;">
+          <div class="branch-col">
+            <div class="branch-label">❌ NO — All Normal</div>
+            <div class="flow-arrow-down"><div class="flow-arrow-line"></div><div class="flow-arrow-head"></div></div>
+            <div class="fnode fnode-normal" id="node-normaldf" onclick="selectNode('normaldf')" style="width:100%;">
+              <div class="fnode-title">✅ Normal Diastolic Function</div>
+              <div class="fnode-sub">Normal LAP</div>
+            </div>
+          </div>
+          <div class="branch-col">
+            <div class="branch-label">✅ YES — Markers Abnormal</div>
+            <div class="flow-arrow-down"><div class="flow-arrow-line"></div><div class="flow-arrow-head"></div></div>
+            <div class="fnode fnode-step" id="node-ea-ratio" onclick="selectNode('ea-ratio')" style="width:100%;">
+              <div class="fnode-title">Grade by E/A Ratio</div>
+              <div class="fnode-sub">Diastolic dysfunction confirmed — classify severity</div>
+            </div>
+          </div>
+        </div>
 
-          <!-- ALL 3 / ≥1 decision -->
-          <g class="algo-node" id="node-allnormal" onclick="selectNode('allnormal')" filter="url(#shadow)">
-            <polygon points="380,328 490,360 380,392 270,360" fill="#eef4fb" stroke="#2563eb" stroke-width="1.5"/>
-            <text x="380" y="355" text-anchor="middle" fill="#1e40af" font-family="DM Sans,sans-serif" font-size="11" font-weight="600">All Step 2 normal?</text>
-            <text x="380" y="371" text-anchor="middle" fill="#1e40af" font-family="DM Sans,sans-serif" font-size="10">(none meet cutoffs)</text>
-          </g>
+        <!-- E/A GRADING BRANCHES -->
+        <div style="width:50%; margin-left:50%;">
+          <div class="flow-arrow-down"><div class="flow-arrow-line"></div><div class="flow-arrow-head"></div></div>
+        </div>
 
-          <!-- YES → Normal DF -->
-          <line x1="270" y1="360" x2="160" y2="360" stroke="#1e7e5a" stroke-width="1.5" marker-end="url(#arrow-green)"/>
-          <text x="195" y="352" font-family="DM Sans,sans-serif" font-size="11" fill="#1e7e5a">Yes</text>
-          <g class="algo-node" id="node-normaldf" onclick="selectNode('normaldf')" filter="url(#shadow)">
-            <rect x="20" y="335" width="140" height="50" rx="9" fill="#eef7f3" stroke="#1e7e5a" stroke-width="2"/>
-            <text x="90" y="357" text-anchor="middle" fill="#1e7e5a" font-family="DM Serif Display,serif" font-size="12">Normal DF</text>
-            <text x="90" y="373" text-anchor="middle" fill="#1e7e5a" font-family="DM Sans,sans-serif" font-size="10">Normal LAP</text>
-          </g>
+        <div style="width:100%; display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.75rem;">
+          <div class="branch-col">
+            <div class="branch-label">E/A ≤ 0.8</div>
+            <div class="fnode fnode-grade1" id="node-grade1" onclick="selectNode('grade1')" style="width:100%;">
+              <div class="fnode-title">Grade 1 DD</div>
+              <div class="fnode-sub">Impaired Relaxation<br>Normal LAP</div>
+            </div>
+          </div>
+          <div class="branch-col">
+            <div class="branch-label">E/A 0.8 – 2</div>
+            <div class="fnode fnode-grade2" id="node-grade2" onclick="selectNode('grade2')" style="width:100%;">
+              <div class="fnode-title">Grade 2 DD</div>
+              <div class="fnode-sub">Pseudonormal<br>Mild–Mod ↑ LAP</div>
+            </div>
+          </div>
+          <div class="branch-col">
+            <div class="branch-label">E/A ≥ 2</div>
+            <div class="fnode fnode-grade3" id="node-grade3" onclick="selectNode('grade3')" style="width:100%;">
+              <div class="fnode-title">Grade 3 DD</div>
+              <div class="fnode-sub">Restrictive Filling<br>Marked ↑ LAP</div>
+            </div>
+          </div>
+        </div>
 
-          <!-- NO (≥1 abnormal) → check E/A -->
-          <line x1="380" y1="392" x2="380" y2="426" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
-          <text x="387" y="413" font-family="DM Sans,sans-serif" font-size="11" fill="#64748b">No (≥1 abnormal)</text>
+        <!-- GRADE 1 ACTION + SUPPLEMENTAL -->
+        <div style="width:100%; display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.75rem; margin-top:0.75rem;">
+          <div class="branch-col">
+            <div class="flow-arrow-down"><div class="flow-arrow-line"></div><div class="flow-arrow-head"></div></div>
+            <div class="fnode fnode-action" id="node-exercise-echo" onclick="selectNode('exercise-echo')" style="width:100%;">
+              <div class="fnode-title">🚴 Exercise Echo</div>
+              <div class="fnode-sub">If symptomatic — assess exertional LAP</div>
+            </div>
+          </div>
+          <div class="branch-col">
+            <div class="flow-arrow-down"><div class="flow-arrow-line"></div><div class="flow-arrow-head"></div></div>
+            <div class="fnode fnode-supp" id="node-supplemental" onclick="selectNode('supplemental')" style="width:100%;">
+              <div class="fnode-title">📋 Supplemental Params</div>
+              <div class="fnode-sub">LARS · PV S/D · LAVi · IVRT<br>PR vel · L-wave · Ar-A · Valsalva</div>
+            </div>
+          </div>
+          <div class="branch-col" style="justify-content:flex-start; padding-top:0;">
+            <div style="height:38px;"></div>
+            <div class="fnode fnode-exclude" id="node-exclusions" onclick="selectNode('exclusions')" style="width:100%;">
+              <div class="fnode-title" style="font-size:0.88rem;">⚠ Exclusions</div>
+              <div class="fnode-sub" style="font-size:0.78rem;">Severe MR/MS · MAC · AF<br>HTX · Non-cardiac PH · Constriction · LVAD</div>
+            </div>
+          </div>
+        </div>
 
-          <!-- E/A ratio decision -->
-          <g class="algo-node" id="node-ea-ratio" onclick="selectNode('ea-ratio')" filter="url(#shadow)">
-            <rect x="160" y="428" width="440" height="56" rx="10" fill="#1a3260" stroke="#0f1f3d" stroke-width="1.5"/>
-            <text x="380" y="451" text-anchor="middle" fill="white" font-family="DM Serif Display,serif" font-size="12.5">Check E/A Ratio for Grading</text>
-            <text x="380" y="468" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-family="DM Sans,sans-serif" font-size="10.5">Determines if LAP is normal, mildly/moderately, or markedly elevated</text>
-          </g>
+        <!-- Bottom hint -->
+        <div style="margin-top:1.25rem; width:100%; background:var(--teal-pale); border-radius:8px; padding:0.75rem 1rem; text-align:center; font-size:0.84rem; color:var(--teal); border:1px solid #b0dce8;">
+          👆 <strong>Click any box</strong> for detailed cutoff values, physiologic rationale, and clinical pearls
+        </div>
 
-          <!-- Three branches from E/A -->
-          <!-- Branch left: E/A ≤0.8 (Grade 1) -->
-          <line x1="260" y1="484" x2="140" y2="540" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
-          <text x="165" y="520" font-family="DM Sans,sans-serif" font-size="10" fill="#64748b">E/A ≤0.8</text>
-
-          <!-- Branch middle: E/A 0.8-2 (Grade 2) -->
-          <line x1="380" y1="484" x2="380" y2="540" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
-          <text x="390" y="520" font-family="DM Sans,sans-serif" font-size="10" fill="#64748b">E/A 0.8-2</text>
-
-          <!-- Branch right: E/A ≥2 (Grade 3) -->
-          <line x1="500" y1="484" x2="620" y2="540" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
-          <text x="546" y="520" font-family="DM Sans,sans-serif" font-size="10" fill="#64748b">E/A ≥2</text>
-
-          <!-- Grade 1 box -->
-          <g class="algo-node" id="node-grade1" onclick="selectNode('grade1')" filter="url(#shadow)">
-            <rect x="20" y="542" width="240" height="70" rx="9" fill="#fdf5e8" stroke="#b7600a" stroke-width="2"/>
-            <text x="140" y="566" text-anchor="middle" fill="#b7600a" font-family="DM Serif Display,serif" font-size="13">Grade 1 DD</text>
-            <text x="140" y="583" text-anchor="middle" fill="#7c4a05" font-family="DM Sans,sans-serif" font-size="10.5">Impaired Relaxation</text>
-            <text x="140" y="599" text-anchor="middle" fill="#7c4a05" font-family="DM Sans,sans-serif" font-size="10">Normal LAP</text>
-          </g>
-
-          <!-- Grade 2 box -->
-          <g class="algo-node" id="node-grade2" onclick="selectNode('grade2')" filter="url(#shadow)">
-            <rect x="260" y="542" width="240" height="70" rx="9" fill="#fde8e8" stroke="#b03030" stroke-width="2"/>
-            <text x="380" y="566" text-anchor="middle" fill="#b03030" font-family="DM Serif Display,serif" font-size="13">Grade 2 DD</text>
-            <text x="380" y="583" text-anchor="middle" fill="#8b1f1f" font-family="DM Sans,sans-serif" font-size="10.5">Pseudonormal Filling</text>
-            <text x="380" y="599" text-anchor="middle" fill="#8b1f1f" font-family="DM Sans,sans-serif" font-size="10">Mild–Mod ↑ LAP</text>
-          </g>
-
-          <!-- Grade 3 box -->
-          <g class="algo-node" id="node-grade3" onclick="selectNode('grade3')" filter="url(#shadow)">
-            <rect x="500" y="542" width="240" height="70" rx="9" fill="#fad5d5" stroke="#8b1f1f" stroke-width="2"/>
-            <text x="620" y="566" text-anchor="middle" fill="#8b1f1f" font-family="DM Serif Display,serif" font-size="13">Grade 3 DD</text>
-            <text x="620" y="583" text-anchor="middle" fill="#6b1010" font-family="DM Sans,sans-serif" font-size="10.5">Restrictive Filling</text>
-            <text x="620" y="599" text-anchor="middle" fill="#6b1010" font-family="DM Sans,sans-serif" font-size="10">Marked ↑ LAP</text>
-          </g>
-
-          <!-- Grade 1 → Diastolic Exercise Echo if symptomatic -->
-          <line x1="140" y1="612" x2="140" y2="666" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
-          <text x="148" y="643" font-family="DM Sans,sans-serif" font-size="10" fill="#64748b">If symptomatic</text>
-
-          <g class="algo-node" id="node-exercise-echo" onclick="selectNode('exercise-echo')" filter="url(#shadow)">
-            <rect x="30" y="668" width="220" height="54" rx="9" fill="#f7f4ef" stroke="#c9993e" stroke-width="2"/>
-            <text x="140" y="691" text-anchor="middle" fill="#b7600a" font-family="DM Serif Display,serif" font-size="12">Diastolic Exercise Echo</text>
-            <text x="140" y="708" text-anchor="middle" fill="#7c4a05" font-family="DM Sans,sans-serif" font-size="10">Evaluate for exertional ↑ LAP</text>
-          </g>
-
-          <!-- Grade 1 supplemental path -->
-          <line x1="380" y1="612" x2="380" y2="666" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
-          <g class="algo-node" id="node-supplemental" onclick="selectNode('supplemental')" filter="url(#shadow)">
-            <rect x="262" y="668" width="236" height="54" rx="9" fill="#e8f4f7" stroke="#1b7a8c" stroke-width="1.5"/>
-            <text x="380" y="688" text-anchor="middle" fill="#0f5564" font-family="DM Sans,sans-serif" font-size="11" font-weight="600">Supplemental Parameters</text>
-            <text x="380" y="704" text-anchor="middle" fill="#0f5564" font-family="DM Sans,sans-serif" font-size="9.5">LARS, PV S/D, LAVi, IVRT</text>
-            <text x="380" y="716" text-anchor="middle" fill="#0f5564" font-family="DM Sans,sans-serif" font-size="9.5">PR vel, L-wave, Ar-A, Valsalva</text>
-          </g>
-
-          <!-- EXCLUSIONS BOX -->
-          <g class="algo-node" id="node-exclusions" onclick="selectNode('exclusions')" filter="url(#shadow)">
-            <rect x="510" y="668" width="230" height="72" rx="9" fill="#f2f0eb" stroke="#8a8578" stroke-width="1.5" stroke-dasharray="5,3"/>
-            <text x="625" y="690" text-anchor="middle" fill="#4a4740" font-family="DM Sans,sans-serif" font-size="10.5" font-weight="600">⚠ Algorithm Exclusions</text>
-            <text x="625" y="706" text-anchor="middle" fill="#4a4740" font-family="DM Sans,sans-serif" font-size="9.5">Severe MR, MS, MAC (mod-severe)</text>
-            <text x="625" y="720" text-anchor="middle" fill="#4a4740" font-family="DM Sans,sans-serif" font-size="9.5">Afib, Heart Transplant, non-cardiac PH</text>
-            <text x="625" y="734" text-anchor="middle" fill="#4a4740" font-family="DM Sans,sans-serif" font-size="9.5">Pericardial constriction, LVAD</text>
-          </g>
-
-          <!-- NORMAL RANGES REMINDER -->
-          <rect x="20" y="790" width="720" height="50" rx="8" fill="#e8f4f7" stroke="#1b7a8c" stroke-width="1"/>
-          <text x="380" y="810" text-anchor="middle" fill="#0f5564" font-family="DM Sans,sans-serif" font-size="11" font-weight="600">e' Velocity Cutoffs by Age: 20-39y: Sep &lt;7, Lat &lt;10, Avg &lt;9 | 40-65y: Sep &lt;6, Lat &lt;8, Avg &lt;7 | &gt;65y: Sep &lt;6, Lat &lt;7, Avg &lt;6.5 cm/s</text>
-          <text x="380" y="828" text-anchor="middle" fill="#0f5564" font-family="DM Sans,sans-serif" font-size="10">Click any node for details • Applies to patients in sinus rhythm without the listed exclusions</text>
-        </svg>
       </div>
 
       <div class="algo-legend">
         <div class="legend-item"><div class="legend-dot" style="background:#1a3260"></div> Algorithm Step</div>
-        <div class="legend-item"><div class="legend-dot" style="background:#eef4fb; border:1.5px solid #2563eb"></div> Decision Point</div>
-        <div class="legend-item"><div class="legend-dot" style="background:#eef7f3; border:1.5px solid #1e7e5a"></div> Normal / Grade 1</div>
-        <div class="legend-item"><div class="legend-dot" style="background:#fde8e8; border:1.5px solid #b03030"></div> Grade 2</div>
-        <div class="legend-item"><div class="legend-dot" style="background:#fad5d5; border:1.5px solid #8b1f1f"></div> Grade 3</div>
-        <div class="legend-item"><div class="legend-dot" style="background:#f7f4ef; border:1.5px solid #c9993e"></div> Action Item</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#dbeafe; border:1.5px solid #2563eb"></div> Decision Point</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#eef7f3; border:1.5px solid #1e7e5a"></div> Normal</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#fdf5e8; border:1.5px solid #b7600a"></div> Grade 1</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#fee2e2; border:1.5px solid #dc2626"></div> Grade 2</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#fecaca; border:1.5px solid #b91c1c"></div> Grade 3</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#fef9c3; border:1.5px solid #c9993e"></div> Action</div>
       </div>
     </div>
 
