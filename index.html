@@ -1,0 +1,2422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASE 2025 Diastolic Function Guidelines</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f1f3d;
+    --navy-mid: #1a3260;
+    --teal: #1b7a8c;
+    --teal-light: #2a9db5;
+    --teal-pale: #e8f4f7;
+    --gold: #c9993e;
+    --gold-light: #e8c57a;
+    --cream: #f7f4ef;
+    --white: #ffffff;
+    --gray-100: #f2f0eb;
+    --gray-200: #e4e1d8;
+    --gray-500: #8a8578;
+    --gray-700: #4a4740;
+    --text: #1a1916;
+    --red: #c0392b;
+    --red-pale: #fdf0ee;
+    --green: #1e7e5a;
+    --green-pale: #eef7f3;
+    --amber: #b7600a;
+    --amber-pale: #fdf5e8;
+    --shadow-sm: 0 1px 3px rgba(15,31,61,0.1);
+    --shadow-md: 0 4px 16px rgba(15,31,61,0.12);
+    --shadow-lg: 0 12px 40px rgba(15,31,61,0.18);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--navy);
+    color: white;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow-lg);
+  }
+  .header-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0.85rem 2rem;
+  }
+  .header-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+  }
+  .header-icon {
+    width: 38px; height: 38px;
+    background: linear-gradient(135deg, var(--teal), var(--teal-light));
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+  .header-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    line-height: 1.2;
+  }
+  .header-title span {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 400;
+    opacity: 0.65;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .header-divider { width: 1px; height: 32px; background: rgba(255,255,255,0.15); }
+
+  nav { display: flex; gap: 0.25rem; flex-wrap: wrap; }
+  .nav-btn {
+    background: transparent;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0.45rem 0.9rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .nav-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+  .nav-btn.active { background: var(--teal); color: white; }
+
+  .header-cite {
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+  .cite-btn {
+    background: rgba(201,153,62,0.15);
+    border: 1px solid rgba(201,153,62,0.4);
+    color: var(--gold-light);
+    padding: 0.4rem 0.9rem;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .cite-btn:hover { background: rgba(201,153,62,0.25); color: var(--gold-light); }
+
+  /* ── MAIN ── */
+  main { max-width: 1280px; margin: 0 auto; padding: 2rem; }
+
+  .page { display: none; }
+  .page.active { display: block; animation: fadeIn 0.3s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── PAGE HEADERS ── */
+  .page-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 2px solid var(--gray-200);
+  }
+  .page-header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.9rem;
+    color: var(--navy);
+    margin-bottom: 0.4rem;
+  }
+  .page-header p {
+    color: var(--gray-500);
+    font-size: 0.9rem;
+    max-width: 700px;
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--gray-200);
+  }
+  .card-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    color: var(--navy);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  /* ── ALGORITHM INTERACTIVE (Figure 3) ── */
+  .algo-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 1.5rem;
+    align-items: start;
+  }
+  @media (max-width: 900px) { .algo-wrapper { grid-template-columns: 1fr; } }
+
+  .algo-canvas {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--gray-200);
+    overflow-x: auto;
+  }
+
+  .algo-svg-container svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* SVG node styles */
+  .algo-node { cursor: pointer; transition: all 0.2s; }
+  .algo-node:hover rect, .algo-node:hover ellipse { filter: brightness(0.92); }
+  .algo-node.selected rect { stroke-width: 3 !important; stroke: var(--gold) !important; }
+
+  .info-panel {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--gray-200);
+    position: sticky;
+    top: 90px;
+  }
+  .info-panel-empty {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: var(--gray-500);
+  }
+  .info-panel-empty .hint-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+  .info-panel h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    color: var(--navy);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--teal-pale);
+  }
+  .info-panel p { font-size: 0.88rem; color: var(--gray-700); line-height: 1.6; margin-bottom: 0.6rem; }
+  .info-panel ul { padding-left: 1.2rem; }
+  .info-panel li { font-size: 0.88rem; color: var(--gray-700); margin-bottom: 0.35rem; }
+  .info-tag {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.03em;
+  }
+  .tag-normal { background: var(--green-pale); color: var(--green); }
+  .tag-elevated { background: var(--red-pale); color: var(--red); }
+  .tag-grade1 { background: var(--amber-pale); color: var(--amber); }
+  .tag-grade2 { background: #fde8e8; color: #b03030; }
+  .tag-grade3 { background: #fad5d5; color: #8b1f1f; }
+  .tag-indeterminate { background: #f0eeff; color: #5b4bc4; }
+  .tag-input { background: var(--teal-pale); color: var(--teal); }
+  .tag-action { background: #fff3cd; color: #7c5e00; }
+
+  /* ── CUTOFF TABLE ── */
+  .cutoff-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.84rem;
+    margin-top: 1rem;
+  }
+  .cutoff-table th {
+    background: var(--navy);
+    color: white;
+    padding: 0.55rem 0.75rem;
+    text-align: left;
+    font-weight: 500;
+    font-size: 0.8rem;
+  }
+  .cutoff-table th:first-child { border-radius: 6px 0 0 0; }
+  .cutoff-table th:last-child { border-radius: 0 6px 0 0; }
+  .cutoff-table td {
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--gray-200);
+    vertical-align: top;
+  }
+  .cutoff-table tr:last-child td { border-bottom: none; }
+  .cutoff-table tr:nth-child(even) td { background: var(--gray-100); }
+  .val { font-family: 'DM Mono', monospace; font-weight: 500; color: var(--navy); }
+  .val.abnormal { color: var(--red); }
+  .val.normal { color: var(--green); }
+
+  /* ── SPECIAL POPULATIONS GRID ── */
+  .pop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .pop-card {
+    background: white;
+    border: 1.5px solid var(--gray-200);
+    border-radius: 10px;
+    padding: 1.25rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .pop-card:hover {
+    border-color: var(--teal);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+  .pop-card.active-pop {
+    border-color: var(--teal);
+    background: var(--teal-pale);
+  }
+  .pop-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+  .pop-card-title { font-weight: 600; color: var(--navy); font-size: 0.95rem; margin-bottom: 0.25rem; }
+  .pop-card-desc { font-size: 0.8rem; color: var(--gray-500); }
+
+  /* ── POPULATION DETAIL ── */
+  .pop-detail {
+    display: none;
+    background: white;
+    border-radius: 12px;
+    padding: 1.75rem;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--gray-200);
+    animation: fadeIn 0.3s ease;
+  }
+  .pop-detail.visible { display: block; }
+  .pop-detail-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--gray-200);
+  }
+  .pop-detail-header h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+    color: var(--navy);
+  }
+
+  /* ── INTERACTIVE CALCULATOR ── */
+  .calc-section {
+    background: var(--gray-100);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-top: 1rem;
+  }
+  .calc-section h4 {
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+  }
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  .form-group label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--gray-700);
+    margin-bottom: 0.3rem;
+  }
+  .form-group input, .form-group select {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 1.5px solid var(--gray-200);
+    border-radius: 7px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    background: white;
+    color: var(--text);
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus, .form-group select:focus {
+    outline: none;
+    border-color: var(--teal);
+  }
+  .calc-btn {
+    background: var(--navy);
+    color: white;
+    border: none;
+    padding: 0.65rem 1.5rem;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .calc-btn:hover { background: var(--navy-mid); transform: translateY(-1px); }
+  .calc-btn.secondary {
+    background: white;
+    color: var(--navy);
+    border: 1.5px solid var(--gray-200);
+  }
+  .calc-btn.secondary:hover { border-color: var(--teal); color: var(--teal); }
+
+  .result-box {
+    margin-top: 1rem;
+    padding: 1.25rem;
+    border-radius: 9px;
+    border-left: 4px solid;
+    display: none;
+  }
+  .result-box.visible { display: block; }
+  .result-box.normal { background: var(--green-pale); border-color: var(--green); }
+  .result-box.elevated { background: var(--red-pale); border-color: var(--red); }
+  .result-box.grade1 { background: var(--amber-pale); border-color: var(--amber); }
+  .result-box.grade2 { background: #fde8e8; border-color: #b03030; }
+  .result-box.grade3 { background: #fad5d5; border-color: #8b1f1f; }
+  .result-box.indeterminate { background: #f0eeff; border-color: #5b4bc4; }
+
+  .result-title { font-weight: 600; font-size: 1rem; margin-bottom: 0.4rem; }
+  .result-detail { font-size: 0.87rem; line-height: 1.6; }
+
+  /* ── INDICATORS LIST ── */
+  .indicator-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+  .indicator-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.65rem 0.9rem;
+    background: var(--gray-100);
+    border-radius: 8px;
+    font-size: 0.86rem;
+  }
+  .indicator-item.elevated-indicator { background: var(--red-pale); }
+  .indicator-bullet {
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .bullet-red { background: var(--red); color: white; }
+  .bullet-teal { background: var(--teal); color: white; }
+  .bullet-navy { background: var(--navy); color: white; }
+
+  /* ── ALGORITHM FLOW (special pops) ── */
+  .flow-step {
+    display: flex;
+    gap: 0;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0.25rem;
+  }
+  .flow-box {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 0.87rem;
+    text-align: center;
+    border: 1.5px solid;
+    position: relative;
+  }
+  .flow-box.question { background: #eef4fb; border-color: #2563eb; color: #1e40af; font-weight: 500; }
+  .flow-box.normal-result { background: var(--green-pale); border-color: var(--green); color: var(--green); font-weight: 600; }
+  .flow-box.elevated-result { background: var(--red-pale); border-color: var(--red); color: var(--red); font-weight: 600; }
+  .flow-box.indeterminate-result { background: #f0eeff; border-color: #5b4bc4; color: #5b4bc4; font-weight: 600; }
+  .flow-box.action { background: var(--amber-pale); border-color: var(--amber); color: var(--amber); font-weight: 500; }
+  .flow-arrow { font-size: 1.2rem; color: var(--gray-500); line-height: 1.2; }
+  .flow-branch {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    width: 100%;
+    margin-top: 0.25rem;
+  }
+  .flow-branch-label { font-size: 0.75rem; font-weight: 600; text-align: center; color: var(--gray-500); margin-bottom: 0.25rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+  /* ── TWO-COL LAYOUT ── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+  @media (max-width: 700px) { .two-col { grid-template-columns: 1fr; } }
+
+  /* ── NORMAL RANGES TABLE ── */
+  .ranges-section { margin-top: 2rem; }
+  .age-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.25rem; }
+  .age-tab {
+    padding: 0.45rem 1rem;
+    border-radius: 20px;
+    border: 1.5px solid var(--gray-200);
+    background: white;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--gray-700);
+  }
+  .age-tab:hover { border-color: var(--teal); color: var(--teal); }
+  .age-tab.active { background: var(--teal); border-color: var(--teal); color: white; }
+  .age-range-content { display: none; }
+  .age-range-content.active { display: block; }
+
+  /* ── KEY POINTS ── */
+  .key-points {
+    background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    color: white;
+    margin-top: 1.5rem;
+  }
+  .key-points h4 { font-family: 'DM Serif Display', serif; margin-bottom: 0.75rem; font-size: 1rem; opacity: 0.9; }
+  .key-points ul { padding-left: 1.25rem; }
+  .key-points li { font-size: 0.85rem; opacity: 0.85; margin-bottom: 0.4rem; }
+
+  /* ── LEGEND ── */
+  .algo-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--gray-200);
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.78rem;
+    color: var(--gray-700);
+  }
+  .legend-dot {
+    width: 14px; height: 14px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+
+  /* ── FOOTER ── */
+  .citation-footer {
+    margin-top: 3rem;
+    padding: 1.5rem 2rem;
+    background: var(--navy);
+    border-radius: 12px;
+    color: rgba(255,255,255,0.7);
+    font-size: 0.8rem;
+    line-height: 1.6;
+  }
+  .citation-footer strong { color: rgba(255,255,255,0.9); }
+  .citation-footer a { color: var(--gold-light); text-decoration: none; }
+  .citation-footer a:hover { text-decoration: underline; }
+
+  /* ── GRADE BADGE ── */
+  .grade-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+
+  /* ── DISCLAIMER ── */
+  .disclaimer {
+    background: var(--amber-pale);
+    border: 1px solid #e8b96a;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-size: 0.8rem;
+    color: var(--amber);
+    margin-bottom: 1.5rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+
+  /* ── STEP INDICATOR ── */
+  .step-nav {
+    display: flex;
+    gap: 0;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  .step-dot {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    border: 2px solid var(--gray-200);
+    background: white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--gray-500);
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+  }
+  .step-dot.active { background: var(--navy); border-color: var(--navy); color: white; }
+  .step-dot.done { background: var(--teal); border-color: var(--teal); color: white; }
+  .step-line { flex: 1; height: 2px; background: var(--gray-200); }
+  .step-line.done { background: var(--teal); }
+
+  .step-label { font-size: 0.76rem; color: var(--gray-500); text-align: center; position: absolute; top: 36px; left: 50%; transform: translateX(-50%); white-space: nowrap; }
+
+  .tabs-row { display: flex; gap: 0.5rem; border-bottom: 2px solid var(--gray-200); margin-bottom: 1.5rem; }
+  .tab-btn {
+    padding: 0.55rem 1rem;
+    border: none; background: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.87rem;
+    font-weight: 500;
+    color: var(--gray-500);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s;
+  }
+  .tab-btn:hover { color: var(--navy); }
+  .tab-btn.active { color: var(--navy); border-bottom-color: var(--teal); }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* checkboxes for interactive */
+  .check-group { display: flex; flex-direction: column; gap: 0.5rem; }
+  .check-item {
+    display: flex; align-items: center; gap: 0.75rem;
+    padding: 0.6rem 0.9rem;
+    background: white;
+    border: 1.5px solid var(--gray-200);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-size: 0.87rem;
+  }
+  .check-item:hover { border-color: var(--teal); }
+  .check-item input[type=checkbox], .check-item input[type=radio] { accent-color: var(--teal); width: 16px; height: 16px; cursor: pointer; }
+  .check-item.selected { background: var(--teal-pale); border-color: var(--teal); }
+
+  .info-box {
+    padding: 0.9rem 1.1rem;
+    border-radius: 8px;
+    font-size: 0.87rem;
+    margin-top: 0.75rem;
+    line-height: 1.6;
+  }
+  .info-box.teal { background: var(--teal-pale); border-left: 3px solid var(--teal); color: var(--navy); }
+  .info-box.gold { background: var(--amber-pale); border-left: 3px solid var(--gold); color: var(--amber); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="header-logo">
+      <div class="header-icon">🫀</div>
+      <div class="header-title">
+        ASE 2025 Diastolic Function
+        <span>Interactive Clinical Reference</span>
+      </div>
+    </div>
+    <div class="header-divider"></div>
+    <nav>
+      <button class="nav-btn active" onclick="showPage('home')">Algorithm</button>
+      <button class="nav-btn" onclick="showPage('calculator')">Calculator</button>
+      <button class="nav-btn" onclick="showPage('special')">Special Populations</button>
+      <button class="nav-btn" onclick="showPage('ranges')">Normal Ranges</button>
+      <button class="nav-btn" onclick="showPage('grading')">Grading Guide</button>
+    </nav>
+    <div class="header-cite">
+      <a href="https://www.asecho.org/wp-content/uploads/2025/07/Left-Ventricular-Diastolic-Function.pdf" target="_blank" class="cite-btn">
+        📄 Download Guidelines
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ════════════════════════════════ HOME / ALGORITHM ════════════════════════════════ -->
+<div id="page-home" class="page active">
+  <div class="page-header">
+    <h1>LV Diastolic Function Algorithm</h1>
+    <p>Interactive version of Figure 3 from the 2025 ASE Guidelines. Click any node to see clinical detail and cutoff values.</p>
+  </div>
+
+  <div class="disclaimer">
+    ⚠️ <span>For educational and reference use only. Always integrate findings with full clinical context. Not a substitute for individual clinical judgment.</span>
+  </div>
+
+  <div class="algo-wrapper">
+    <div class="algo-canvas">
+      <div class="algo-svg-container">
+        <svg viewBox="0 0 760 900" xmlns="http://www.w3.org/2000/svg" id="mainAlgoSVG">
+          <defs>
+            <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+              <polygon points="0 0, 8 3, 0 6" fill="#64748b"/>
+            </marker>
+            <marker id="arrow-green" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+              <polygon points="0 0, 8 3, 0 6" fill="#1e7e5a"/>
+            </marker>
+            <marker id="arrow-red" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+              <polygon points="0 0, 8 3, 0 6" fill="#c0392b"/>
+            </marker>
+            <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+              <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(15,31,61,0.12)"/>
+            </filter>
+          </defs>
+
+          <!-- Step 1: Assess e' velocity -->
+          <g class="algo-node" id="node-e-prime" onclick="selectNode('e-prime')" filter="url(#shadow)">
+            <rect x="200" y="20" width="360" height="62" rx="10" fill="#1a3260" stroke="#0f1f3d" stroke-width="1.5"/>
+            <text x="380" y="44" text-anchor="middle" fill="white" font-family="DM Serif Display,serif" font-size="13">Step 1: Assess e' Velocity</text>
+            <text x="380" y="62" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-family="DM Sans,sans-serif" font-size="11">Septal e' ≤6, Lateral e' ≤7, or Average e' ≤6.5 cm/s</text>
+          </g>
+
+          <!-- Arrow down from step 1 -->
+          <line x1="380" y1="82" x2="380" y2="118" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+          <!-- e' reduced? Decision -->
+          <g class="algo-node" id="node-eprime-q" onclick="selectNode('eprime-q')" filter="url(#shadow)">
+            <polygon points="380,120 470,152 380,184 290,152" fill="#eef4fb" stroke="#2563eb" stroke-width="1.5"/>
+            <text x="380" y="148" text-anchor="middle" fill="#1e40af" font-family="DM Sans,sans-serif" font-size="12" font-weight="600">e' reduced?</text>
+            <text x="380" y="164" text-anchor="middle" fill="#1e40af" font-family="DM Sans,sans-serif" font-size="10">(below cutoff for age)</text>
+          </g>
+
+          <!-- YES arrow from e' reduced -->
+          <line x1="380" y1="184" x2="380" y2="218" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <text x="387" y="205" font-family="DM Sans,sans-serif" font-size="11" fill="#64748b">Yes</text>
+
+          <!-- Step 2 box -->
+          <g class="algo-node" id="node-step2" onclick="selectNode('step2')" filter="url(#shadow)">
+            <rect x="160" y="220" width="440" height="72" rx="10" fill="#1b7a8c" stroke="#0f5564" stroke-width="1.5"/>
+            <text x="380" y="244" text-anchor="middle" fill="white" font-family="DM Serif Display,serif" font-size="12.5">Step 2: Assess LAP Markers</text>
+            <text x="380" y="261" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-family="DM Sans,sans-serif" font-size="10.5">① E/e' avg >14   ② TR vel ≥2.8 m/s or PASP ≥35mmHg</text>
+            <text x="380" y="277" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-family="DM Sans,sans-serif" font-size="10.5">③ LARS ≤18%  [need ≥1 abnormal]</text>
+          </g>
+
+          <!-- NO arrow from e' reduced (right) -->
+          <line x1="470" y1="152" x2="580" y2="152" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <text x="505" y="145" font-family="DM Sans,sans-serif" font-size="11" fill="#64748b">No</text>
+
+          <!-- Need 2 abnormal box -->
+          <g class="algo-node" id="node-need2" onclick="selectNode('need2')" filter="url(#shadow)">
+            <rect x="582" y="124" width="160" height="60" rx="9" fill="#e8f4f7" stroke="#1b7a8c" stroke-width="1.5"/>
+            <text x="662" y="148" text-anchor="middle" fill="#0f5564" font-family="DM Sans,sans-serif" font-size="11" font-weight="600">Preserved e':</text>
+            <text x="662" y="164" text-anchor="middle" fill="#0f5564" font-family="DM Sans,sans-serif" font-size="10.5">Need ≥2 of Step 2</text>
+          </g>
+
+          <!-- Arrow down from need2 to step2 -->
+          <line x1="662" y1="184" x2="662" y2="242" stroke="#64748b" stroke-width="1.5"/>
+          <line x1="662" y1="242" x2="600" y2="242" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+          <!-- Arrow down from Step 2 -->
+          <line x1="380" y1="292" x2="380" y2="326" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+          <!-- ALL 3 / ≥1 decision -->
+          <g class="algo-node" id="node-allnormal" onclick="selectNode('allnormal')" filter="url(#shadow)">
+            <polygon points="380,328 490,360 380,392 270,360" fill="#eef4fb" stroke="#2563eb" stroke-width="1.5"/>
+            <text x="380" y="355" text-anchor="middle" fill="#1e40af" font-family="DM Sans,sans-serif" font-size="11" font-weight="600">All Step 2 normal?</text>
+            <text x="380" y="371" text-anchor="middle" fill="#1e40af" font-family="DM Sans,sans-serif" font-size="10">(none meet cutoffs)</text>
+          </g>
+
+          <!-- YES → Normal DF -->
+          <line x1="270" y1="360" x2="160" y2="360" stroke="#1e7e5a" stroke-width="1.5" marker-end="url(#arrow-green)"/>
+          <text x="195" y="352" font-family="DM Sans,sans-serif" font-size="11" fill="#1e7e5a">Yes</text>
+          <g class="algo-node" id="node-normaldf" onclick="selectNode('normaldf')" filter="url(#shadow)">
+            <rect x="20" y="335" width="140" height="50" rx="9" fill="#eef7f3" stroke="#1e7e5a" stroke-width="2"/>
+            <text x="90" y="357" text-anchor="middle" fill="#1e7e5a" font-family="DM Serif Display,serif" font-size="12">Normal DF</text>
+            <text x="90" y="373" text-anchor="middle" fill="#1e7e5a" font-family="DM Sans,sans-serif" font-size="10">Normal LAP</text>
+          </g>
+
+          <!-- NO (≥1 abnormal) → check E/A -->
+          <line x1="380" y1="392" x2="380" y2="426" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <text x="387" y="413" font-family="DM Sans,sans-serif" font-size="11" fill="#64748b">No (≥1 abnormal)</text>
+
+          <!-- E/A ratio decision -->
+          <g class="algo-node" id="node-ea-ratio" onclick="selectNode('ea-ratio')" filter="url(#shadow)">
+            <rect x="160" y="428" width="440" height="56" rx="10" fill="#1a3260" stroke="#0f1f3d" stroke-width="1.5"/>
+            <text x="380" y="451" text-anchor="middle" fill="white" font-family="DM Serif Display,serif" font-size="12.5">Check E/A Ratio for Grading</text>
+            <text x="380" y="468" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-family="DM Sans,sans-serif" font-size="10.5">Determines if LAP is normal, mildly/moderately, or markedly elevated</text>
+          </g>
+
+          <!-- Three branches from E/A -->
+          <!-- Branch left: E/A ≤0.8 (Grade 1) -->
+          <line x1="260" y1="484" x2="140" y2="540" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <text x="165" y="520" font-family="DM Sans,sans-serif" font-size="10" fill="#64748b">E/A ≤0.8</text>
+
+          <!-- Branch middle: E/A 0.8-2 (Grade 2) -->
+          <line x1="380" y1="484" x2="380" y2="540" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <text x="390" y="520" font-family="DM Sans,sans-serif" font-size="10" fill="#64748b">E/A 0.8-2</text>
+
+          <!-- Branch right: E/A ≥2 (Grade 3) -->
+          <line x1="500" y1="484" x2="620" y2="540" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <text x="546" y="520" font-family="DM Sans,sans-serif" font-size="10" fill="#64748b">E/A ≥2</text>
+
+          <!-- Grade 1 box -->
+          <g class="algo-node" id="node-grade1" onclick="selectNode('grade1')" filter="url(#shadow)">
+            <rect x="20" y="542" width="240" height="70" rx="9" fill="#fdf5e8" stroke="#b7600a" stroke-width="2"/>
+            <text x="140" y="566" text-anchor="middle" fill="#b7600a" font-family="DM Serif Display,serif" font-size="13">Grade 1 DD</text>
+            <text x="140" y="583" text-anchor="middle" fill="#7c4a05" font-family="DM Sans,sans-serif" font-size="10.5">Impaired Relaxation</text>
+            <text x="140" y="599" text-anchor="middle" fill="#7c4a05" font-family="DM Sans,sans-serif" font-size="10">Normal LAP</text>
+          </g>
+
+          <!-- Grade 2 box -->
+          <g class="algo-node" id="node-grade2" onclick="selectNode('grade2')" filter="url(#shadow)">
+            <rect x="260" y="542" width="240" height="70" rx="9" fill="#fde8e8" stroke="#b03030" stroke-width="2"/>
+            <text x="380" y="566" text-anchor="middle" fill="#b03030" font-family="DM Serif Display,serif" font-size="13">Grade 2 DD</text>
+            <text x="380" y="583" text-anchor="middle" fill="#8b1f1f" font-family="DM Sans,sans-serif" font-size="10.5">Pseudonormal Filling</text>
+            <text x="380" y="599" text-anchor="middle" fill="#8b1f1f" font-family="DM Sans,sans-serif" font-size="10">Mild–Mod ↑ LAP</text>
+          </g>
+
+          <!-- Grade 3 box -->
+          <g class="algo-node" id="node-grade3" onclick="selectNode('grade3')" filter="url(#shadow)">
+            <rect x="500" y="542" width="240" height="70" rx="9" fill="#fad5d5" stroke="#8b1f1f" stroke-width="2"/>
+            <text x="620" y="566" text-anchor="middle" fill="#8b1f1f" font-family="DM Serif Display,serif" font-size="13">Grade 3 DD</text>
+            <text x="620" y="583" text-anchor="middle" fill="#6b1010" font-family="DM Sans,sans-serif" font-size="10.5">Restrictive Filling</text>
+            <text x="620" y="599" text-anchor="middle" fill="#6b1010" font-family="DM Sans,sans-serif" font-size="10">Marked ↑ LAP</text>
+          </g>
+
+          <!-- Grade 1 → Diastolic Exercise Echo if symptomatic -->
+          <line x1="140" y1="612" x2="140" y2="666" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <text x="148" y="643" font-family="DM Sans,sans-serif" font-size="10" fill="#64748b">If symptomatic</text>
+
+          <g class="algo-node" id="node-exercise-echo" onclick="selectNode('exercise-echo')" filter="url(#shadow)">
+            <rect x="30" y="668" width="220" height="54" rx="9" fill="#f7f4ef" stroke="#c9993e" stroke-width="2"/>
+            <text x="140" y="691" text-anchor="middle" fill="#b7600a" font-family="DM Serif Display,serif" font-size="12">Diastolic Exercise Echo</text>
+            <text x="140" y="708" text-anchor="middle" fill="#7c4a05" font-family="DM Sans,sans-serif" font-size="10">Evaluate for exertional ↑ LAP</text>
+          </g>
+
+          <!-- Grade 1 supplemental path -->
+          <line x1="380" y1="612" x2="380" y2="666" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <g class="algo-node" id="node-supplemental" onclick="selectNode('supplemental')" filter="url(#shadow)">
+            <rect x="262" y="668" width="236" height="54" rx="9" fill="#e8f4f7" stroke="#1b7a8c" stroke-width="1.5"/>
+            <text x="380" y="688" text-anchor="middle" fill="#0f5564" font-family="DM Sans,sans-serif" font-size="11" font-weight="600">Supplemental Parameters</text>
+            <text x="380" y="704" text-anchor="middle" fill="#0f5564" font-family="DM Sans,sans-serif" font-size="9.5">LARS, PV S/D, LAVi, IVRT</text>
+            <text x="380" y="716" text-anchor="middle" fill="#0f5564" font-family="DM Sans,sans-serif" font-size="9.5">PR vel, L-wave, Ar-A, Valsalva</text>
+          </g>
+
+          <!-- EXCLUSIONS BOX -->
+          <g class="algo-node" id="node-exclusions" onclick="selectNode('exclusions')" filter="url(#shadow)">
+            <rect x="510" y="668" width="230" height="72" rx="9" fill="#f2f0eb" stroke="#8a8578" stroke-width="1.5" stroke-dasharray="5,3"/>
+            <text x="625" y="690" text-anchor="middle" fill="#4a4740" font-family="DM Sans,sans-serif" font-size="10.5" font-weight="600">⚠ Algorithm Exclusions</text>
+            <text x="625" y="706" text-anchor="middle" fill="#4a4740" font-family="DM Sans,sans-serif" font-size="9.5">Severe MR, MS, MAC (mod-severe)</text>
+            <text x="625" y="720" text-anchor="middle" fill="#4a4740" font-family="DM Sans,sans-serif" font-size="9.5">Afib, Heart Transplant, non-cardiac PH</text>
+            <text x="625" y="734" text-anchor="middle" fill="#4a4740" font-family="DM Sans,sans-serif" font-size="9.5">Pericardial constriction, LVAD</text>
+          </g>
+
+          <!-- NORMAL RANGES REMINDER -->
+          <rect x="20" y="790" width="720" height="50" rx="8" fill="#e8f4f7" stroke="#1b7a8c" stroke-width="1"/>
+          <text x="380" y="810" text-anchor="middle" fill="#0f5564" font-family="DM Sans,sans-serif" font-size="11" font-weight="600">e' Velocity Cutoffs by Age: 20-39y: Sep &lt;7, Lat &lt;10, Avg &lt;9 | 40-65y: Sep &lt;6, Lat &lt;8, Avg &lt;7 | &gt;65y: Sep &lt;6, Lat &lt;7, Avg &lt;6.5 cm/s</text>
+          <text x="380" y="828" text-anchor="middle" fill="#0f5564" font-family="DM Sans,sans-serif" font-size="10">Click any node for details • Applies to patients in sinus rhythm without the listed exclusions</text>
+        </svg>
+      </div>
+
+      <div class="algo-legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#1a3260"></div> Algorithm Step</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#eef4fb; border:1.5px solid #2563eb"></div> Decision Point</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#eef7f3; border:1.5px solid #1e7e5a"></div> Normal / Grade 1</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#fde8e8; border:1.5px solid #b03030"></div> Grade 2</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#fad5d5; border:1.5px solid #8b1f1f"></div> Grade 3</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#f7f4ef; border:1.5px solid #c9993e"></div> Action Item</div>
+      </div>
+    </div>
+
+    <!-- Info Panel -->
+    <div class="info-panel" id="infoPanel">
+      <div class="info-panel-empty">
+        <div class="hint-icon">👆</div>
+        <p style="font-weight:600; color:var(--navy); margin-bottom:0.25rem;">Click any node</p>
+        <p>Select a step or grade in the algorithm to see detailed clinical information and cutoff values.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════ CALCULATOR ════════════════════════════════ -->
+<div id="page-calculator" class="page">
+  <div class="page-header">
+    <h1>Diastolic Function Calculator</h1>
+    <p>Enter echocardiographic measurements to estimate LV filling pressure and diastolic dysfunction grade per the 2025 ASE Algorithm.</p>
+  </div>
+  <div class="disclaimer">
+    ⚠️ <span>This tool is for educational reference only. Applies to patients in sinus rhythm without exclusion criteria (severe MR/MS, significant MAC, atrial fibrillation, heart transplant, non-cardiac PH, pericardial constriction, or LVAD).</span>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 380px; gap:1.5rem; align-items:start;">
+    <div>
+      <div class="card" style="margin-bottom:1rem;">
+        <div class="card-title">📋 Patient Information</div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Patient Age (years)</label>
+            <input type="number" id="c-age" placeholder="e.g. 58" min="18" max="100">
+          </div>
+          <div class="form-group">
+            <label>LVEF (%)</label>
+            <input type="number" id="c-ef" placeholder="e.g. 55" min="10" max="80">
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:1rem;">
+        <div class="card-title">🔬 Primary Measurements</div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Septal e' (cm/s)</label>
+            <input type="number" id="c-sep-e" placeholder="e.g. 5.5" step="0.1">
+          </div>
+          <div class="form-group">
+            <label>Lateral e' (cm/s)</label>
+            <input type="number" id="c-lat-e" placeholder="e.g. 7.2" step="0.1">
+          </div>
+          <div class="form-group">
+            <label>Mitral E (cm/s)</label>
+            <input type="number" id="c-mit-e" placeholder="e.g. 72" step="0.1">
+          </div>
+          <div class="form-group">
+            <label>Mitral A (cm/s)</label>
+            <input type="number" id="c-mit-a" placeholder="e.g. 65" step="0.1">
+          </div>
+          <div class="form-group">
+            <label>Peak TR Velocity (m/s)</label>
+            <input type="number" id="c-tr" placeholder="e.g. 2.5" step="0.1">
+          </div>
+          <div class="form-group">
+            <label>PASP (mmHg) <em style="font-size:0.75rem; font-weight:400">(optional)</em></label>
+            <input type="number" id="c-pasp" placeholder="e.g. 32" step="1">
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:1rem;">
+        <div class="card-title">📊 Supplemental Parameters <span style="font-size:0.78rem; font-weight:400; color:var(--gray-500)">(if available)</span></div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>LA Volume Index (mL/m²)</label>
+            <input type="number" id="c-lavi" placeholder="e.g. 32" step="0.5">
+          </div>
+          <div class="form-group">
+            <label>LA Reservoir Strain (%)</label>
+            <input type="number" id="c-lars" placeholder="e.g. 22" step="0.5">
+          </div>
+          <div class="form-group">
+            <label>PV S/D Ratio</label>
+            <input type="number" id="c-pvsd" placeholder="e.g. 0.8" step="0.05">
+          </div>
+          <div class="form-group">
+            <label>IVRT (ms)</label>
+            <input type="number" id="c-ivrt" placeholder="e.g. 95" step="1">
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex; gap:0.75rem;">
+        <button class="calc-btn" onclick="runCalculator()">▶ Analyze</button>
+        <button class="calc-btn secondary" onclick="clearCalculator()">↺ Clear</button>
+      </div>
+    </div>
+
+    <div>
+      <div class="card" id="calc-result-card" style="position:sticky; top:90px;">
+        <div class="card-title">📈 Result</div>
+        <div id="calc-result-content" style="color:var(--gray-500); font-size:0.88rem; text-align:center; padding:2rem 0;">
+          <div style="font-size:2rem; margin-bottom:0.5rem;">🩺</div>
+          Enter measurements and click Analyze
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════ SPECIAL POPULATIONS ════════════════════════════════ -->
+<div id="page-special" class="page">
+  <div class="page-header">
+    <h1>Special Populations</h1>
+    <p>Section 15 of the 2025 ASE Guidelines — modified approaches for conditions requiring deviation from the general algorithm.</p>
+  </div>
+
+  <div class="pop-grid">
+    <div class="pop-card" onclick="showPop('afib')">
+      <div class="pop-icon" style="background:#fde8e8;">💓</div>
+      <div>
+        <div class="pop-card-title">Atrial Fibrillation</div>
+        <div class="pop-card-desc">Multiparametric approach; no single reliable marker</div>
+      </div>
+    </div>
+    <div class="pop-card" onclick="showPop('ph')">
+      <div class="pop-icon" style="background:#e8f0fe;">🫁</div>
+      <div>
+        <div class="pop-card-title">Pulmonary Hypertension</div>
+        <div class="pop-card-desc">Lateral E/e' preferred; LARS for confirmation</div>
+      </div>
+    </div>
+    <div class="pop-card" onclick="showPop('mac')">
+      <div class="pop-icon" style="background:#fdf5e8;">🦴</div>
+      <div>
+        <div class="pop-card-title">Mitral Annular Calcification</div>
+        <div class="pop-card-desc">E/A + IVRT-based algorithm</div>
+      </div>
+    </div>
+    <div class="pop-card" onclick="showPop('hcm')">
+      <div class="pop-icon" style="background:#eef7f3;">❤️</div>
+      <div>
+        <div class="pop-card-title">Hypertrophic Cardiomyopathy</div>
+        <div class="pop-card-desc">Comprehensive Doppler approach required</div>
+      </div>
+    </div>
+    <div class="pop-card" onclick="showPop('mr')">
+      <div class="pop-icon" style="background:#f0eeff;">🔄</div>
+      <div>
+        <div class="pop-card-title">Mitral Regurgitation</div>
+        <div class="pop-card-desc">IVRT/TE-e', Ar-A duration; E/e' limited in primary MR</div>
+      </div>
+    </div>
+    <div class="pop-card" onclick="showPop('htx')">
+      <div class="pop-icon" style="background:#e8f4f7;">🏥</div>
+      <div>
+        <div class="pop-card-title">Heart Transplant Recipients</div>
+        <div class="pop-card-desc">Simplified E/e' + SRIVR algorithm</div>
+      </div>
+    </div>
+    <div class="pop-card" onclick="showPop('restrictive')">
+      <div class="pop-icon" style="background:#fde8e8;">🩻</div>
+      <div>
+        <div class="pop-card-title">Restrictive Cardiomyopathy</div>
+        <div class="pop-card-desc">Amyloidosis features, grade 3 indicators</div>
+      </div>
+    </div>
+    <div class="pop-card" onclick="showPop('constriction')">
+      <div class="pop-icon" style="background:#f7f4ef;">🔒</div>
+      <div>
+        <div class="pop-card-title">Pericardial Constriction</div>
+        <div class="pop-card-desc">Differentiation from restrictive cardiomyopathy</div>
+      </div>
+    </div>
+    <div class="pop-card" onclick="showPop('lbbb')">
+      <div class="pop-icon" style="background:#f0f4ff;">⚡</div>
+      <div>
+        <div class="pop-card-title">LBBB / Pacing / AV Block</div>
+        <div class="pop-card-desc">Conduction effects on diastolic indices</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pop details -->
+  <div id="pop-afib" class="pop-detail">
+    <div class="pop-detail-header">
+      <div class="pop-icon" style="background:#fde8e8; width:50px; height:50px; font-size:26px;">💓</div>
+      <div>
+        <h2>Atrial Fibrillation</h2>
+        <p style="color:var(--gray-500); font-size:0.85rem;">No single parameter sufficient; multiparametric approach with moderate accuracy</p>
+      </div>
+    </div>
+
+    <div class="calc-section">
+      <h4>🔢 Interactive: AF LAP Estimator</h4>
+      <p style="font-size:0.84rem; color:var(--gray-500); margin-bottom:1rem;">Select parameters that meet the cutoff thresholds (values averaged over multiple cycles):</p>
+      <div class="check-group" id="af-checks">
+        <label class="check-item">
+          <input type="checkbox" value="1" onchange="calcAFib()">
+          <span>Mitral E velocity <strong>≥100 cm/s</strong></span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" value="1" onchange="calcAFib()">
+          <span>Septal E/e' ratio <strong>&gt;11</strong></span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" value="1" onchange="calcAFib()">
+          <span>TR velocity <strong>&gt;2.8 m/s</strong> or PASP <strong>&gt;35 mmHg</strong></span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" value="1" onchange="calcAFib()">
+          <span>Deceleration time <strong>≤160 ms</strong></span>
+        </label>
+      </div>
+      <div id="af-result" class="result-box" style="margin-top:1rem;"></div>
+      <div style="margin-top:1rem; border-top:1px solid var(--gray-200); padding-top:1rem;">
+        <p style="font-size:0.82rem; color:var(--gray-500); margin-bottom:0.5rem;"><strong>Secondary parameters (if ≥2 above):</strong></p>
+        <div class="check-group">
+          <label class="check-item">
+            <input type="checkbox" id="af-lars" onchange="calcAFib()">
+            <span>LARS <strong>&lt;18%</strong></span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" id="af-pvsd" onchange="calcAFib()">
+            <span>Pulmonary vein S/D <strong>&lt;1</strong></span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" id="af-bmi" onchange="calcAFib()">
+            <span>BMI <strong>&gt;30 kg/m²</strong></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-top:1.5rem;">
+      <div>
+        <p style="font-weight:600; color:var(--navy); margin-bottom:0.5rem;">Key Principles</p>
+        <ul class="indicator-list">
+          <li class="indicator-item"><div class="indicator-bullet bullet-teal">1</div>Average values from several cycles; select cycles reflecting average HR</li>
+          <li class="indicator-item"><div class="indicator-bullet bullet-teal">2</div>Dual Doppler probe for simultaneous E and e' improves PCWP estimation</li>
+          <li class="indicator-item"><div class="indicator-bullet bullet-teal">3</div>Less beat-to-beat mitral inflow variability → more likely elevated LAP</li>
+          <li class="indicator-item"><div class="indicator-bullet bullet-navy">✗</div>LARS should NOT be used in AF patients for LAP assessment</li>
+          <li class="indicator-item"><div class="indicator-bullet bullet-navy">✗</div>Pulmonary vein Ar velocity absent in AF</li>
+        </ul>
+      </div>
+      <div>
+        <p style="font-weight:600; color:var(--navy); margin-bottom:0.5rem;">LAP Criteria in AF</p>
+        <table class="cutoff-table" style="margin-top:0;">
+          <thead><tr><th>Parameter</th><th>Elevated LAP</th></tr></thead>
+          <tbody>
+            <tr><td>Mitral E velocity</td><td class="val abnormal">≥100 cm/s</td></tr>
+            <tr><td>Septal E/e'</td><td class="val abnormal">&gt;11</td></tr>
+            <tr><td>TR velocity</td><td class="val abnormal">&gt;2.8 m/s</td></tr>
+            <tr><td>PASP</td><td class="val abnormal">&gt;35 mmHg</td></tr>
+            <tr><td>Decel time (DT)</td><td class="val abnormal">≤160 ms</td></tr>
+            <tr><td>PV DT</td><td class="val abnormal">≤220 ms</td></tr>
+            <tr><td>E/Vp ratio</td><td class="val abnormal">≥1.4</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="key-points">
+      <h4>📌 Key Points — AF</h4>
+      <ul>
+        <li>No single parameter has sufficiently strong association with LV filling pressure in AF</li>
+        <li>A multiparametric approach can differentiate normal from elevated LAP with moderate accuracy</li>
+        <li>3 or more of the 4 primary parameters → elevated LAP; none or 1 → normal LAP; 2 → indeterminate</li>
+        <li>Secondary criteria (LARS &lt;18%, PV S/D &lt;1, BMI &gt;30) applied when 2 primary are met</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="pop-ph" class="pop-detail">
+    <div class="pop-detail-header">
+      <div class="pop-icon" style="background:#e8f0fe; width:50px; height:50px; font-size:26px;">🫁</div>
+      <div>
+        <h2>Pulmonary Hypertension</h2>
+        <p style="color:var(--gray-500); font-size:0.85rem;">Lateral E/e' preferred due to septal flattening; LARS confirms</p>
+      </div>
+    </div>
+
+    <div class="calc-section">
+      <h4>🔢 Interactive: PH LAP Algorithm</h4>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Mitral E velocity (cm/s)</label>
+          <input type="number" id="ph-e" placeholder="e.g. 85" step="1" oninput="calcPH()">
+        </div>
+        <div class="form-group">
+          <label>Mitral A velocity (cm/s)</label>
+          <input type="number" id="ph-a" placeholder="e.g. 70" step="1" oninput="calcPH()">
+        </div>
+        <div class="form-group">
+          <label>Lateral E/e' ratio</label>
+          <input type="number" id="ph-lat-ee" placeholder="e.g. 10" step="0.5" oninput="calcPH()">
+        </div>
+        <div class="form-group">
+          <label>LA Reservoir Strain (%)</label>
+          <input type="number" id="ph-lars" placeholder="e.g. 20" step="0.5" oninput="calcPH()">
+        </div>
+      </div>
+      <div id="ph-result" class="result-box"></div>
+    </div>
+
+    <div class="two-col" style="margin-top:1.5rem;">
+      <div>
+        <p style="font-weight:600; color:var(--navy); margin-bottom:0.75rem;">Algorithm (Figure 6)</p>
+        <div class="flow-step">
+          <div class="flow-box question">E/A ratio assessment</div>
+          <div class="flow-arrow">↓</div>
+        </div>
+        <div class="flow-branch">
+          <div>
+            <div class="flow-branch-label">E/A ≤0.8 + E ≤50</div>
+            <div class="flow-box normal-result">Normal LAP<br><small>Precapillary PH likely</small></div>
+          </div>
+          <div>
+            <div class="flow-branch-label">E/A ≥2 + e' reduced</div>
+            <div class="flow-box elevated-result">Elevated LAP<br><small>Group II PH likely</small></div>
+          </div>
+        </div>
+        <div style="margin-top:0.75rem;">
+          <div class="flow-branch-label" style="text-align:left;">E/A 0.8–2 or E/A ≤0.8 but E &gt;50 → check LARS:</div>
+          <div class="flow-branch">
+            <div>
+              <div class="flow-branch-label">LARS &gt;18%</div>
+              <div class="flow-box normal-result" style="font-size:0.82rem;">Normal LAP</div>
+            </div>
+            <div>
+              <div class="flow-branch-label">LARS ≤18%</div>
+              <div class="flow-box elevated-result" style="font-size:0.82rem;">Elevated LAP</div>
+            </div>
+          </div>
+          <div class="flow-box indeterminate-result" style="margin-top:0.5rem; font-size:0.82rem;">If LARS unavailable: Lateral E/e' &lt;8 = normal; &gt;13 = elevated; 8-13 = indeterminate</div>
+        </div>
+      </div>
+      <div>
+        <p style="font-weight:600; color:var(--navy); margin-bottom:0.5rem;">Key Cutoffs</p>
+        <table class="cutoff-table" style="margin-top:0;">
+          <thead><tr><th>Parameter</th><th>Normal</th><th>Elevated</th></tr></thead>
+          <tbody>
+            <tr><td>E/A ratio</td><td class="val normal">≤0.8</td><td class="val abnormal">≥2</td></tr>
+            <tr><td>Lateral E/e'</td><td class="val normal">&lt;8</td><td class="val abnormal">&gt;13</td></tr>
+            <tr><td>LARS</td><td class="val normal">&gt;18%</td><td class="val abnormal">≤16%</td></tr>
+            <tr><td>LAVi</td><td class="val normal">≤34 mL/m²</td><td class="val abnormal">&gt;34 mL/m²</td></tr>
+          </tbody>
+        </table>
+        <div class="info-box teal" style="margin-top:0.75rem;">
+          <strong>Note:</strong> Use <em>lateral</em> E/e' (not average) due to septal displacement from elevated RV pressures. Septal e' may be unreliable.
+        </div>
+      </div>
+    </div>
+
+    <div class="key-points">
+      <h4>📌 Key Points — Pulmonary Hypertension</h4>
+      <ul>
+        <li>E/A ≤0.8 favors precapillary PH; E/A ≥2 favors postcapillary (group II) PH</li>
+        <li>LAVi &gt;34 mL/m², lateral E/e' &gt;13, and LARS ≤18% all favor group II PH</li>
+        <li>Lateral E/e' 8–13 has weak/no association with LAP → indeterminate zone</li>
+        <li>Combining lateral E/e' with E/A or LARS improves diagnostic accuracy</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="pop-mac" class="pop-detail">
+    <div class="pop-detail-header">
+      <div class="pop-icon" style="background:#fdf5e8; width:50px; height:50px; font-size:26px;">🦴</div>
+      <div>
+        <h2>Mitral Annular Calcification (MAC)</h2>
+        <p style="color:var(--gray-500); font-size:0.85rem;">E/e' unreliable due to mechanical effects; use E/A + IVRT algorithm</p>
+      </div>
+    </div>
+
+    <div class="calc-section">
+      <h4>🔢 Interactive: MAC LAP Algorithm (Figure 4)</h4>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Mitral E velocity (cm/s)</label>
+          <input type="number" id="mac-e" placeholder="e.g. 90" step="1" oninput="calcMAC()">
+        </div>
+        <div class="form-group">
+          <label>Mitral A velocity (cm/s)</label>
+          <input type="number" id="mac-a" placeholder="e.g. 70" step="1" oninput="calcMAC()">
+        </div>
+        <div class="form-group">
+          <label>IVRT (ms) <em style="font-weight:400; font-size:0.75rem">— needed if E/A 0.8-1.8</em></label>
+          <input type="number" id="mac-ivrt" placeholder="e.g. 90" step="1" oninput="calcMAC()">
+        </div>
+      </div>
+      <div id="mac-result" class="result-box"></div>
+    </div>
+
+    <div class="info-box gold" style="margin-top:1rem;">
+      <strong>⚠ E/e' Caution:</strong> Moderate–severe MAC increases diastolic transmitral velocities (reduced mitral orifice area) and decreases lateral e' (reduced annular excursion). This artificially elevates E/e' — do not rely on E/e' alone in significant MAC.
+    </div>
+
+    <div class="key-points" style="margin-top:1rem;">
+      <h4>📌 Key Points — MAC</h4>
+      <ul>
+        <li>E/A &lt;0.8 → normal LAP; E/A &gt;1.8 → elevated LAP</li>
+        <li>E/A 0.8–1.8: measure IVRT — ≥80 ms suggests normal; &lt;80 ms suggests elevated LAP</li>
+        <li>Standard E/e' ratio unreliable due to mechanical MAC effects on both velocities</li>
+        <li>IVRT can be helpful to identify elevated LAP in this population</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="pop-hcm" class="pop-detail">
+    <div class="pop-detail-header">
+      <div class="pop-icon" style="background:#eef7f3; width:50px; height:50px; font-size:26px;">❤️</div>
+      <div>
+        <h2>Hypertrophic Cardiomyopathy (HCM)</h2>
+        <p style="color:var(--gray-500); font-size:0.85rem;">Diastolic dysfunction ubiquitous; comprehensive multiparameter approach</p>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <p style="font-weight:600; color:var(--navy); margin-bottom:0.5rem;">Recommended Parameters</p>
+        <ul class="indicator-list">
+          <li class="indicator-item"><div class="indicator-bullet bullet-teal">✓</div>Mitral inflow velocities (E, A, DT)</li>
+          <li class="indicator-item"><div class="indicator-bullet bullet-teal">✓</div>Pulmonary vein velocities (S, D, Ar)</li>
+          <li class="indicator-item"><div class="indicator-bullet bullet-teal">✓</div>Mitral annular velocities (e', a')</li>
+          <li class="indicator-item"><div class="indicator-bullet bullet-teal">✓</div>Peak TR velocity (CW Doppler)</li>
+          <li class="indicator-item"><div class="indicator-bullet bullet-teal">✓</div>Biplane LA volumes</li>
+          <li class="indicator-item"><div class="indicator-bullet bullet-teal">✓</div>Ar-A duration (for LVEDP, if no AF/block)</li>
+        </ul>
+      </div>
+      <div>
+        <p style="font-weight:600; color:var(--navy); margin-bottom:0.5rem;">Indicators of Elevated LAP in HCM</p>
+        <table class="cutoff-table" style="margin-top:0;">
+          <thead><tr><th>Parameter</th><th>Cutoff</th></tr></thead>
+          <tbody>
+            <tr><td>Average E/e'</td><td class="val abnormal">&gt;14</td></tr>
+            <tr><td>Ar-A duration</td><td class="val abnormal">≥30 ms</td></tr>
+            <tr><td>Peak TR velocity</td><td class="val abnormal">&gt;2.8 m/s</td></tr>
+            <tr><td>LA max volume index</td><td class="val abnormal">&gt;34 mL/m²</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="key-points" style="margin-top:1rem;">
+      <h4>📌 Key Points — HCM</h4>
+      <ul>
+        <li>Impaired LV relaxation is an early finding — may precede LV hypertrophy in mutation carriers</li>
+        <li>Diastolic dysfunction present irrespective of hypertrophy pattern or obstruction</li>
+        <li>Restrictive LV filling + increased E/e' → HF hospitalizations, reduced exercise tolerance, sudden cardiac death risk</li>
+        <li>MR does not affect PV Ar velocity — useful even when significant MR present</li>
+        <li>LA reservoir and pump strains associated with functional capacity and AF development</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="pop-mr" class="pop-detail">
+    <div class="pop-detail-header">
+      <div class="pop-icon" style="background:#f0eeff; width:50px; height:50px; font-size:26px;">🔄</div>
+      <div>
+        <h2>Mitral Regurgitation (MR)</h2>
+        <p style="color:var(--gray-500); font-size:0.85rem;">E/e' limited in primary MR with normal EF; IVRT/TE-e' and Ar-A duration preferred</p>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <p style="font-weight:600; color:var(--navy); margin-bottom:0.5rem;">Preferred Indicators</p>
+        <ul class="indicator-list">
+          <li class="indicator-item elevated-indicator"><div class="indicator-bullet bullet-red">✓</div>IVRT <strong>&lt;60 ms</strong> → elevated LAP (specific, not sensitive)</li>
+          <li class="indicator-item elevated-indicator"><div class="indicator-bullet bullet-red">✓</div>Ar-A duration <strong>≥30 ms</strong> → elevated LVEDP (irrespective of MR severity)</li>
+          <li class="indicator-item elevated-indicator"><div class="indicator-bullet bullet-red">✓</div>IVRT/TE-e' <strong>&lt;5.6</strong> → predicts elevated PCWP</li>
+          <li class="indicator-item"><div class="indicator-bullet bullet-navy">✗</div>E/e' ratio: <em>not useful in primary MR + normal EF</em></li>
+          <li class="indicator-item"><div class="indicator-bullet bullet-navy">✗</div>LARS: no significant relationship with LA pressure in significant MR</li>
+        </ul>
+      </div>
+      <div>
+        <p style="font-weight:600; color:var(--navy); margin-bottom:0.5rem;">Additional Findings</p>
+        <div class="info-box teal">
+          <strong>Primary MR physiology:</strong> Increases LA and LV compliance → attenuates LAP elevation early. Moderate–severe MR ↑ mitral E velocity and ↓ PV systolic velocity regardless of LV dysfunction.
+        </div>
+        <div class="info-box gold" style="margin-top:0.75rem;">
+          <strong>Secondary MR:</strong> E/e' ratio <em>does</em> correlate with LAP in patients with depressed EF and secondary MR, and predicts hospitalizations + mortality.
+        </div>
+        <div class="info-box teal" style="margin-top:0.75rem;">
+          <strong>After TEER/valve repair:</strong> Time intervals and PA pressures may be useful; formal E/e' accuracy is reduced.
+        </div>
+      </div>
+    </div>
+
+    <div class="key-points" style="margin-top:1rem;">
+      <h4>📌 Key Points — MR</h4>
+      <ul>
+        <li>Ar-A duration ≥30 ms remains a reliable LVEDP indicator regardless of MR severity</li>
+        <li>CW Doppler MR velocity profile with early peaking and reduced late gradient → highly specific (not sensitive) for elevated LAP</li>
+        <li>E/e' may be considered in patients with depressed EF and secondary MR</li>
+        <li>IVRT/TE-e' &lt;3 predicts PCWP &gt;15 mmHg in MR patients with and without normal EF</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="pop-htx" class="pop-detail">
+    <div class="pop-detail-header">
+      <div class="pop-icon" style="background:#e8f4f7; width:50px; height:50px; font-size:26px;">🏥</div>
+      <div>
+        <h2>Heart Transplant Recipients</h2>
+        <p style="color:var(--gray-500); font-size:0.85rem;">Denervated heart; simplified E/e' algorithm with SRIVR for indeterminate cases</p>
+      </div>
+    </div>
+
+    <div class="calc-section">
+      <h4>🔢 Interactive: Transplant LAP Algorithm (Figure 5)</h4>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Average E/e' ratio</label>
+          <input type="number" id="htx-ee" placeholder="e.g. 10" step="0.5" oninput="calcHTX()">
+        </div>
+        <div class="form-group">
+          <label>E/SR<sub>IVR</sub> ratio (cm) <em style="font-weight:400; font-size:0.75rem">— if E/e' 7-14</em></label>
+          <input type="number" id="htx-esrivr" placeholder="e.g. 180" step="5" oninput="calcHTX()">
+        </div>
+        <div class="form-group">
+          <label>Peak TR velocity (m/s) <em style="font-weight:400; font-size:0.75rem">— if SRIVR unavailable</em></label>
+          <input type="number" id="htx-tr" placeholder="e.g. 2.5" step="0.1" oninput="calcHTX()">
+        </div>
+      </div>
+      <div id="htx-result" class="result-box"></div>
+    </div>
+
+    <div class="two-col" style="margin-top:1rem;">
+      <div>
+        <p style="font-weight:600; color:var(--navy); margin-bottom:0.5rem;">Algorithm Cutoffs</p>
+        <table class="cutoff-table" style="margin-top:0;">
+          <thead><tr><th>Parameter</th><th>Normal LAP</th><th>Elevated LAP</th></tr></thead>
+          <tbody>
+            <tr><td>Average E/e'</td><td class="val normal">&lt;7</td><td class="val abnormal">&gt;14</td></tr>
+            <tr><td>E/SR<sub>IVR</sub></td><td class="val normal">≤200 cm</td><td class="val abnormal">&gt;200 cm</td></tr>
+            <tr><td>Peak TR vel</td><td class="val normal">≤2.8 m/s</td><td class="val abnormal">&gt;2.8 m/s</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <p style="font-weight:600; color:var(--navy); margin-bottom:0.5rem;">Special Considerations</p>
+        <ul class="indicator-list">
+          <li class="indicator-item"><div class="indicator-bullet bullet-teal">1</div>Denervated heart → sinus tachycardia → E/A fusion common</li>
+          <li class="indicator-item"><div class="indicator-bullet bullet-teal">2</div>E/A ≥2 with preserved EF common in early post-transplant (normal finding)</li>
+          <li class="indicator-item"><div class="indicator-bullet bullet-teal">3</div>PV S/D ratio unreliable (reduced S/D in young donor hearts)</li>
+          <li class="indicator-item"><div class="indicator-bullet bullet-navy">!</div>No single parameter predicts graft rejection reliably</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="key-points" style="margin-top:1rem;">
+      <h4>📌 Key Points — Heart Transplant</h4>
+      <ul>
+        <li>Predominant early diastolic filling in preserved EF is a common normal finding post-transplant</li>
+        <li>For E/e' 7–14: SRIVR from all 3 apical views → E/SRIVR ≤200 cm = normal; &gt;200 cm = elevated</li>
+        <li>If SRIVR unavailable: TR velocity ≤2.8 m/s = normal; &gt;2.8 m/s = elevated</li>
+        <li>LV diastolic dysfunction is a sensitive sign of early graft rejection (myocardial edema)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="pop-restrictive" class="pop-detail">
+    <div class="pop-detail-header">
+      <div class="pop-icon" style="background:#fde8e8; width:50px; height:50px; font-size:26px;">🩻</div>
+      <div>
+        <h2>Restrictive Cardiomyopathy</h2>
+        <p style="color:var(--gray-500); font-size:0.85rem;">Includes cardiac amyloidosis; advanced disease → grade 3 DD with specific features</p>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <p style="font-weight:600; color:var(--navy); margin-bottom:0.5rem;">Advanced Disease Indicators</p>
+        <table class="cutoff-table" style="margin-top:0;">
+          <thead><tr><th>Parameter</th><th>Finding</th></tr></thead>
+          <tbody>
+            <tr><td>E/A ratio</td><td class="val abnormal">&gt;2.5 *</td></tr>
+            <tr><td>E decel time</td><td class="val abnormal">&lt;150 ms *</td></tr>
+            <tr><td>IVRT</td><td class="val abnormal">&lt;50 ms *</td></tr>
+            <tr><td>Average E/e'</td><td class="val abnormal">&gt;14</td></tr>
+            <tr><td>Septal e'</td><td class="val abnormal">3–4 cm/s</td></tr>
+            <tr><td>Lateral e'</td><td class="val abnormal">3–4 cm/s</td></tr>
+            <tr><td>LV GLS</td><td class="val abnormal">Decreased</td></tr>
+            <tr><td>LA strain</td><td class="val abnormal">Reduced</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:0.75rem; color:var(--gray-500); margin-top:0.4rem;">* Specific but not sensitive</p>
+      </div>
+      <div>
+        <p style="font-weight:600; color:var(--navy); margin-bottom:0.5rem;">Cardiac Amyloidosis "Red Flags"</p>
+        <ul class="indicator-list">
+          <li class="indicator-item elevated-indicator"><div class="indicator-bullet bullet-red">!</div>Increased LV and RV wall thickness</li>
+          <li class="indicator-item elevated-indicator"><div class="indicator-bullet bullet-red">!</div>Biatrial enlargement</li>
+          <li class="indicator-item elevated-indicator"><div class="indicator-bullet bullet-red">!</div>Preserved EF with low stroke volume index</li>
+          <li class="indicator-item elevated-indicator"><div class="indicator-bullet bullet-red">!</div>Paradoxical low-flow, low-gradient AS association</li>
+          <li class="indicator-item elevated-indicator"><div class="indicator-bullet bullet-red">!</div>"5-5-5 sign": s', e', a' all &lt;5 cm/s</li>
+          <li class="indicator-item elevated-indicator"><div class="indicator-bullet bullet-red">!</div>Apical sparing on LV longitudinal strain (polar plot)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="key-points" style="margin-top:1rem;">
+      <h4>📌 Key Points — Restrictive Cardiomyopathy</h4>
+      <ul>
+        <li>Early disease: grade 1 DD; progresses to grade 2 then grade 3 as severity increases</li>
+        <li>Cardiac amyloidosis: apical sparing on LV strain is characteristic (apical/mid+basal ratio &gt;1)</li>
+        <li>"5-5-5 sign" (s', e', a' all &lt;5 cm/s) in advanced amyloidosis</li>
+        <li>Grade 3 diastolic dysfunction associated with poor outcome</li>
+        <li>Distinction from pericardial constriction critical — see Pericardial Constriction tab</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="pop-constriction" class="pop-detail">
+    <div class="pop-detail-header">
+      <div class="pop-icon" style="background:#f7f4ef; width:50px; height:50px; font-size:26px;">🔒</div>
+      <div>
+        <h2>Pericardial Constriction</h2>
+        <p style="color:var(--gray-500); font-size:0.85rem;">Key features distinguish from restrictive cardiomyopathy (Figure 7 algorithm)</p>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <p style="font-weight:600; color:var(--navy); margin-bottom:0.5rem;">Features Supporting Constriction</p>
+        <ul class="indicator-list">
+          <li class="indicator-item elevated-indicator"><div class="indicator-bullet bullet-red">✓</div>Respirophasic ventricular septal shift</li>
+          <li class="indicator-item elevated-indicator"><div class="indicator-bullet bullet-red">✓</div>Septal bounce</li>
+          <li class="indicator-item elevated-indicator"><div class="indicator-bullet bullet-red">✓</div>Mitral inflow variation with respiration <strong>&gt;25%</strong></li>
+          <li class="indicator-item elevated-indicator"><div class="indicator-bullet bullet-red">✓</div>Tricuspid inflow variation <strong>&gt;40%</strong></li>
+          <li class="indicator-item elevated-indicator"><div class="indicator-bullet bullet-red">✓</div>Medial annular e' <strong>&gt;7 cm/s</strong> (annulus paradoxus)</li>
+          <li class="indicator-item elevated-indicator"><div class="indicator-bullet bullet-red">✓</div>Annulus reversus: septal e' &gt; lateral e'</li>
+          <li class="indicator-item elevated-indicator"><div class="indicator-bullet bullet-red">✓</div>Expiratory hepatic vein reversal/forward ≥0.8</li>
+          <li class="indicator-item elevated-indicator"><div class="indicator-bullet bullet-red">✓</div>Strain reversus: lateral/RV strain &lt; septal strain</li>
+        </ul>
+      </div>
+      <div>
+        <p style="font-weight:600; color:var(--navy); margin-bottom:0.5rem;">Constriction vs. Restriction</p>
+        <table class="cutoff-table" style="margin-top:0;">
+          <thead><tr><th>Feature</th><th>Constriction</th><th>Restriction</th></tr></thead>
+          <tbody>
+            <tr><td>Medial e'</td><td class="val">&gt;7 cm/s</td><td class="val">&lt;5 cm/s</td></tr>
+            <tr><td>Septal motion</td><td class="val">Respirophasic</td><td class="val">Normal</td></tr>
+            <tr><td>Annulus reversus</td><td class="val">Present</td><td class="val">Absent</td></tr>
+            <tr><td>Hepatic vein exp</td><td class="val">Reversal ≥0.8</td><td class="val">Systolic rev</td></tr>
+          </tbody>
+        </table>
+        <div class="info-box teal" style="margin-top:0.75rem;">
+          <strong>Figure 7 algorithm:</strong> Steps 1 (respirophasic septal motion) + 2 (medial e') → 80% sensitivity, 96% specificity when both positive.
+        </div>
+      </div>
+    </div>
+
+    <div class="key-points" style="margin-top:1rem;">
+      <h4>📌 Key Points — Pericardial Constriction</h4>
+      <ul>
+        <li>Normal or increased medial annular e' in a patient with HF should raise suspicion for constriction</li>
+        <li>Algorithm: mitral E/A &gt;0.8 + dilated IVC → check respirophasic septal motion</li>
+        <li>Medial e' &gt;8 cm/s → likely constriction; &lt;6 cm/s → likely restriction</li>
+        <li>Annulus reversus (septal &gt; lateral e') and strain reversus are specific for constriction</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="pop-lbbb" class="pop-detail">
+    <div class="pop-detail-header">
+      <div class="pop-icon" style="background:#f0f4ff; width:50px; height:50px; font-size:26px;">⚡</div>
+      <div>
+        <h2>LBBB, RV Pacing & AV Block</h2>
+        <p style="color:var(--gray-500); font-size:0.85rem;">Conduction abnormalities reduce reliability of standard diastolic indices</p>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <p style="font-weight:600; color:var(--navy); margin-bottom:0.5rem;">LBBB Effects</p>
+        <ul class="indicator-list">
+          <li class="indicator-item"><div class="indicator-bullet bullet-navy">!</div>Prolonged IVRT → shortened LV filling time</li>
+          <li class="indicator-item"><div class="indicator-bullet bullet-navy">!</div>Septal e' reduced → septal and average E/e' unreliable</li>
+          <li class="indicator-item"><div class="indicator-bullet bullet-teal">✓</div>Lateral e' may still indicate filling pressure</li>
+          <li class="indicator-item"><div class="indicator-bullet bullet-teal">✓</div>TR velocity useful if only mitral A present</li>
+        </ul>
+        <p style="font-weight:600; color:var(--navy); margin-bottom:0.5rem; margin-top:1rem;">1st Degree AV Block</p>
+        <ul class="indicator-list">
+          <li class="indicator-item"><div class="indicator-bullet bullet-teal">✓</div>Variables valid if no E/A fusion</li>
+          <li class="indicator-item"><div class="indicator-bullet bullet-navy">!</div>PR &gt;280 ms + impaired relaxation → E/A fusion</li>
+          <li class="indicator-item"><div class="indicator-bullet bullet-navy">!</div>PR &gt;320 ms → uniphasic A + diastolic MR</li>
+        </ul>
+      </div>
+      <div>
+        <p style="font-weight:600; color:var(--navy); margin-bottom:0.5rem;">RV Pacing</p>
+        <ul class="indicator-list">
+          <li class="indicator-item"><div class="indicator-bullet bullet-navy">!</div>Induces LV dyssynchrony (LBBB-like pattern)</li>
+          <li class="indicator-item"><div class="indicator-bullet bullet-navy">!</div>Septal e' unreliable as marker of DD</li>
+          <li class="indicator-item"><div class="indicator-bullet bullet-teal">✓</div>Complete fusion: TR velocity + LA volume/strain</li>
+        </ul>
+        <div class="info-box gold" style="margin-top:0.75rem;">
+          <strong>Note on E/A Fusion:</strong> When E at onset of A &gt;20 cm/s, A velocity is elevated (shorter diastole → smaller LV volume at onset of atrial contraction). This may mimic impaired relaxation.
+        </div>
+      </div>
+    </div>
+
+    <div class="key-points" style="margin-top:1rem;">
+      <h4>📌 Key Points — Conduction Abnormalities</h4>
+      <ul>
+        <li>Right BBB: minimal clinically meaningful changes to diastolic indices</li>
+        <li>LBBB/RV pacing: septal and average E/e' less reliable; lateral E/e' preferred</li>
+        <li>Complete E/A fusion: use peak TR velocity, LA volume, and LARS to assess LAP</li>
+        <li>LARS accuracy in the LBBB/pacing setting has not been critically examined</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════ NORMAL RANGES ════════════════════════════════ -->
+<div id="page-ranges" class="page">
+  <div class="page-header">
+    <h1>Normal Reference Ranges</h1>
+    <p>Table 5 from the 2025 ASE Guidelines. Age-stratified 5th–95th percentile values in subjects free of cardiovascular disease or risk factors.</p>
+  </div>
+
+  <div class="disclaimer">
+    ⚠️ <span>Normal ranges are not equivalent to "optimal" values. Aging affects diastolic function. Use age-specific ranges for clinical interpretation. LAVi differs by measurement method.</span>
+  </div>
+
+  <div class="age-tabs">
+    <button class="age-tab active" onclick="showAgeRange('2039')">Ages 20–39</button>
+    <button class="age-tab" onclick="showAgeRange('4060')">Ages 40–60</button>
+    <button class="age-tab" onclick="showAgeRange('6080')">Ages 60–80</button>
+  </div>
+
+  <div id="range-2039" class="age-range-content active">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem;">
+      <div class="card">
+        <div class="card-title">📊 Transmitral Flow</div>
+        <table class="cutoff-table">
+          <thead><tr><th>Parameter</th><th>5th %ile</th><th>95th %ile</th></tr></thead>
+          <tbody>
+            <tr><td>E wave (m/s)</td><td class="val">0.54</td><td class="val">1.11</td></tr>
+            <tr><td>A wave (m/s)</td><td class="val">0.24</td><td class="val">0.68</td></tr>
+            <tr><td>E/A ratio</td><td class="val">0.88</td><td class="val">2.73</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card">
+        <div class="card-title">📊 Tissue Doppler</div>
+        <table class="cutoff-table">
+          <thead><tr><th>Parameter</th><th>5th %ile</th><th>95th %ile</th></tr></thead>
+          <tbody>
+            <tr><td>e' lateral (cm/s)</td><td class="val">9.9</td><td class="val">22.1</td></tr>
+            <tr><td>e' septal (cm/s)</td><td class="val">7.2</td><td class="val">16.4</td></tr>
+            <tr><td>e' average (cm/s)</td><td class="val">8.7</td><td class="val">19.1</td></tr>
+            <tr><td>E/e' lateral</td><td class="val">2.5</td><td class="val">6.3</td></tr>
+            <tr><td>E/e' septal</td><td class="val">4.0</td><td class="val">9.1</td></tr>
+            <tr><td>E/e' average</td><td class="val">4.0</td><td class="val">9.1</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card">
+        <div class="card-title">📊 LA Volume &amp; Strain</div>
+        <table class="cutoff-table">
+          <thead><tr><th>Parameter</th><th>5th %ile</th><th>95th %ile</th></tr></thead>
+          <tbody>
+            <tr><td>LAVi biplane (mL/m²)</td><td class="val">12.5</td><td class="val">41.9</td></tr>
+            <tr><td>LA strain LARS (%)</td><td class="val">29.5</td><td class="val">63.2</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card">
+        <div class="card-title">📊 Other</div>
+        <table class="cutoff-table">
+          <thead><tr><th>Parameter</th><th>5th %ile</th><th>95th %ile</th></tr></thead>
+          <tbody>
+            <tr><td>TR velocity (m/s)</td><td class="val">1.3</td><td class="val">2.7</td></tr>
+          </tbody>
+        </table>
+        <div class="info-box teal" style="margin-top:0.75rem;">
+          <strong>Sex differences:</strong> Statistical differences noted for E and A velocities by sex, but not E/A ratio or other parameters assessed.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="range-4060" class="age-range-content">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem;">
+      <div class="card">
+        <div class="card-title">📊 Transmitral Flow</div>
+        <table class="cutoff-table">
+          <thead><tr><th>Parameter</th><th>5th %ile</th><th>95th %ile</th></tr></thead>
+          <tbody>
+            <tr><td>E wave (m/s)</td><td class="val">0.47</td><td class="val">1.02</td></tr>
+            <tr><td>A wave (m/s)</td><td class="val">0.33</td><td class="val">0.82</td></tr>
+            <tr><td>E/A ratio</td><td class="val">0.69</td><td class="val">2.07</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card">
+        <div class="card-title">📊 Tissue Doppler</div>
+        <table class="cutoff-table">
+          <thead><tr><th>Parameter</th><th>5th %ile</th><th>95th %ile</th></tr></thead>
+          <tbody>
+            <tr><td>e' lateral (cm/s)</td><td class="val">7.5</td><td class="val">17.5</td></tr>
+            <tr><td>e' septal (cm/s)</td><td class="val">5.7</td><td class="val">13.5</td></tr>
+            <tr><td>e' average (cm/s)</td><td class="val">6.7</td><td class="val">15.4</td></tr>
+            <tr><td>E/e' lateral</td><td class="val">3.6</td><td class="val">9.4</td></tr>
+            <tr><td>E/e' septal</td><td class="val">4.9</td><td class="val">12.1</td></tr>
+            <tr><td>E/e' average</td><td class="val">4.6</td><td class="val">11.5</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card">
+        <div class="card-title">📊 LA Volume &amp; Strain</div>
+        <table class="cutoff-table">
+          <thead><tr><th>Parameter</th><th>5th %ile</th><th>95th %ile</th></tr></thead>
+          <tbody>
+            <tr><td>LAVi biplane (mL/m²)</td><td class="val">13.3</td><td class="val">41.0</td></tr>
+            <tr><td>LA strain LARS (%)</td><td class="val">26.8</td><td class="val">57.7</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card">
+        <div class="card-title">📊 Other</div>
+        <table class="cutoff-table">
+          <thead><tr><th>Parameter</th><th>5th %ile</th><th>95th %ile</th></tr></thead>
+          <tbody>
+            <tr><td>TR velocity (m/s)</td><td class="val">1.5</td><td class="val">2.7</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div id="range-6080" class="age-range-content">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem;">
+      <div class="card">
+        <div class="card-title">📊 Transmitral Flow</div>
+        <table class="cutoff-table">
+          <thead><tr><th>Parameter</th><th>5th %ile</th><th>95th %ile</th></tr></thead>
+          <tbody>
+            <tr><td>E wave (m/s)</td><td class="val">0.39</td><td class="val">0.92</td></tr>
+            <tr><td>A wave (m/s)</td><td class="val">0.43</td><td class="val">0.97</td></tr>
+            <tr><td>E/A ratio</td><td class="val">0.50</td><td class="val">1.40</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card">
+        <div class="card-title">📊 Tissue Doppler</div>
+        <table class="cutoff-table">
+          <thead><tr><th>Parameter</th><th>5th %ile</th><th>95th %ile</th></tr></thead>
+          <tbody>
+            <tr><td>e' lateral (cm/s)</td><td class="val">5.2</td><td class="val">13.0</td></tr>
+            <tr><td>e' septal (cm/s)</td><td class="val">4.1</td><td class="val">10.6</td></tr>
+            <tr><td>e' average (cm/s)</td><td class="val">4.7</td><td class="val">11.7</td></tr>
+            <tr><td>E/e' lateral</td><td class="val">4.8</td><td class="val">12.6</td></tr>
+            <tr><td>E/e' septal</td><td class="val">5.9</td><td class="val">15.2</td></tr>
+            <tr><td>E/e' average</td><td class="val">5.2</td><td class="val">14.0</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card">
+        <div class="card-title">📊 LA Volume &amp; Strain</div>
+        <table class="cutoff-table">
+          <thead><tr><th>Parameter</th><th>5th %ile</th><th>95th %ile</th></tr></thead>
+          <tbody>
+            <tr><td>LAVi biplane (mL/m²)</td><td class="val">14.2</td><td class="val">40.0</td></tr>
+            <tr><td>LA strain LARS (%)</td><td class="val">24.1</td><td class="val">52.3</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card">
+        <div class="card-title">📊 Other + Age-Related Changes</div>
+        <table class="cutoff-table">
+          <thead><tr><th>Parameter</th><th>5th %ile</th><th>95th %ile</th></tr></thead>
+          <tbody>
+            <tr><td>TR velocity (m/s)</td><td class="val">1.7</td><td class="val">2.8</td></tr>
+          </tbody>
+        </table>
+        <div class="info-box gold" style="margin-top:0.75rem;">
+          <strong>Age effect:</strong> E ↓, A ↑, E/A ↓, e' ↓, E/e' ↑, LARS ↓ with age. Normal ranges ≠ optimal values.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="key-points" style="margin-top:1.5rem;">
+    <h4>📌 Key Points on Normal Ranges</h4>
+    <ul>
+      <li>Derived from 5th–95th percentiles in subjects free of cardiovascular disease or risk factors</li>
+      <li>E/e' ratio and LAVi have near-linear associations with HF incidence without a clear threshold</li>
+      <li>For LARS: values differ by speckle-tracking software vendor — results may not be interchangeable</li>
+      <li>LAVi differs by measurement method: biplane method of disks vs. area-length method</li>
+      <li>Prognostic thresholds may occur within "normal" ranges — clinical context essential</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ════════════════════════════════ GRADING GUIDE ════════════════════════════════ -->
+<div id="page-grading" class="page">
+  <div class="page-header">
+    <h1>Diastolic Dysfunction Grading</h1>
+    <p>Comprehensive reference for diagnosis of diastolic dysfunction (Figure 2) and grade classification.</p>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:1.5rem;">
+
+    <div class="card">
+      <div class="card-title">📋 Step 1: Assess e' Velocity (LV Relaxation)</div>
+      <table class="cutoff-table">
+        <thead><tr><th>Age Group</th><th>Septal e'</th><th>Lateral e'</th><th>Average e'</th></tr></thead>
+        <tbody>
+          <tr><td><strong>20–39 y</strong></td><td class="val abnormal">&lt;7 cm/s</td><td class="val abnormal">&lt;10 cm/s</td><td class="val abnormal">&lt;9 cm/s</td></tr>
+          <tr><td><strong>40–65 y</strong></td><td class="val abnormal">&lt;6 cm/s</td><td class="val abnormal">&lt;8 cm/s</td><td class="val abnormal">&lt;7 cm/s</td></tr>
+          <tr><td><strong>&gt;65 y</strong></td><td class="val abnormal">&lt;6 cm/s</td><td class="val abnormal">&lt;7 cm/s</td><td class="val abnormal">&lt;6.5 cm/s</td></tr>
+        </tbody>
+      </table>
+      <div class="info-box teal" style="margin-top:0.75rem;">
+        If e' is reduced → only <strong>1</strong> additional Step 2 criterion needed for DD diagnosis<br>
+        If e' is preserved → <strong>2</strong> Step 2 criteria needed
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Step 2: LAP Markers &amp; Structural Surrogates</div>
+      <table class="cutoff-table">
+        <thead><tr><th>Parameter</th><th>Cutoff (Abnormal)</th></tr></thead>
+        <tbody>
+          <tr><td>Average E/e' ratio</td><td class="val abnormal">&gt;14</td></tr>
+          <tr><td>LA Reservoir Strain (LARS)</td><td class="val abnormal">≤18%</td></tr>
+          <tr><td>E/A ratio (low)</td><td class="val abnormal">≤0.8</td></tr>
+          <tr><td>E/A ratio (high)</td><td class="val abnormal">≥2</td></tr>
+          <tr><td>LAVi (biplane)</td><td class="val abnormal">&gt;34 mL/m²</td></tr>
+          <tr><td>LV mass index (women)</td><td class="val abnormal">&gt;95 g/m²</td></tr>
+          <tr><td>LV mass index (men)</td><td class="val abnormal">&gt;115 g/m²</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem; margin-bottom:1.5rem;">
+    <div class="card" style="border-top:4px solid var(--amber);">
+      <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.75rem;">
+        <span style="font-size:1.5rem;">🟡</span>
+        <div>
+          <div style="font-family:'DM Serif Display',serif; font-size:1.1rem; color:var(--amber);">Grade 1 DD</div>
+          <div style="font-size:0.78rem; color:var(--gray-500);">Impaired relaxation pattern</div>
+        </div>
+      </div>
+      <ul class="indicator-list">
+        <li class="indicator-item"><div class="indicator-bullet bullet-navy">•</div>Reduced e' velocity</li>
+        <li class="indicator-item"><div class="indicator-bullet bullet-navy">•</div>E/A ≤0.8</li>
+        <li class="indicator-item"><div class="indicator-bullet bullet-navy">•</div>Normal mean LAP</li>
+        <li class="indicator-item"><div class="indicator-bullet bullet-navy">•</div>LVEDP may be elevated</li>
+      </ul>
+      <div class="info-box gold" style="margin-top:0.75rem; font-size:0.82rem;">
+        If symptomatic: refer for <strong>diastolic exercise echo</strong>
+      </div>
+    </div>
+
+    <div class="card" style="border-top:4px solid #b03030;">
+      <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.75rem;">
+        <span style="font-size:1.5rem;">🔴</span>
+        <div>
+          <div style="font-family:'DM Serif Display',serif; font-size:1.1rem; color:#b03030;">Grade 2 DD</div>
+          <div style="font-size:0.78rem; color:var(--gray-500);">Pseudonormal filling pattern</div>
+        </div>
+      </div>
+      <ul class="indicator-list">
+        <li class="indicator-item"><div class="indicator-bullet bullet-navy">•</div>Reduced e' velocity</li>
+        <li class="indicator-item"><div class="indicator-bullet bullet-navy">•</div>E/A 0.8–2 (or appears normal)</li>
+        <li class="indicator-item"><div class="indicator-bullet bullet-navy">•</div>≥1 LAP marker elevated</li>
+        <li class="indicator-item"><div class="indicator-bullet bullet-navy">•</div>Mild–moderate ↑ LAP</li>
+      </ul>
+      <div class="info-box teal" style="margin-top:0.75rem; font-size:0.82rem;">
+        Valsalva: E/A drops ≥50% (distinguishes from Grade 1)
+      </div>
+    </div>
+
+    <div class="card" style="border-top:4px solid #8b1f1f;">
+      <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.75rem;">
+        <span style="font-size:1.5rem;">🔴🔴</span>
+        <div>
+          <div style="font-family:'DM Serif Display',serif; font-size:1.1rem; color:#8b1f1f;">Grade 3 DD</div>
+          <div style="font-size:0.78rem; color:var(--gray-500);">Restrictive filling pattern</div>
+        </div>
+      </div>
+      <ul class="indicator-list">
+        <li class="indicator-item"><div class="indicator-bullet bullet-red">•</div>Markedly reduced e'</li>
+        <li class="indicator-item"><div class="indicator-bullet bullet-red">•</div>E/A ≥2</li>
+        <li class="indicator-item"><div class="indicator-bullet bullet-red">•</div>Short DT (&lt;160 ms)</li>
+        <li class="indicator-item"><div class="indicator-bullet bullet-red">•</div>Marked ↑ LAP</li>
+      </ul>
+      <div class="info-box teal" style="margin-top:0.75rem; font-size:0.82rem;">
+        Reversible (Grade 3a) vs. irreversible (3b): E/A &lt;2 with Valsalva = reversible
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📋 LAP Estimation Algorithm Cutoffs (Figure 3 Reference)</div>
+    <table class="cutoff-table">
+      <thead>
+        <tr><th>Parameter</th><th>Reduced / Abnormal</th><th>Normal</th><th>Comments</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Septal e' velocity</td><td class="val abnormal">≤6 cm/s</td><td class="val normal">&gt;6 cm/s</td><td>Age-independent cutoff for algorithm Step 1</td></tr>
+        <tr><td>Lateral e' velocity</td><td class="val abnormal">≤7 cm/s</td><td class="val normal">&gt;7 cm/s</td><td>Age-independent cutoff for algorithm Step 1</td></tr>
+        <tr><td>Average e' velocity</td><td class="val abnormal">≤6.5 cm/s</td><td class="val normal">&gt;6.5 cm/s</td><td>Age-independent cutoff for algorithm Step 1</td></tr>
+        <tr><td>Average E/e'</td><td class="val abnormal">&gt;14 (↑ LAP)</td><td class="val normal">&lt;8 (normal)</td><td>8–14 = gray zone; 14+ = high specificity for ↑ LAP</td></tr>
+        <tr><td>Septal E/e'</td><td class="val abnormal">≥15 (↑ LAP)</td><td class="val normal">&lt;10 (normal)</td><td>Also used for exercise echo interpretation</td></tr>
+        <tr><td>Lateral E/e'</td><td class="val abnormal">≥13 (↑ LAP)</td><td class="val normal">&lt;8 (normal)</td><td>Preferred in PH (use lateral not average)</td></tr>
+        <tr><td>TR velocity</td><td class="val abnormal">≥2.8 m/s</td><td class="val normal">&lt;2.8 m/s</td><td>Supports ↑ LAP in absence of pulmonary disease</td></tr>
+        <tr><td>PASP</td><td class="val abnormal">≥35 mmHg</td><td class="val normal">&lt;35 mmHg</td><td>Use when RAP estimable</td></tr>
+        <tr><td>LARS</td><td class="val abnormal">≤18%</td><td class="val normal">&gt;24%</td><td>18–24% = low normal (higher sensitivity, lower specificity)</td></tr>
+        <tr><td>PV S/D ratio</td><td class="val abnormal">≤0.67</td><td class="val normal">&gt;0.67</td><td>Reliable mainly in reduced LVEF; unreliable in normal EF</td></tr>
+        <tr><td>LAVi (biplane)</td><td class="val abnormal">&gt;34 mL/m²</td><td class="val normal">≤34 mL/m²</td><td>Supplemental; after excluding athletes, anemia, AF, MV disease</td></tr>
+        <tr><td>IVRT</td><td class="val abnormal">≤70 ms (↑ LAP)</td><td class="val normal">&gt;110 ms (likely normal)</td><td>Supplemental parameter in algorithm</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="key-points" style="margin-top:1.5rem;">
+    <h4>📌 Reporting Requirements (Section 12)</h4>
+    <ul>
+      <li>All reports must include: diastolic function grade AND filling pressure (LAP normal or elevated)</li>
+      <li>Always report: mitral inflow velocities, mitral annular e', peak TR velocity, E/A ratio, average E/e'</li>
+      <li>Include if relied upon: LARS, PV S/D ratio, mitral A duration, PV Ar duration, IVRT</li>
+      <li>Note any change from previous study when available</li>
+      <li>Isolated ↑ LVEDP should be reported — predisposes to elevated mean LAP with exercise/tachycardia</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ════════════════════════════════ CITATION FOOTER ════════════════════════════════ -->
+<div class="citation-footer">
+  <strong>Citation:</strong> Nagueh SF, Sanborn DY, Oh JK, et al. Recommendations for the Evaluation of Left Ventricular Diastolic Function by Echocardiography and for Heart Failure With Preserved Ejection Fraction Diagnosis: An Update From the American Society of Echocardiography. <em>J Am Soc Echocardiogr.</em> 2025;38:537–569.
+  <br><br>
+  📄 <a href="https://www.asecho.org/wp-content/uploads/2025/07/Left-Ventricular-Diastolic-Function.pdf" target="_blank">Download full guidelines from ASE website</a> &nbsp;|&nbsp;
+  <a href="https://doi.org/10.1016/j.echo.2025.03.011" target="_blank">DOI: 10.1016/j.echo.2025.03.011</a>
+  <br><br>
+  <em style="opacity:0.6; font-size:0.77rem;">This interactive tool is for educational and clinical reference purposes only. It does not replace clinical judgment or individualized patient assessment. Always refer to the full guideline document for complete recommendations. Content © 2025 American Society of Echocardiography.</em>
+</div>
+
+</main>
+
+<script>
+// ── Navigation ──
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+// ── Algorithm node info data ──
+const nodeData = {
+  'e-prime': {
+    tag: 'tag-input', tagText: 'STEP 1',
+    title: 'Assess Mitral Annular e\' Velocity',
+    content: `<p>The first step is measuring mitral annular e' velocity — the primary index of LV relaxation. Use tissue Doppler imaging (TDI) at the septal and lateral mitral annulus.</p>
+    <p><strong>Technique:</strong> PW sample volume 5–10 mm at septal and lateral insertion sites. Sweep speed 100 mm/s.</p>
+    <table class="cutoff-table" style="margin-top:0.75rem;">
+      <thead><tr><th>Site</th><th>20–39y</th><th>40–65y</th><th>&gt;65y</th></tr></thead>
+      <tbody>
+        <tr><td>Septal e'</td><td class="val abnormal">&lt;7</td><td class="val abnormal">&lt;6</td><td class="val abnormal">&lt;6 cm/s</td></tr>
+        <tr><td>Lateral e'</td><td class="val abnormal">&lt;10</td><td class="val abnormal">&lt;8</td><td class="val abnormal">&lt;7 cm/s</td></tr>
+        <tr><td>Average e'</td><td class="val abnormal">&lt;9</td><td class="val abnormal">&lt;7</td><td class="val abnormal">&lt;6.5 cm/s</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:0.75rem; font-size:0.83rem;"><em>e' reflects LV relaxation, restoring forces, and lengthening load. Its dependence on LAP is minimal when diastolic dysfunction is present.</em></p>`
+  },
+  'eprime-q': {
+    tag: 'tag-input', tagText: 'DECISION',
+    title: 'Is e\' Velocity Reduced?',
+    content: `<p>Compare measured e' to age-specific cutoffs (Table 6).</p>
+    <ul>
+      <li><strong>Reduced e':</strong> Only 1 additional Step 2 criterion needed to diagnose DD</li>
+      <li><strong>Preserved e':</strong> 2 Step 2 criteria needed for DD diagnosis</li>
+    </ul>
+    <div class="info-box teal" style="margin-top:0.75rem;">If e' is preserved (above cutoff), proceed to assess the Step 2 LAP markers. Two abnormal markers are required.</div>`
+  },
+  'step2': {
+    tag: 'tag-input', tagText: 'STEP 2',
+    title: 'Assess LAP Markers',
+    content: `<p>Three primary LAP markers are assessed:</p>
+    <table class="cutoff-table" style="margin-top:0.5rem;">
+      <thead><tr><th>Marker</th><th>Cutoff (Abnormal)</th></tr></thead>
+      <tbody>
+        <tr><td>① Average E/e' ratio</td><td class="val abnormal">&gt;14</td></tr>
+        <tr><td>① Septal E/e'</td><td class="val abnormal">≥15</td></tr>
+        <tr><td>① Lateral E/e'</td><td class="val abnormal">≥13</td></tr>
+        <tr><td>② TR velocity</td><td class="val abnormal">≥2.8 m/s</td></tr>
+        <tr><td>② PASP (if RAP known)</td><td class="val abnormal">≥35 mmHg</td></tr>
+        <tr><td>③ LA Reservoir Strain</td><td class="val abnormal">≤18%</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:0.75rem; font-size:0.83rem;"><em>All 3 abnormal = elevated LAP. None abnormal = normal LAP. 1–2 abnormal or borderline → check supplemental parameters.</em></p>`
+  },
+  'need2': {
+    tag: 'tag-indeterminate', tagText: 'SPECIAL CASE',
+    title: 'Preserved e\': Need ≥2 Abnormal',
+    content: `<p>When e' is preserved (above age-specific cutoff), the threshold for diagnosing diastolic dysfunction is higher — two abnormal findings from the Step 2 markers are required.</p>
+    <div class="info-box teal" style="margin-top:0.75rem;"><strong>Rationale:</strong> A normal e' suggests preserved LV relaxation. In this setting, structural/functional LAP markers carry less weight individually, requiring corroboration.</div>`
+  },
+  'allnormal': {
+    tag: 'tag-normal', tagText: 'DECISION',
+    title: 'Are All Step 2 Markers Normal?',
+    content: `<p>If all Step 2 markers are below their cutoffs (no marker meets the abnormal threshold), LAP is normal.</p>
+    <ul>
+      <li>If e' was reduced → Grade 1 diastolic dysfunction (impaired relaxation, normal LAP)</li>
+      <li>If e' was preserved → Normal diastolic function</li>
+    </ul>`
+  },
+  'normaldf': {
+    tag: 'tag-normal', tagText: 'NORMAL',
+    title: 'Normal Diastolic Function',
+    content: `<p>All parameters meet normal criteria: e' within normal limits for age AND all Step 2 markers normal.</p>
+    <div class="info-box teal" style="margin-top:0.75rem;">Normal diastolic function should not be diagnosed based on a single measurement. Consistency across multiple indices is essential.</div>
+    <p style="margin-top:0.75rem; font-size:0.83rem;"><em>Note: A completely normal diastolic function at rest with preserved e' makes it highly unlikely that elevated filling pressures will develop with exercise — stress testing generally not indicated.</em></p>`
+  },
+  'ea-ratio': {
+    tag: 'tag-input', tagText: 'GRADING',
+    title: 'E/A Ratio — Determines Grade',
+    content: `<p>When diastolic dysfunction is confirmed, the E/A ratio classifies the severity:</p>
+    <table class="cutoff-table" style="margin-top:0.5rem;">
+      <thead><tr><th>E/A Ratio</th><th>Grade</th><th>LAP</th></tr></thead>
+      <tbody>
+        <tr><td class="val">≤0.8</td><td><strong>Grade 1</strong></td><td>Normal mean LAP</td></tr>
+        <tr><td class="val">0.8–2</td><td><strong>Grade 2</strong></td><td>Mild–mod ↑ LAP</td></tr>
+        <tr><td class="val">≥2</td><td><strong>Grade 3</strong></td><td>Marked ↑ LAP</td></tr>
+      </tbody>
+    </table>`
+  },
+  'grade1': {
+    tag: 'tag-grade1', tagText: 'GRADE 1',
+    title: 'Grade 1 Diastolic Dysfunction',
+    content: `<p><strong>Impaired relaxation pattern</strong> — the earliest form of diastolic dysfunction.</p>
+    <ul>
+      <li>Reduced e' velocity (below age-specific cutoff)</li>
+      <li>E/A ratio ≤0.8</li>
+      <li>Normal mean LAP at rest</li>
+      <li>LVEDP may be elevated in some patients</li>
+    </ul>
+    <div class="info-box gold" style="margin-top:0.75rem;"><strong>⚠ If symptomatic:</strong> Refer for <strong>diastolic exercise echocardiography</strong>. Up to 50% of HFpEF patients have normal resting filling pressures that rise with exercise.</div>
+    <p style="margin-top:0.75rem; font-size:0.83rem;"><em>Consider supplemental parameters (LARS, PV S/D, LAVi, IVRT) if there is concern for elevated LVEDP with normal mean LAP.</em></p>`
+  },
+  'grade2': {
+    tag: 'tag-grade2', tagText: 'GRADE 2',
+    title: 'Grade 2 Diastolic Dysfunction',
+    content: `<p><strong>Pseudonormal filling pattern</strong> — impaired relaxation with elevated LAP that normalizes the transmitral E/A ratio.</p>
+    <ul>
+      <li>Reduced e' velocity</li>
+      <li>E/A ratio 0.8–2 (appears "normal" on transmitral alone)</li>
+      <li>≥1 LAP marker: E/e' &gt;14, TR vel ≥2.8 m/s, or LARS ≤18%</li>
+      <li>Mild to moderate elevation of mean LAP</li>
+    </ul>
+    <div class="info-box teal" style="margin-top:0.75rem;"><strong>Valsalva:</strong> E/A drops by ≥50% → distinguishes pseudonormal from truly normal filling. This is specific for elevated LAP.</div>`
+  },
+  'grade3': {
+    tag: 'tag-grade3', tagText: 'GRADE 3',
+    title: 'Grade 3 Diastolic Dysfunction',
+    content: `<p><strong>Restrictive filling pattern</strong> — severe diastolic dysfunction with marked elevation of LAP.</p>
+    <ul>
+      <li>Markedly reduced e' (often 3–5 cm/s)</li>
+      <li>E/A ratio ≥2 with short deceleration time (&lt;160 ms)</li>
+      <li>All LAP markers typically abnormal</li>
+      <li>Marked elevation of mean LAP</li>
+    </ul>
+    <div class="info-box teal" style="margin-top:0.75rem;"><strong>Reversibility:</strong> Grade 3a (reversible): E/A drops to &lt;2 with Valsalva. Grade 3b (irreversible): E/A remains ≥2 with Valsalva — worse prognosis.</div>
+    <p style="margin-top:0.75rem; font-size:0.83rem;"><em>Grade 3 DD is associated with poor prognosis across multiple cardiac conditions including cardiomyopathies and valvular heart disease.</em></p>`
+  },
+  'exercise-echo': {
+    tag: 'tag-action', tagText: 'ACTION',
+    title: 'Diastolic Exercise Echocardiography',
+    content: `<p>Indicated in symptomatic patients with Grade 1 DD or indeterminate filling pressure at rest.</p>
+    <p><strong>Positive test (elevated filling pressure with exercise):</strong></p>
+    <ul>
+      <li>Average E/e' ≥14 AND peak TR velocity ≥3.2 m/s</li>
+    </ul>
+    <p style="margin-top:0.5rem;"><strong>Normal test:</strong></p>
+    <ul>
+      <li>Average E/e' &lt;10 AND peak TR velocity &lt;2.8 m/s</li>
+    </ul>
+    <div class="info-box gold" style="margin-top:0.75rem;"><strong>Method:</strong> Supine bicycle preferred (allows continuous recording). Treadmill: obtain TR first post-exercise, then mitral inflow + annular when E/A not fused. Dobutamine stress <em>not</em> recommended.</div>
+    <p style="margin-top:0.75rem; font-size:0.83rem;"><em>PASP &gt;50 mmHg or TR vel &gt;3.2 m/s with exercise portends worse outcome.</em></p>`
+  },
+  'supplemental': {
+    tag: 'tag-input', tagText: 'SUPPLEMENTAL',
+    title: 'Supplemental Parameters',
+    content: `<p>Used when primary markers (E/e', TR velocity, LARS) are unavailable or when two of three are borderline:</p>
+    <table class="cutoff-table" style="margin-top:0.5rem;">
+      <thead><tr><th>Parameter</th><th>Elevated LAP Cutoff</th></tr></thead>
+      <tbody>
+        <tr><td>PR end-diastolic velocity</td><td class="val abnormal">≥2 m/s or PADP ≥16 mmHg</td></tr>
+        <tr><td>Mitral L-wave velocity</td><td class="val abnormal">≥50 cm/s</td></tr>
+        <tr><td>Ar-A duration</td><td class="val abnormal">&gt;30 ms</td></tr>
+        <tr><td>Valsalva E/A decrease</td><td class="val abnormal">≥50% drop</td></tr>
+        <tr><td>IVRT</td><td class="val abnormal">≤70 ms</td></tr>
+        <tr><td>PV S/D ratio</td><td class="val abnormal">≤0.67</td></tr>
+        <tr><td>LAVi</td><td class="val abnormal">&gt;34 mL/m²</td></tr>
+      </tbody>
+    </table>`
+  },
+  'exclusions': {
+    tag: 'tag-indeterminate', tagText: 'EXCLUSIONS',
+    title: 'Algorithm Exclusions',
+    content: `<p>The Figure 3 algorithm should <strong>not</strong> be applied in:</p>
+    <ul>
+      <li>Severe primary MR</li>
+      <li>Any degree of mitral stenosis (MS)</li>
+      <li>Moderate or severe MAC</li>
+      <li>Atrial fibrillation</li>
+      <li>Heart transplant recipients</li>
+      <li>Non-cardiac pulmonary hypertension</li>
+      <li>Pericardial constriction</li>
+      <li>LVAD patients</li>
+      <li>Mitral valve repair / replacement / TEER</li>
+    </ul>
+    <div class="info-box gold" style="margin-top:0.75rem;">See the <strong>Special Populations</strong> tab for alternative algorithms for these conditions.</div>`
+  }
+};
+
+let selectedNode = null;
+
+function selectNode(id) {
+  if (selectedNode) {
+    document.getElementById('node-' + selectedNode)?.classList.remove('selected');
+  }
+  selectedNode = id;
+  document.getElementById('node-' + id)?.classList.add('selected');
+
+  const panel = document.getElementById('infoPanel');
+  const data = nodeData[id];
+  if (!data) return;
+
+  panel.innerHTML = `
+    <span class="info-tag ${data.tag}">${data.tagText}</span>
+    <h3>${data.title}</h3>
+    ${data.content}
+    <p style="margin-top:1rem; font-size:0.76rem; color:var(--gray-500); border-top:1px solid var(--gray-200); padding-top:0.75rem;">
+      Reference: Nagueh et al. <em>J Am Soc Echocardiogr.</em> 2025;38:537-569
+    </p>
+  `;
+}
+
+// ── Special populations ──
+function showPop(id) {
+  document.querySelectorAll('.pop-detail').forEach(d => d.classList.remove('visible'));
+  document.querySelectorAll('.pop-card').forEach(c => c.classList.remove('active-pop'));
+  document.getElementById('pop-' + id).classList.add('visible');
+  event.currentTarget.classList.add('active-pop');
+  setTimeout(() => {
+    document.getElementById('pop-' + id).scrollIntoView({behavior:'smooth', block:'start'});
+  }, 100);
+}
+
+// ── Age range tabs ──
+function showAgeRange(id) {
+  document.querySelectorAll('.age-range-content').forEach(c => c.classList.remove('active'));
+  document.querySelectorAll('.age-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('range-' + id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ── Calculator ──
+function runCalculator() {
+  const age = parseFloat(document.getElementById('c-age').value);
+  const ef = parseFloat(document.getElementById('c-ef').value);
+  const sepE = parseFloat(document.getElementById('c-sep-e').value);
+  const latE = parseFloat(document.getElementById('c-lat-e').value);
+  const mitE = parseFloat(document.getElementById('c-mit-e').value);
+  const mitA = parseFloat(document.getElementById('c-mit-a').value);
+  const tr = parseFloat(document.getElementById('c-tr').value);
+  const pasp = parseFloat(document.getElementById('c-pasp').value);
+  const lavi = parseFloat(document.getElementById('c-lavi').value);
+  const lars = parseFloat(document.getElementById('c-lars').value);
+  const pvsd = parseFloat(document.getElementById('c-pvsd').value);
+  const ivrt = parseFloat(document.getElementById('c-ivrt').value);
+
+  const container = document.getElementById('calc-result-content');
+
+  // Validate essentials
+  if (isNaN(age) || isNaN(sepE) || isNaN(latE) || isNaN(mitE) || isNaN(mitA)) {
+    container.innerHTML = `<div class="result-box elevated visible"><div class="result-title">⚠ Missing Required Fields</div><div class="result-detail">Please enter: Age, Septal e', Lateral e', Mitral E, and Mitral A velocities.</div></div>`;
+    return;
+  }
+
+  // e' cutoffs by age
+  let sepCutoff, latCutoff, avgCutoff;
+  if (age <= 39) { sepCutoff = 7; latCutoff = 10; avgCutoff = 9; }
+  else if (age <= 65) { sepCutoff = 6; latCutoff = 8; avgCutoff = 7; }
+  else { sepCutoff = 6; latCutoff = 7; avgCutoff = 6.5; }
+
+  const avgE = (sepE + latE) / 2;
+  const eprimeReduced = sepE <= sepCutoff || latE <= latCutoff || avgE <= avgCutoff;
+  const ea = mitE / mitA;
+  const avgEE = !isNaN(mitE) && !isNaN(avgE) ? mitE / avgE : NaN;
+
+  // Step 2 LAP markers
+  let markers = [];
+  let markerDetails = [];
+  if (!isNaN(avgEE) && avgEE > 14) {
+    markers.push('ee'); markerDetails.push(`E/e' avg = ${avgEE.toFixed(1)} <span class="val abnormal">&gt;14 ✓</span>`);
+  } else if (!isNaN(avgEE)) {
+    markerDetails.push(`E/e' avg = ${avgEE.toFixed(1)} <span class="val normal">normal</span>`);
+  }
+  const trAbnormal = (!isNaN(tr) && tr >= 2.8) || (!isNaN(pasp) && pasp >= 35);
+  if (trAbnormal) {
+    markers.push('tr'); 
+    markerDetails.push(`TR vel = ${isNaN(tr)?'?':tr} m/s${!isNaN(pasp)?', PASP = '+pasp+' mmHg':''} <span class="val abnormal">elevated ✓</span>`);
+  } else {
+    if (!isNaN(tr)) markerDetails.push(`TR vel = ${tr} m/s <span class="val normal">normal</span>`);
+  }
+  if (!isNaN(lars) && lars <= 18) {
+    markers.push('lars'); markerDetails.push(`LARS = ${lars}% <span class="val abnormal">≤18% ✓</span>`);
+  } else if (!isNaN(lars)) {
+    markerDetails.push(`LARS = ${lars}% <span class="val normal">normal</span>`);
+  }
+
+  // Supplemental
+  let suppDetails = [];
+  if (!isNaN(lavi)) suppDetails.push(`LAVi = ${lavi} mL/m² — ${lavi > 34 ? '<span class="val abnormal">elevated</span>' : '<span class="val normal">normal</span>'}`);
+  if (!isNaN(pvsd)) suppDetails.push(`PV S/D = ${pvsd} — ${pvsd <= 0.67 ? '<span class="val abnormal">suggests ↑ LAP</span>' : '<span class="val normal">normal</span>'}`);
+  if (!isNaN(ivrt)) suppDetails.push(`IVRT = ${ivrt} ms — ${ivrt <= 70 ? '<span class="val abnormal">suggests ↑ LAP</span>' : ivrt >= 110 ? '<span class="val normal">suggests normal LAP</span>' : '<span style="color:var(--gray-500)">indeterminate</span>'}`);
+
+  // Determine grade
+  const needForDD = eprimeReduced ? 1 : 2;
+  const hasDD = markers.length >= needForDD;
+
+  let resultClass, resultTitle, resultText;
+
+  if (!hasDD && !eprimeReduced) {
+    resultClass = 'normal';
+    resultTitle = '✅ Normal Diastolic Function';
+    resultText = `e' is preserved (Septal ${sepE} cm/s, Lateral ${latE} cm/s, Avg ${avgE.toFixed(1)} cm/s) and fewer than 2 LAP markers are abnormal. E/A = ${ea.toFixed(2)}.`;
+  } else if (!hasDD && eprimeReduced) {
+    resultClass = 'grade1';
+    resultTitle = '🟡 Grade 1 Diastolic Dysfunction';
+    resultText = `Reduced e' (Septal ${sepE} cm/s, Lateral ${latE} cm/s — below age-${age} cutoffs: Sep ≤${sepCutoff}, Lat ≤${latCutoff}) with E/A ≤0.8 (${ea.toFixed(2)}) and no significant LAP elevation. This represents impaired relaxation with normal mean LAP. <br><br><strong>If symptomatic:</strong> Consider diastolic exercise echocardiography.`;
+  } else if (ea < 2) {
+    resultClass = 'grade2';
+    resultTitle = '🔴 Grade 2 Diastolic Dysfunction';
+    resultText = `Diastolic dysfunction with mild–moderate LAP elevation. E/A = ${ea.toFixed(2)} (0.8–2 range = pseudonormal). ${markers.length} LAP marker(s) abnormal.`;
+  } else {
+    resultClass = 'grade3';
+    resultTitle = '🔴🔴 Grade 3 Diastolic Dysfunction';
+    resultText = `Restrictive filling pattern with marked LAP elevation. E/A = ${ea.toFixed(2)} (≥2). Multiple LAP markers typically abnormal.`;
+  }
+
+  let suppHTML = suppDetails.length > 0 ? `<div style="margin-top:0.75rem; padding-top:0.75rem; border-top:1px solid rgba(0,0,0,0.08);"><strong>Supplemental:</strong><br>${suppDetails.join('<br>')}</div>` : '';
+
+  container.innerHTML = `
+    <div class="result-box ${resultClass} visible">
+      <div class="result-title">${resultTitle}</div>
+      <div class="result-detail">
+        ${resultText}
+        <div style="margin-top:0.75rem;">
+          <strong>Step 2 Markers:</strong><br>
+          ${markerDetails.join('<br>') || '<em>Insufficient data for markers</em>'}
+        </div>
+        ${suppHTML}
+      </div>
+    </div>
+    <p style="font-size:0.77rem; color:var(--gray-500); margin-top:0.75rem; padding:0.5rem;">
+      ⚠ Educational reference only. Applies to sinus rhythm without exclusion criteria. Integrate with full clinical context.
+    </p>
+  `;
+}
+
+function clearCalculator() {
+  document.querySelectorAll('#page-calculator input').forEach(i => i.value = '');
+  document.getElementById('calc-result-content').innerHTML = '<div style="color:var(--gray-500); font-size:0.88rem; text-align:center; padding:2rem 0;"><div style="font-size:2rem; margin-bottom:0.5rem;">🩺</div>Enter measurements and click Analyze</div>';
+}
+
+// ── AF Calculator ──
+function calcAFib() {
+  const checkboxes = document.querySelectorAll('#af-checks input[type=checkbox]');
+  let count = 0;
+  checkboxes.forEach(c => { if(c.checked) count++; });
+  
+  const lars = document.getElementById('af-lars')?.checked;
+  const pvsd = document.getElementById('af-pvsd')?.checked;
+  const bmi = document.getElementById('af-bmi')?.checked;
+  const suppCount = [lars, pvsd, bmi].filter(Boolean).length;
+
+  const result = document.getElementById('af-result');
+  result.className = 'result-box visible';
+  
+  if (count === 0) {
+    result.classList.add('normal');
+    result.innerHTML = '<div class="result-title">✅ Normal LAP</div><div class="result-detail">None of the primary criteria met.</div>';
+  } else if (count === 1) {
+    result.classList.add('normal');
+    result.innerHTML = '<div class="result-title">✅ Likely Normal LAP</div><div class="result-detail">Only 1 primary criterion met — likely normal filling pressure. Confirm with additional parameters if clinically uncertain.</div>';
+  } else if (count === 2) {
+    // Check secondary
+    if (suppCount >= 2) {
+      result.classList.add('elevated');
+      result.innerHTML = '<div class="result-title">🔴 Elevated LAP</div><div class="result-detail">2 primary criteria + ≥2 secondary criteria met → elevated LAP.</div>';
+    } else if (suppCount === 0) {
+      result.classList.add('normal');
+      result.innerHTML = '<div class="result-title">✅ Normal LAP</div><div class="result-detail">2 primary criteria but 0 secondary criteria → likely normal LAP.</div>';
+    } else {
+      result.classList.add('indeterminate');
+      result.innerHTML = '<div class="result-title">⚪ Indeterminate</div><div class="result-detail">2 primary + 1 secondary criterion — indeterminate. Consider additional evaluation.</div>';
+    }
+  } else if (count >= 3) {
+    result.classList.add('elevated');
+    result.innerHTML = '<div class="result-title">🔴 Elevated LAP</div><div class="result-detail">3 or more primary criteria met → elevated LAP with moderate accuracy.</div>';
+  }
+}
+
+// ── PH Calculator ──
+function calcPH() {
+  const e = parseFloat(document.getElementById('ph-e').value);
+  const a = parseFloat(document.getElementById('ph-a').value);
+  const latEE = parseFloat(document.getElementById('ph-lat-ee').value);
+  const lars = parseFloat(document.getElementById('ph-lars').value);
+
+  if (isNaN(e) || isNaN(a)) return;
+  const ea = e / a;
+  const result = document.getElementById('ph-result');
+  result.style.display = 'block';
+  result.className = 'result-box visible';
+
+  if (ea <= 0.8 && e <= 50) {
+    result.classList.add('normal');
+    result.innerHTML = `<div class="result-title">✅ Normal LAP — Precapillary PH likely</div><div class="result-detail">E/A = ${ea.toFixed(2)} ≤0.8 and E ≤50 cm/s. Favors non-left-heart PH etiology.</div>`;
+  } else if (ea >= 2) {
+    result.classList.add('elevated');
+    result.innerHTML = `<div class="result-title">🔴 Elevated LAP — Group II (Post-capillary) PH likely</div><div class="result-detail">E/A = ${ea.toFixed(2)} ≥2. Favors left-heart disease driving PH.</div>`;
+  } else {
+    // Intermediate — check LARS or Lateral E/e'
+    if (!isNaN(lars)) {
+      if (lars <= 16) {
+        result.classList.add('elevated');
+        result.innerHTML = `<div class="result-title">🔴 Elevated LAP</div><div class="result-detail">E/A = ${ea.toFixed(2)} (indeterminate range) but LARS = ${lars}% ≤16% → elevated LAP. Group II PH likely.</div>`;
+      } else if (lars > 18) {
+        result.classList.add('normal');
+        result.innerHTML = `<div class="result-title">✅ Normal LAP</div><div class="result-detail">E/A = ${ea.toFixed(2)} (indeterminate range) but LARS = ${lars}% >18% → normal LAP.</div>`;
+      } else {
+        // 16-18%
+        if (!isNaN(latEE)) {
+          if (latEE > 13) {
+            result.classList.add('elevated');
+            result.innerHTML = `<div class="result-title">🔴 Elevated LAP</div><div class="result-detail">LARS = ${lars}% (borderline) + Lateral E/e' = ${latEE} >13 → elevated LAP.</div>`;
+          } else if (latEE < 8) {
+            result.classList.add('normal');
+            result.innerHTML = `<div class="result-title">✅ Normal LAP</div><div class="result-detail">LARS = ${lars}% (borderline) + Lateral E/e' = ${latEE} <8 → normal LAP.</div>`;
+          } else {
+            result.classList.add('indeterminate');
+            result.innerHTML = `<div class="result-title">⚪ Indeterminate</div><div class="result-detail">E/A = ${ea.toFixed(2)}, LARS = ${lars}%, Lateral E/e' = ${latEE} (all in gray zones). Consider invasive evaluation.</div>`;
+          }
+        } else {
+          result.classList.add('indeterminate');
+          result.innerHTML = `<div class="result-title">⚪ Indeterminate</div><div class="result-detail">E/A = ${ea.toFixed(2)} and LARS = ${lars}% (borderline range). Enter Lateral E/e' to refine.</div>`;
+        }
+      }
+    } else if (!isNaN(latEE)) {
+      if (latEE > 13) {
+        result.classList.add('elevated');
+        result.innerHTML = `<div class="result-title">🔴 Elevated LAP</div><div class="result-detail">E/A = ${ea.toFixed(2)} (intermediate) + Lateral E/e' = ${latEE} >13 → elevated LAP.</div>`;
+      } else if (latEE < 8) {
+        result.classList.add('normal');
+        result.innerHTML = `<div class="result-title">✅ Normal LAP</div><div class="result-detail">E/A = ${ea.toFixed(2)} (intermediate) + Lateral E/e' = ${latEE} <8 → normal LAP.</div>`;
+      } else {
+        result.classList.add('indeterminate');
+        result.innerHTML = `<div class="result-title">⚪ Indeterminate</div><div class="result-detail">E/A = ${ea.toFixed(2)}, Lateral E/e' = ${latEE} (8–13 gray zone). No reliable conclusion possible.</div>`;
+      }
+    } else {
+      result.classList.add('indeterminate');
+      result.innerHTML = `<div class="result-title">⚪ Indeterminate</div><div class="result-detail">E/A = ${ea.toFixed(2)} (intermediate range). Enter LARS or Lateral E/e' to continue the algorithm.</div>`;
+    }
+  }
+}
+
+// ── MAC Calculator ──
+function calcMAC() {
+  const e = parseFloat(document.getElementById('mac-e').value);
+  const a = parseFloat(document.getElementById('mac-a').value);
+  const ivrt = parseFloat(document.getElementById('mac-ivrt').value);
+  if (isNaN(e) || isNaN(a)) return;
+  const ea = e / a;
+  const result = document.getElementById('mac-result');
+  result.className = 'result-box visible';
+  result.style.display = 'block';
+
+  if (ea < 0.8) {
+    result.classList.add('normal');
+    result.innerHTML = `<div class="result-title">✅ Normal LAP</div><div class="result-detail">E/A = ${ea.toFixed(2)} <0.8 → normal filling pressure in the setting of MAC.</div>`;
+  } else if (ea > 1.8) {
+    result.classList.add('elevated');
+    result.innerHTML = `<div class="result-title">🔴 Elevated LAP</div><div class="result-detail">E/A = ${ea.toFixed(2)} >1.8 → elevated filling pressure.</div>`;
+  } else {
+    if (!isNaN(ivrt)) {
+      if (ivrt >= 80) {
+        result.classList.add('normal');
+        result.innerHTML = `<div class="result-title">✅ Normal LAP</div><div class="result-detail">E/A = ${ea.toFixed(2)} (indeterminate range, 0.8–1.8) but IVRT = ${ivrt} ms ≥80 → normal filling pressure.</div>`;
+      } else {
+        result.classList.add('elevated');
+        result.innerHTML = `<div class="result-title">🔴 Elevated LAP</div><div class="result-detail">E/A = ${ea.toFixed(2)} (indeterminate range) + IVRT = ${ivrt} ms <80 → elevated filling pressure.</div>`;
+      }
+    } else {
+      result.classList.add('indeterminate');
+      result.innerHTML = `<div class="result-title">⚪ Measure IVRT</div><div class="result-detail">E/A = ${ea.toFixed(2)} (0.8–1.8 range). Per Figure 4: measure IVRT. ≥80 ms = normal LAP; <80 ms = elevated LAP.</div>`;
+    }
+  }
+}
+
+// ── Heart Transplant Calculator ──
+function calcHTX() {
+  const ee = parseFloat(document.getElementById('htx-ee').value);
+  const esrivr = parseFloat(document.getElementById('htx-esrivr').value);
+  const tr = parseFloat(document.getElementById('htx-tr').value);
+  if (isNaN(ee)) return;
+  const result = document.getElementById('htx-result');
+  result.className = 'result-box visible';
+  result.style.display = 'block';
+
+  if (ee < 7) {
+    result.classList.add('normal');
+    result.innerHTML = `<div class="result-title">✅ Normal LAP (&lt;15 mmHg)</div><div class="result-detail">Average E/e' = ${ee} <7 → normal LV filling pressure.</div>`;
+  } else if (ee > 14) {
+    result.classList.add('elevated');
+    result.innerHTML = `<div class="result-title">🔴 Elevated LAP (≥15 mmHg)</div><div class="result-detail">Average E/e' = ${ee} >14 → elevated LV filling pressure.</div>`;
+  } else {
+    // E/e' 7-14: need SRIVR
+    if (!isNaN(esrivr)) {
+      if (esrivr <= 200) {
+        result.classList.add('normal');
+        result.innerHTML = `<div class="result-title">✅ Normal LAP</div><div class="result-detail">E/e' = ${ee} (7–14 range) + E/SR<sub>IVR</sub> = ${esrivr} cm ≤200 → normal filling pressure.</div>`;
+      } else {
+        result.classList.add('elevated');
+        result.innerHTML = `<div class="result-title">🔴 Elevated LAP</div><div class="result-detail">E/e' = ${ee} (7–14 range) + E/SR<sub>IVR</sub> = ${esrivr} cm >200 → elevated filling pressure.</div>`;
+      }
+    } else if (!isNaN(tr)) {
+      if (tr <= 2.8) {
+        result.classList.add('normal');
+        result.innerHTML = `<div class="result-title">✅ Normal LAP</div><div class="result-detail">E/e' = ${ee} (7–14) + TR velocity = ${tr} m/s ≤2.8 → normal filling pressure (SRIVR unavailable).</div>`;
+      } else {
+        result.classList.add('elevated');
+        result.innerHTML = `<div class="result-title">🔴 Elevated LAP</div><div class="result-detail">E/e' = ${ee} (7–14) + TR velocity = ${tr} m/s >2.8 → elevated filling pressure (SRIVR unavailable).</div>`;
+      }
+    } else {
+      result.classList.add('indeterminate');
+      result.innerHTML = `<div class="result-title">⚪ Indeterminate — Enter E/SR<sub>IVR</sub> or TR Velocity</div><div class="result-detail">E/e' = ${ee} falls in the 7–14 indeterminate range. Measure E/SR<sub>IVR</sub> from all 3 apical views; if unavailable, use peak TR velocity.</div>`;
+    }
+  }
+}
+</script>
+</body>
+</html>
