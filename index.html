@@ -829,158 +829,162 @@
 
   <div class="algo-wrapper">
     <div class="algo-canvas">
-      <!-- Clean HTML flow diagram replacing SVG -->
+      <!-- Figure 3 faithful HTML flow diagram -->
       <div class="flow-diagram">
 
-        <!-- STEP 1 -->
-        <div class="fnode fnode-step" id="node-e-prime" onclick="selectNode('e-prime')" style="width:100%; max-width:600px;">
-          <div class="step-badge">Step 1</div>
-          <div class="fnode-title">Assess Mitral Annular e' Velocity</div>
-          <div class="fnode-sub">Septal e' · Lateral e' · Average e' — compared to age-specific cutoffs</div>
+        <!-- TOP: 3 criteria banner -->
+        <div class="fnode fnode-step" id="node-e-prime" onclick="selectNode('e-prime')" style="width:100%; background:var(--navy);">
+          <div class="fnode-title" style="font-size:1.05rem; margin-bottom:0.6rem;">Three Variables Assessed (Figure 3)</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.5rem; font-size:0.88rem; text-align:left;">
+            <div style="background:rgba(255,255,255,0.1); border-radius:8px; padding:0.6rem 0.8rem;">
+              <div style="font-weight:700; margin-bottom:0.2rem;">① e' velocity</div>
+              <div style="opacity:0.8;">Septal ≤6 cm/s<br>Lateral ≤7 cm/s<br>Average ≤6.5 cm/s</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.1); border-radius:8px; padding:0.6rem 0.8rem;">
+              <div style="font-weight:700; margin-bottom:0.2rem;">② E/e' ratio</div>
+              <div style="opacity:0.8;">Septal ≥15<br>Lateral ≥13<br>Average ≥14</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.1); border-radius:8px; padding:0.6rem 0.8rem;">
+              <div style="font-weight:700; margin-bottom:0.2rem;">③ TR / PASP</div>
+              <div style="opacity:0.8;">TR vel ≥2.8 m/s<br>or PASP ≥35 mmHg</div>
+            </div>
+          </div>
         </div>
 
         <div class="flow-arrow-down">
-          <div class="flow-arrow-line"></div>
-          <div class="flow-arrow-head"></div>
-        </div>
-
-        <!-- e' REDUCED? -->
-        <div class="fnode fnode-decision" id="node-eprime-q" onclick="selectNode('eprime-q')" style="width:100%; max-width:460px;">
-          <div class="fnode-title">🔷 Is e' reduced below age-specific cutoff?</div>
-          <div class="fnode-sub" style="margin-top:0.35rem;">
-            20–39y: Sep &lt;7 / Lat &lt;10 / Avg &lt;9 cm/s<br>
-            40–65y: Sep &lt;6 / Lat &lt;8 / Avg &lt;7 cm/s<br>
-            &gt;65y: Sep &lt;6 / Lat &lt;7 / Avg &lt;6.5 cm/s
-          </div>
-        </div>
-
-        <!-- YES/NO branches -->
-        <div style="width:100%; display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:0.25rem;">
-          <!-- YES branch -->
-          <div class="branch-col">
-            <div class="branch-label">✅ YES — e' Reduced</div>
-            <div class="flow-arrow-down"><div class="flow-arrow-line"></div><div class="flow-arrow-head"></div></div>
-            <div class="fnode fnode-supp" id="node-need1" onclick="selectNode('need2')" style="width:100%; font-size:0.88rem; padding:0.75rem 1rem;">
-              <div class="fnode-title" style="font-size:0.95rem;">Need ≥1 abnormal LAP marker</div>
-              <div class="fnode-sub">Lower threshold for DD diagnosis</div>
-            </div>
-          </div>
-          <!-- NO branch -->
-          <div class="branch-col">
-            <div class="branch-label">❌ NO — e' Preserved</div>
-            <div class="flow-arrow-down"><div class="flow-arrow-line"></div><div class="flow-arrow-head"></div></div>
-            <div class="fnode fnode-supp" id="node-need2" onclick="selectNode('need2')" style="width:100%; font-size:0.88rem; padding:0.75rem 1rem;">
-              <div class="fnode-title" style="font-size:0.95rem;">Need ≥2 abnormal LAP markers</div>
-              <div class="fnode-sub">Higher threshold for DD diagnosis</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="flow-arrow-down" style="margin-top:0.25rem;">
           <div class="flow-arrow-line" style="height:20px;"></div>
           <div class="flow-arrow-head"></div>
         </div>
 
-        <!-- STEP 2 -->
-        <div class="fnode fnode-step" id="node-step2" onclick="selectNode('step2')" style="width:100%; max-width:640px; background:var(--teal); border-color:var(--teal);">
-          <div class="step-badge">Step 2</div>
-          <div class="fnode-title">Assess LAP Markers</div>
-          <div class="fnode-sub" style="margin-top:0.4rem; display:grid; grid-template-columns:1fr 1fr; gap:0.25rem 1rem; text-align:left;">
-            <span>① Average E/e' <strong>&gt;14</strong></span>
-            <span>② TR velocity <strong>≥2.8 m/s</strong></span>
-            <span>② PASP <strong>≥35 mmHg</strong></span>
-            <span>③ LARS <strong>≤18%</strong></span>
-          </div>
-        </div>
+        <!-- FOUR OUTCOME COLUMNS — matching Figure 3 exactly -->
+        <div style="width:100%; display:grid; grid-template-columns:1fr 1fr 1.4fr 1fr; gap:0.75rem; align-items:start;">
 
-        <div class="flow-arrow-down">
-          <div class="flow-arrow-line"></div>
-          <div class="flow-arrow-head"></div>
-        </div>
-
-        <!-- ALL NORMAL? -->
-        <div class="fnode fnode-decision" id="node-allnormal" onclick="selectNode('allnormal')" style="width:100%; max-width:460px;">
-          <div class="fnode-title">🔷 Do any LAP markers meet cutoff?</div>
-          <div class="fnode-sub" style="margin-top:0.25rem;">(considering threshold: ≥1 if e' reduced, ≥2 if e' preserved)</div>
-        </div>
-
-        <!-- YES/NO branches -->
-        <div style="width:100%; display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:0.25rem;">
+          <!-- COL 1: All normal -->
           <div class="branch-col">
-            <div class="branch-label">❌ NO — All Normal</div>
-            <div class="flow-arrow-down"><div class="flow-arrow-line"></div><div class="flow-arrow-head"></div></div>
             <div class="fnode fnode-normal" id="node-normaldf" onclick="selectNode('normaldf')" style="width:100%;">
-              <div class="fnode-title">✅ Normal Diastolic Function</div>
+              <div class="fnode-title">All Normal</div>
+              <div class="fnode-sub">All 3 variables within normal limits</div>
+            </div>
+            <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:20px;"></div><div class="flow-arrow-head"></div></div>
+            <div class="fnode fnode-normal" style="width:100%; cursor:default; opacity:0.9;">
+              <div class="fnode-title">✅ Normal DF</div>
               <div class="fnode-sub">Normal LAP</div>
             </div>
           </div>
-          <div class="branch-col">
-            <div class="branch-label">✅ YES — Markers Abnormal</div>
-            <div class="flow-arrow-down"><div class="flow-arrow-line"></div><div class="flow-arrow-head"></div></div>
-            <div class="fnode fnode-step" id="node-ea-ratio" onclick="selectNode('ea-ratio')" style="width:100%;">
-              <div class="fnode-title">Grade by E/A Ratio</div>
-              <div class="fnode-sub">Diastolic dysfunction confirmed — classify severity</div>
-            </div>
-          </div>
-        </div>
 
-        <!-- E/A GRADING BRANCHES -->
-        <div style="width:50%; margin-left:50%;">
-          <div class="flow-arrow-down"><div class="flow-arrow-line"></div><div class="flow-arrow-head"></div></div>
-        </div>
-
-        <div style="width:100%; display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.75rem;">
+          <!-- COL 2: Reduced e' only -->
           <div class="branch-col">
-            <div class="branch-label">E/A ≤ 0.8</div>
             <div class="fnode fnode-grade1" id="node-grade1" onclick="selectNode('grade1')" style="width:100%;">
-              <div class="fnode-title">Grade 1 DD</div>
-              <div class="fnode-sub">Impaired Relaxation<br>Normal LAP</div>
+              <div class="fnode-title">Reduced e' Only</div>
+              <div class="fnode-sub">e' abnormal; E/e' and TR/PASP normal</div>
+            </div>
+            <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:12px;"></div><div class="flow-arrow-head"></div></div>
+            <!-- E/A sub-branch -->
+            <div style="width:100%; display:grid; grid-template-columns:1fr 1fr; gap:0.4rem;">
+              <div class="branch-col">
+                <div class="branch-label" style="font-size:0.72rem;">E/A ≤ 0.8</div>
+                <div class="fnode fnode-normal" style="width:100%; cursor:default; padding:0.6rem 0.75rem;">
+                  <div class="fnode-title" style="font-size:0.88rem;">Normal LAP</div>
+                </div>
+              </div>
+              <div class="branch-col">
+                <div class="branch-label" style="font-size:0.72rem;">E/A &gt; 0.8</div>
+                <div class="fnode fnode-supp" style="width:100%; cursor:default; padding:0.6rem 0.75rem;">
+                  <div class="fnode-title" style="font-size:0.88rem;">Check Suppl.</div>
+                </div>
+              </div>
+            </div>
+            <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:12px;"></div><div class="flow-arrow-head"></div></div>
+            <div class="fnode fnode-grade1" style="width:100%; cursor:default;">
+              <div class="fnode-title">🟡 Grade 1 DD</div>
+              <div class="fnode-sub">Impaired relaxation · Normal LAP</div>
+            </div>
+            <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:12px;"></div><div class="flow-arrow-head"></div></div>
+            <div class="fnode fnode-action" id="node-exercise-echo" onclick="selectNode('exercise-echo')" style="width:100%; padding:0.65rem 0.75rem;">
+              <div class="fnode-title" style="font-size:0.88rem;">🚴 Exercise Echo</div>
+              <div class="fnode-sub" style="font-size:0.78rem;">If symptomatic</div>
             </div>
           </div>
-          <div class="branch-col">
-            <div class="branch-label">E/A 0.8 – 2</div>
-            <div class="fnode fnode-grade2" id="node-grade2" onclick="selectNode('grade2')" style="width:100%;">
-              <div class="fnode-title">Grade 2 DD</div>
-              <div class="fnode-sub">Pseudonormal<br>Mild–Mod ↑ LAP</div>
-            </div>
-          </div>
-          <div class="branch-col">
-            <div class="branch-label">E/A ≥ 2</div>
-            <div class="fnode fnode-grade3" id="node-grade3" onclick="selectNode('grade3')" style="width:100%;">
-              <div class="fnode-title">Grade 3 DD</div>
-              <div class="fnode-sub">Restrictive Filling<br>Marked ↑ LAP</div>
-            </div>
-          </div>
-        </div>
 
-        <!-- GRADE 1 ACTION + SUPPLEMENTAL -->
-        <div style="width:100%; display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.75rem; margin-top:0.75rem;">
+          <!-- COL 3: Indeterminate (1 or 2 abnormal) -->
           <div class="branch-col">
-            <div class="flow-arrow-down"><div class="flow-arrow-line"></div><div class="flow-arrow-head"></div></div>
-            <div class="fnode fnode-action" id="node-exercise-echo" onclick="selectNode('exercise-echo')" style="width:100%;">
-              <div class="fnode-title">🚴 Exercise Echo</div>
-              <div class="fnode-sub">If symptomatic — assess exertional LAP</div>
+            <div class="fnode fnode-decision" id="node-step2" onclick="selectNode('step2')" style="width:100%;">
+              <div class="fnode-title">↑TR/PASP only — or — ↑E/e' only — or — Any 2 abnormal</div>
+              <div class="fnode-sub" style="margin-top:0.35rem;">Indeterminate: check supplemental parameters</div>
             </div>
-          </div>
-          <div class="branch-col">
-            <div class="flow-arrow-down"><div class="flow-arrow-line"></div><div class="flow-arrow-head"></div></div>
+            <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:12px;"></div><div class="flow-arrow-head"></div></div>
             <div class="fnode fnode-supp" id="node-supplemental" onclick="selectNode('supplemental')" style="width:100%;">
-              <div class="fnode-title">📋 Supplemental Params</div>
-              <div class="fnode-sub">LARS · PV S/D · LAVi · IVRT<br>PR vel · L-wave · Ar-A · Valsalva</div>
+              <div class="fnode-title">📋 Supplemental Parameters</div>
+              <div class="fnode-sub">PV S/D ≤0.67 · LARS ≤18% · LAVi &gt;34 mL/m²<br>Alternatively: IVRT ≤70 ms<br>If none available: Supplemental methods†</div>
+            </div>
+            <div style="width:100%; display:grid; grid-template-columns:1fr 1fr; gap:0.5rem; margin-top:0.4rem;">
+              <div class="branch-col">
+                <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:12px;"></div><div class="flow-arrow-head"></div></div>
+                <div class="branch-label">None present</div>
+                <div class="fnode fnode-normal" style="width:100%; cursor:default; padding:0.6rem 0.75rem;">
+                  <div class="fnode-title" style="font-size:0.88rem;">✅ Normal LAP</div>
+                </div>
+              </div>
+              <div class="branch-col">
+                <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:12px;"></div><div class="flow-arrow-head"></div></div>
+                <div class="branch-label">≥1 present</div>
+                <div class="fnode fnode-grade2" style="width:100%; cursor:default; padding:0.6rem 0.75rem;">
+                  <div class="fnode-title" style="font-size:0.88rem;">🔴 ↑ LAP</div>
+                </div>
+              </div>
+            </div>
+            <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:12px;"></div><div class="flow-arrow-head"></div></div>
+            <div class="fnode fnode-action" style="width:100%; cursor:default; padding:0.65rem 0.75rem;">
+              <div class="fnode-title" style="font-size:0.88rem;">🚴 Diastolic Exercise Echo</div>
+              <div class="fnode-sub" style="font-size:0.78rem;">If symptomatic + normal LAP at rest</div>
             </div>
           </div>
-          <div class="branch-col" style="justify-content:flex-start; padding-top:0;">
-            <div style="height:38px;"></div>
-            <div class="fnode fnode-exclude" id="node-exclusions" onclick="selectNode('exclusions')" style="width:100%;">
-              <div class="fnode-title" style="font-size:0.88rem;">⚠ Exclusions</div>
-              <div class="fnode-sub" style="font-size:0.78rem;">Severe MR/MS · MAC · AF<br>HTX · Non-cardiac PH · Constriction · LVAD</div>
+
+          <!-- COL 4: All 3 abnormal → Increased LAP → Grade 2/3 -->
+          <div class="branch-col">
+            <div class="fnode fnode-grade2" id="node-ea-ratio" onclick="selectNode('ea-ratio')" style="width:100%;">
+              <div class="fnode-title">All 3 Abnormal</div>
+              <div class="fnode-sub">↑ LAP confirmed</div>
             </div>
+            <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:12px;"></div><div class="flow-arrow-head"></div></div>
+            <div class="fnode fnode-grade2" style="width:100%; cursor:default; background:#dc2626; border-color:#b91c1c; color:white;">
+              <div class="fnode-title" style="color:white;">🔴 Increased LAP</div>
+              <div class="fnode-sub" style="color:rgba(255,255,255,0.85);">Grade by E/A ratio</div>
+            </div>
+            <div style="width:100%; display:grid; grid-template-columns:1fr 1fr; gap:0.4rem; margin-top:0.4rem;">
+              <div class="branch-col">
+                <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:12px;"></div><div class="flow-arrow-head"></div></div>
+                <div class="branch-label">E/A &lt; 2</div>
+                <div class="fnode fnode-grade2" id="node-grade2" onclick="selectNode('grade2')" style="width:100%; padding:0.65rem 0.5rem;">
+                  <div class="fnode-title" style="font-size:0.9rem;">Grade 2 DD</div>
+                  <div class="fnode-sub" style="font-size:0.78rem;">Mild–Mod ↑ LAP</div>
+                </div>
+              </div>
+              <div class="branch-col">
+                <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:12px;"></div><div class="flow-arrow-head"></div></div>
+                <div class="branch-label">E/A ≥ 2</div>
+                <div class="fnode fnode-grade3" id="node-grade3" onclick="selectNode('grade3')" style="width:100%; padding:0.65rem 0.5rem;">
+                  <div class="fnode-title" style="font-size:0.9rem;">Grade 3 DD</div>
+                  <div class="fnode-sub" style="font-size:0.78rem;">Marked ↑ LAP</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Exclusions bar -->
+        <div class="fnode fnode-exclude" id="node-exclusions" onclick="selectNode('exclusions')" style="width:100%; margin-top:1rem; flex-direction:row; display:flex; align-items:center; gap:1rem; text-align:left; padding:0.75rem 1.25rem;">
+          <span style="font-size:1.3rem; flex-shrink:0;">⚠</span>
+          <div>
+            <div class="fnode-title" style="font-size:0.9rem; margin-bottom:0.1rem;">Algorithm Exclusions — use special population algorithms instead</div>
+            <div class="fnode-sub" style="font-size:0.8rem;">Severe primary MR · Any MS · Moderate/severe MAC · Atrial fibrillation · Heart transplant · Non-cardiac PH · Pericardial constriction · LVAD · Mitral valve repair/replacement/TEER</div>
           </div>
         </div>
 
-        <!-- Bottom hint -->
-        <div style="margin-top:1.25rem; width:100%; background:var(--teal-pale); border-radius:8px; padding:0.75rem 1rem; text-align:center; font-size:0.84rem; color:var(--teal); border:1px solid #b0dce8;">
-          👆 <strong>Click any box</strong> for detailed cutoff values, physiologic rationale, and clinical pearls
+        <!-- Click hint -->
+        <div style="margin-top:0.75rem; width:100%; background:var(--teal-pale); border-radius:8px; padding:0.65rem 1rem; text-align:center; font-size:0.84rem; color:var(--teal); border:1px solid #b0dce8;">
+          👆 <strong>Click any highlighted box</strong> for detailed cutoff values, physiologic rationale, and clinical pearls
         </div>
 
       </div>
@@ -2052,60 +2056,36 @@ function showPage(id) {
 // ── Algorithm node info data ──
 const nodeData = {
   'e-prime': {
-    tag: 'tag-input', tagText: 'STEP 1',
-    title: 'Assess Mitral Annular e\' Velocity',
-    content: `<p>The first step is measuring mitral annular e' velocity — the primary index of LV relaxation. Use tissue Doppler imaging (TDI) at the septal and lateral mitral annulus.</p>
-    <p><strong>Technique:</strong> PW sample volume 5–10 mm at septal and lateral insertion sites. Sweep speed 100 mm/s.</p>
-    <table class="cutoff-table" style="margin-top:0.75rem;">
-      <thead><tr><th>Site</th><th>20–39y</th><th>40–65y</th><th>&gt;65y</th></tr></thead>
+    tag: 'tag-input', tagText: 'STEP 1 — THREE VARIABLES',
+    title: 'The Three Variables of Figure 3',
+    content: `<p>Figure 3 assesses three variables simultaneously to classify LAP:</p>
+    <table class="cutoff-table" style="margin-top:0.5rem;">
+      <thead><tr><th>#</th><th>Variable</th><th>Cutoff (Abnormal)</th></tr></thead>
       <tbody>
-        <tr><td>Septal e'</td><td class="val abnormal">&lt;7</td><td class="val abnormal">&lt;6</td><td class="val abnormal">&lt;6 cm/s</td></tr>
-        <tr><td>Lateral e'</td><td class="val abnormal">&lt;10</td><td class="val abnormal">&lt;8</td><td class="val abnormal">&lt;7 cm/s</td></tr>
-        <tr><td>Average e'</td><td class="val abnormal">&lt;9</td><td class="val abnormal">&lt;7</td><td class="val abnormal">&lt;6.5 cm/s</td></tr>
+        <tr><td>①</td><td>Reduced e' velocity</td><td class="val abnormal">Sep ≤6 / Lat ≤7 / Avg ≤6.5 cm/s</td></tr>
+        <tr><td>②</td><td>Increased E/e' ratio</td><td class="val abnormal">Sep ≥15 / Lat ≥13 / Avg ≥14</td></tr>
+        <tr><td>③</td><td>Increased TR vel or PASP</td><td class="val abnormal">TR ≥2.8 m/s or PASP ≥35 mmHg</td></tr>
       </tbody>
     </table>
-    <p style="margin-top:0.75rem; font-size:0.83rem;"><em>e' reflects LV relaxation, restoring forces, and lengthening load. Its dependence on LAP is minimal when diastolic dysfunction is present.</em></p>`
-  },
-  'eprime-q': {
-    tag: 'tag-input', tagText: 'DECISION',
-    title: 'Is e\' Velocity Reduced?',
-    content: `<p>Compare measured e' to age-specific cutoffs (Table 6).</p>
-    <ul>
-      <li><strong>Reduced e':</strong> Only 1 additional Step 2 criterion needed to diagnose DD</li>
-      <li><strong>Preserved e':</strong> 2 Step 2 criteria needed for DD diagnosis</li>
-    </ul>
-    <div class="info-box teal" style="margin-top:0.75rem;">If e' is preserved (above cutoff), proceed to assess the Step 2 LAP markers. Two abnormal markers are required.</div>`
+    <p style="margin-top:0.75rem; font-size:0.83rem;"><em>The pattern of which variables are abnormal — and how many — determines the LAP classification and DD grade. Age-adjusted e' cutoffs may be substituted for the fixed cutoffs shown above.</em></p>`
   },
   'step2': {
-    tag: 'tag-input', tagText: 'STEP 2',
-    title: 'Assess LAP Markers',
-    content: `<p>Three primary LAP markers are assessed:</p>
+    tag: 'tag-indeterminate', tagText: 'INDETERMINATE',
+    title: 'Indeterminate: 1 or 2 Variables Abnormal',
+    content: `<p>When only TR/PASP is abnormal, only E/e' is abnormal, or any 2 of the 3 variables are abnormal — LAP is indeterminate. Check supplemental parameters:</p>
     <table class="cutoff-table" style="margin-top:0.5rem;">
-      <thead><tr><th>Marker</th><th>Cutoff (Abnormal)</th></tr></thead>
+      <thead><tr><th>Supplemental Parameter</th><th>↑ LAP Cutoff</th></tr></thead>
       <tbody>
-        <tr><td>① Average E/e' ratio</td><td class="val abnormal">&gt;14</td></tr>
-        <tr><td>① Septal E/e'</td><td class="val abnormal">≥15</td></tr>
-        <tr><td>① Lateral E/e'</td><td class="val abnormal">≥13</td></tr>
-        <tr><td>② TR velocity</td><td class="val abnormal">≥2.8 m/s</td></tr>
-        <tr><td>② PASP (if RAP known)</td><td class="val abnormal">≥35 mmHg</td></tr>
-        <tr><td>③ LA Reservoir Strain</td><td class="val abnormal">≤18%</td></tr>
+        <tr><td>PV systolic/diastolic ratio</td><td class="val abnormal">≤0.67</td></tr>
+        <tr><td>LA Reservoir Strain (LARS)</td><td class="val abnormal">≤18%</td></tr>
+        <tr><td>LAVi</td><td class="val abnormal">&gt;34 mL/m²</td></tr>
+        <tr><td>IVRT (alternatively)</td><td class="val abnormal">≤70 ms</td></tr>
       </tbody>
     </table>
-    <p style="margin-top:0.75rem; font-size:0.83rem;"><em>All 3 abnormal = elevated LAP. None abnormal = normal LAP. 1–2 abnormal or borderline → check supplemental parameters.</em></p>`
-  },
-  'need2': {
-    tag: 'tag-indeterminate', tagText: 'SPECIAL CASE',
-    title: 'Preserved e\': Need ≥2 Abnormal',
-    content: `<p>When e' is preserved (above age-specific cutoff), the threshold for diagnosing diastolic dysfunction is higher — two abnormal findings from the Step 2 markers are required.</p>
-    <div class="info-box teal" style="margin-top:0.75rem;"><strong>Rationale:</strong> A normal e' suggests preserved LV relaxation. In this setting, structural/functional LAP markers carry less weight individually, requiring corroboration.</div>`
-  },
-  'allnormal': {
-    tag: 'tag-normal', tagText: 'DECISION',
-    title: 'Are All Step 2 Markers Normal?',
-    content: `<p>If all Step 2 markers are below their cutoffs (no marker meets the abnormal threshold), LAP is normal.</p>
-    <ul>
-      <li>If e' was reduced → Grade 1 diastolic dysfunction (impaired relaxation, normal LAP)</li>
-      <li>If e' was preserved → Normal diastolic function</li>
+    <ul style="margin-top:0.75rem;">
+      <li><strong>None present → Normal LAP</strong> (if symptomatic: diastolic exercise echo)</li>
+      <li><strong>≥1 present → Increased LAP</strong> → grade by E/A ratio</li>
+      <li>If no supplemental parameters available: use supplemental methods (PR vel, L-wave, Ar-A, Valsalva)</li>
     </ul>`
   },
   'normaldf': {
@@ -2116,30 +2096,28 @@ const nodeData = {
     <p style="margin-top:0.75rem; font-size:0.83rem;"><em>Note: A completely normal diastolic function at rest with preserved e' makes it highly unlikely that elevated filling pressures will develop with exercise — stress testing generally not indicated.</em></p>`
   },
   'ea-ratio': {
-    tag: 'tag-input', tagText: 'GRADING',
-    title: 'E/A Ratio — Determines Grade',
-    content: `<p>When diastolic dysfunction is confirmed, the E/A ratio classifies the severity:</p>
+    tag: 'tag-elevated', tagText: 'ALL 3 ABNORMAL',
+    title: 'All 3 Variables Abnormal → Increased LAP',
+    content: `<p>When all three variables are abnormal (reduced e', increased E/e', and elevated TR/PASP), LAP is elevated. Grade diastolic dysfunction by E/A ratio:</p>
     <table class="cutoff-table" style="margin-top:0.5rem;">
       <thead><tr><th>E/A Ratio</th><th>Grade</th><th>LAP</th></tr></thead>
       <tbody>
-        <tr><td class="val">≤0.8</td><td><strong>Grade 1</strong></td><td>Normal mean LAP</td></tr>
-        <tr><td class="val">0.8–2</td><td><strong>Grade 2</strong></td><td>Mild–mod ↑ LAP</td></tr>
-        <tr><td class="val">≥2</td><td><strong>Grade 3</strong></td><td>Marked ↑ LAP</td></tr>
+        <tr><td class="val">&lt;2</td><td><strong>Grade 2 DD</strong></td><td>Mild–moderate ↑ LAP</td></tr>
+        <tr><td class="val">≥2</td><td><strong>Grade 3 DD</strong></td><td>Marked ↑ LAP</td></tr>
       </tbody>
-    </table>`
+    </table>
+    <div class="info-box teal" style="margin-top:0.75rem;">Note: When all 3 variables are abnormal, normal diastolic function and Grade 1 DD are excluded. The E/A ratio distinguishes Grade 2 from Grade 3.</div>`
   },
   'grade1': {
-    tag: 'tag-grade1', tagText: 'GRADE 1',
+    tag: 'tag-grade1', tagText: 'REDUCED e\' ONLY',
     title: 'Grade 1 Diastolic Dysfunction',
-    content: `<p><strong>Impaired relaxation pattern</strong> — the earliest form of diastolic dysfunction.</p>
-    <ul>
-      <li>Reduced e' velocity (below age-specific cutoff)</li>
-      <li>E/A ratio ≤0.8</li>
-      <li>Normal mean LAP at rest</li>
-      <li>LVEDP may be elevated in some patients</li>
+    content: `<p><strong>Only e' is abnormal</strong> — E/e' and TR/PASP are both normal.</p>
+    <ul style="margin-top:0.5rem;">
+      <li><strong>E/A ≤0.8:</strong> Normal LAP → Grade 1 DD (impaired relaxation, normal LAP)</li>
+      <li><strong>E/A &gt;0.8:</strong> Check supplemental parameters to determine LAP</li>
     </ul>
-    <div class="info-box gold" style="margin-top:0.75rem;"><strong>⚠ If symptomatic:</strong> Refer for <strong>diastolic exercise echocardiography</strong>. Up to 50% of HFpEF patients have normal resting filling pressures that rise with exercise.</div>
-    <p style="margin-top:0.75rem; font-size:0.83rem;"><em>Consider supplemental parameters (LARS, PV S/D, LAVi, IVRT) if there is concern for elevated LVEDP with normal mean LAP.</em></p>`
+    <div class="info-box gold" style="margin-top:0.75rem;"><strong>If symptomatic:</strong> Refer for diastolic exercise echocardiography. Up to 50% of HFpEF patients have normal resting filling pressures that rise with exertion.</div>
+    <p style="margin-top:0.75rem; font-size:0.83rem;"><em>Grade 1 represents the earliest stage of diastolic dysfunction — impaired LV relaxation with normal mean LAP at rest. LVEDP may still be mildly elevated.</em></p>`
   },
   'grade2': {
     tag: 'tag-grade2', tagText: 'GRADE 2',
