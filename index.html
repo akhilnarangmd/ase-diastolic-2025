@@ -826,7 +826,7 @@
 
   <div class="algo-wrapper">
     <div class="algo-canvas">
-      <!-- Figure 3 — compact vertical layout, no horizontal scroll -->
+      <!-- Figure 3 — proper branching layout -->
       <div class="flow-diagram">
 
         <!-- TOP BANNER: 3 variables -->
@@ -848,94 +848,140 @@
           </div>
         </div>
 
-        <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:14px;"></div><div class="flow-arrow-head"></div></div>
-
-        <!-- ROW 1: Four outcome headers in a 2x2 grid -->
-        <div style="width:100%; display:grid; grid-template-columns:1fr 1fr; gap:0.5rem;">
-
-          <!-- TOP-LEFT: All normal -->
-          <div style="background:#d1fae5; border:2px solid #059669; border-radius:10px; padding:0.6rem 0.75rem; cursor:pointer;" id="node-normaldf" onclick="selectNode('normaldf')">
-            <div style="font-weight:700; color:#065f46; font-size:0.88rem;">✅ All 3 Normal → Normal DF</div>
-            <div style="font-size:0.78rem; color:#047857; margin-top:0.15rem;">Normal LAP · No further workup needed</div>
+        <!-- Stem arrow down then horizontal bar -->
+        <div style="display:flex; flex-direction:column; align-items:center; width:100%;">
+          <div style="width:2px; height:16px; background:#94a3b8;"></div>
+          <!-- Horizontal connector spanning all 4 columns -->
+          <div style="width:100%; height:2px; background:#94a3b8; position:relative;">
+            <!-- 4 tick marks dropping down at 12.5%, 37.5%, 62.5%, 87.5% -->
+            <div style="position:absolute; left:12.5%; top:0; width:2px; height:14px; background:#94a3b8; transform:translateX(-50%);"></div>
+            <div style="position:absolute; left:37.5%; top:0; width:2px; height:14px; background:#94a3b8; transform:translateX(-50%);"></div>
+            <div style="position:absolute; left:62.5%; top:0; width:2px; height:14px; background:#94a3b8; transform:translateX(-50%);"></div>
+            <div style="position:absolute; left:87.5%; top:0; width:2px; height:14px; background:#94a3b8; transform:translateX(-50%);"></div>
           </div>
-
-          <!-- TOP-RIGHT: Reduced e' only -->
-          <div style="background:#fdf5e8; border:2px solid #b7600a; border-radius:10px; padding:0.6rem 0.75rem; cursor:pointer;" id="node-grade1" onclick="selectNode('grade1')">
-            <div style="font-weight:700; color:#92400e; font-size:0.88rem;">🟡 Reduced e' Only → Grade 1 DD</div>
-            <div style="font-size:0.78rem; color:#78350f; margin-top:0.15rem;">
-              E/A ≤0.8 → Normal LAP &nbsp;|&nbsp; E/A &gt;0.8 → check supplemental<br>
-              If symptomatic → Exercise Echo
-            </div>
-          </div>
-
-          <!-- BOTTOM-LEFT: Indeterminate -->
-          <div style="background:#dbeafe; border:2px solid #2563eb; border-radius:10px; padding:0.6rem 0.75rem; cursor:pointer;" id="node-step2" onclick="selectNode('step2')">
-            <div style="font-weight:700; color:#1e3a8a; font-size:0.88rem;">🔷 Indeterminate (1 or 2 abnormal)</div>
-            <div style="font-size:0.78rem; color:#1e40af; margin-top:0.15rem;">
-              ↑TR/PASP only — or — ↑E/e' only — or — any 2 abnormal<br>
-              → Check supplemental parameters
-            </div>
-          </div>
-
-          <!-- BOTTOM-RIGHT: All 3 abnormal -->
-          <div style="background:#fee2e2; border:2px solid #dc2626; border-radius:10px; padding:0.6rem 0.75rem; cursor:pointer;" id="node-ea-ratio" onclick="selectNode('ea-ratio')">
-            <div style="font-weight:700; color:#7f1d1d; font-size:0.88rem;">🔴 All 3 Abnormal → ↑ LAP</div>
-            <div style="font-size:0.78rem; color:#991b1b; margin-top:0.15rem;">
-              E/A &lt;2 → Grade 2 DD (Mild–Mod ↑ LAP)<br>
-              E/A ≥2 → Grade 3 DD (Marked ↑ LAP)
-            </div>
-          </div>
-
-        </div>
-
-        <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:14px;"></div><div class="flow-arrow-head"></div></div>
-
-        <!-- SUPPLEMENTAL PARAMETERS BOX -->
-        <div class="fnode fnode-supp" id="node-supplemental" onclick="selectNode('supplemental')" style="width:100%; padding:0.7rem 1rem;">
-          <div class="fnode-title" style="font-size:0.9rem;">📋 Supplemental Parameters (for indeterminate cases)</div>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.25rem 1rem; margin-top:0.4rem; font-size:0.8rem; color:#0f5564; text-align:left;">
-            <span>PV S/D ratio <strong>≤0.67</strong></span>
-            <span>LARS <strong>≤18%</strong></span>
-            <span>LAVi <strong>&gt;34 mL/m²</strong></span>
-            <span>IVRT <strong>≤70 ms</strong> (alternative)</span>
-          </div>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.35rem; margin-top:0.6rem;">
-            <div style="background:#eef7f3; border:1.5px solid #059669; border-radius:7px; padding:0.4rem 0.6rem; font-size:0.8rem; color:#065f46; text-align:center;">
-              <strong>None present</strong><br>→ Grade 1 DD · Normal LAP
-            </div>
-            <div style="background:#fee2e2; border:1.5px solid #dc2626; border-radius:7px; padding:0.4rem 0.6rem; font-size:0.8rem; color:#7f1d1d; text-align:center;">
-              <strong>≥1 present</strong><br>→ ↑ LAP · Grade 2 or 3
-            </div>
+          <div style="width:100%; display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:0.5rem; margin-top:14px;">
+            <!-- Arrowheads under each tick -->
+            <div style="display:flex; justify-content:center;"><div style="width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:8px solid #94a3b8;"></div></div>
+            <div style="display:flex; justify-content:center;"><div style="width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:8px solid #94a3b8;"></div></div>
+            <div style="display:flex; justify-content:center;"><div style="width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:8px solid #94a3b8;"></div></div>
+            <div style="display:flex; justify-content:center;"><div style="width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:8px solid #94a3b8;"></div></div>
           </div>
         </div>
 
-        <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:14px;"></div><div class="flow-arrow-head"></div></div>
+        <!-- FOUR COLUMNS -->
+        <div style="width:100%; display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:0.5rem; align-items:start;">
 
-        <!-- GRADES ROW -->
-        <div style="width:100%; display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.5rem;">
-          <div class="fnode fnode-grade1" id="node-grade1b" onclick="selectNode('grade1')" style="padding:0.6rem 0.5rem;">
-            <div class="fnode-title" style="font-size:0.9rem;">🟡 Grade 1 DD</div>
-            <div class="fnode-sub" style="font-size:0.78rem;">Impaired relaxation<br>Normal LAP</div>
+          <!-- COL 1: All normal -->
+          <div class="branch-col">
+            <div style="background:#d1fae5; border:2px solid #059669; border-radius:9px; padding:0.55rem 0.65rem; text-align:center; cursor:pointer;" id="node-normaldf" onclick="selectNode('normaldf')">
+              <div style="font-weight:700; color:#065f46; font-size:0.82rem;">All Normal</div>
+            </div>
+            <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:12px;"></div><div class="flow-arrow-head"></div></div>
+            <div style="background:#d1fae5; border:2px solid #059669; border-radius:9px; padding:0.55rem 0.65rem; text-align:center;">
+              <div style="font-weight:700; color:#065f46; font-size:0.85rem;">✅ Normal DF</div>
+              <div style="font-size:0.75rem; color:#047857; margin-top:0.1rem;">Normal LAP</div>
+            </div>
           </div>
-          <div class="fnode fnode-grade2" id="node-grade2" onclick="selectNode('grade2')" style="padding:0.6rem 0.5rem;">
-            <div class="fnode-title" style="font-size:0.9rem;">🔴 Grade 2 DD</div>
-            <div class="fnode-sub" style="font-size:0.78rem;">Pseudonormal<br>Mild–Mod ↑ LAP</div>
-          </div>
-          <div class="fnode fnode-grade3" id="node-grade3" onclick="selectNode('grade3')" style="padding:0.6rem 0.5rem;">
-            <div class="fnode-title" style="font-size:0.9rem;">🔴🔴 Grade 3 DD</div>
-            <div class="fnode-sub" style="font-size:0.78rem;">Restrictive filling<br>Marked ↑ LAP</div>
-          </div>
-        </div>
 
-        <!-- Exercise Echo -->
-        <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:14px;"></div><div class="flow-arrow-head"></div></div>
-        <div class="fnode fnode-action" id="node-exercise-echo" onclick="selectNode('exercise-echo')" style="width:100%; padding:0.6rem 1rem;">
-          <div class="fnode-title" style="font-size:0.9rem;">🚴 Diastolic Exercise Echocardiography</div>
-          <div class="fnode-sub" style="font-size:0.8rem;">Indicated if symptomatic + Grade 1 DD or normal LAP at rest · Positive: avg E/e' ≥14 AND TR vel ≥3.2 m/s</div>
+          <!-- COL 2: Reduced e' only -->
+          <div class="branch-col">
+            <div style="background:#fef3c7; border:2px solid #b7600a; border-radius:9px; padding:0.55rem 0.65rem; text-align:center; cursor:pointer;" id="node-grade1" onclick="selectNode('grade1')">
+              <div style="font-weight:700; color:#92400e; font-size:0.82rem;">Reduced e' Only</div>
+              <div style="font-size:0.73rem; color:#78350f; margin-top:0.1rem;">E/e' and TR/PASP normal</div>
+            </div>
+            <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:10px;"></div><div class="flow-arrow-head"></div></div>
+            <div style="width:100%; display:grid; grid-template-columns:1fr 1fr; gap:0.3rem; text-align:center;">
+              <div style="background:#d1fae5; border:1.5px solid #059669; border-radius:7px; padding:0.4rem 0.25rem;">
+                <div style="font-size:0.7rem; font-weight:700; color:#065f46;">E/A ≤0.8</div>
+                <div style="font-size:0.68rem; color:#047857;">Normal LAP</div>
+              </div>
+              <div style="background:#e0f2fe; border:1.5px solid #0284c7; border-radius:7px; padding:0.4rem 0.25rem; cursor:pointer;" onclick="selectNode('supplemental')">
+                <div style="font-size:0.7rem; font-weight:700; color:#0c4a6e;">E/A &gt;0.8</div>
+                <div style="font-size:0.68rem; color:#075985;">→ Suppl.</div>
+              </div>
+            </div>
+            <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:10px;"></div><div class="flow-arrow-head"></div></div>
+            <div style="background:#fef3c7; border:2px solid #b7600a; border-radius:9px; padding:0.5rem 0.6rem; text-align:center;">
+              <div style="font-weight:700; color:#92400e; font-size:0.83rem;">🟡 Grade 1 DD</div>
+              <div style="font-size:0.72rem; color:#78350f; margin-top:0.1rem;">Impaired relaxation · Normal LAP</div>
+            </div>
+            <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:10px;"></div><div class="flow-arrow-head"></div></div>
+            <div style="background:#fef9c3; border:2px solid #ca8a04; border-radius:9px; padding:0.45rem 0.5rem; text-align:center; cursor:pointer;" id="node-exercise-echo" onclick="selectNode('exercise-echo')">
+              <div style="font-weight:700; color:#713f12; font-size:0.78rem;">🚴 Exercise Echo</div>
+              <div style="font-size:0.68rem; color:#92400e;">If symptomatic</div>
+            </div>
+          </div>
+
+          <!-- COL 3: Indeterminate -->
+          <div class="branch-col">
+            <div style="background:#dbeafe; border:2px solid #2563eb; border-radius:9px; padding:0.55rem 0.65rem; text-align:center; cursor:pointer;" id="node-step2" onclick="selectNode('step2')">
+              <div style="font-weight:700; color:#1e3a8a; font-size:0.78rem;">↑TR/PASP only</div>
+              <div style="font-size:0.72rem; color:#1e40af;">— or — ↑E/e' only</div>
+              <div style="font-size:0.72rem; color:#1e40af;">— or — any 2 abnormal</div>
+            </div>
+            <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:10px;"></div><div class="flow-arrow-head"></div></div>
+            <div style="background:#ede9fe; border:2px solid #7c3aed; border-radius:9px; padding:0.5rem 0.6rem; text-align:center; cursor:pointer;" id="node-supplemental" onclick="selectNode('supplemental')">
+              <div style="font-weight:700; color:#4c1d95; font-size:0.8rem;">📋 Supplemental</div>
+              <div style="font-size:0.7rem; color:#5b21b6; margin-top:0.15rem; text-align:left;">PV S/D ≤0.67<br>LARS ≤18%<br>LAVi &gt;34 mL/m²<br>IVRT ≤70 ms</div>
+            </div>
+            <div style="width:100%; display:grid; grid-template-columns:1fr 1fr; gap:0.3rem; margin-top:0.3rem;">
+              <div class="branch-col">
+                <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:8px;"></div><div class="flow-arrow-head"></div></div>
+                <div style="background:#d1fae5; border:1.5px solid #059669; border-radius:7px; padding:0.4rem 0.25rem; text-align:center;">
+                  <div style="font-size:0.7rem; font-weight:700; color:#065f46;">None present</div>
+                  <div style="font-size:0.68rem; color:#047857;">🟡 Grade 1 DD</div>
+                </div>
+              </div>
+              <div class="branch-col">
+                <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:8px;"></div><div class="flow-arrow-head"></div></div>
+                <div style="background:#fee2e2; border:1.5px solid #dc2626; border-radius:7px; padding:0.4rem 0.25rem; text-align:center;">
+                  <div style="font-size:0.7rem; font-weight:700; color:#7f1d1d;">≥1 present</div>
+                  <div style="font-size:0.68rem; color:#991b1b;">🔴 ↑ LAP</div>
+                </div>
+              </div>
+            </div>
+            <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:8px;"></div><div class="flow-arrow-head"></div></div>
+            <div style="background:#fef9c3; border:2px solid #ca8a04; border-radius:9px; padding:0.45rem 0.5rem; text-align:center; cursor:default;">
+              <div style="font-weight:700; color:#713f12; font-size:0.78rem;">🚴 Exercise Echo</div>
+              <div style="font-size:0.68rem; color:#92400e;">If symptomatic + normal LAP</div>
+            </div>
+          </div>
+
+          <!-- COL 4: All 3 abnormal -->
+          <div class="branch-col">
+            <div style="background:#fee2e2; border:2px solid #dc2626; border-radius:9px; padding:0.55rem 0.65rem; text-align:center; cursor:pointer;" id="node-ea-ratio" onclick="selectNode('ea-ratio')">
+              <div style="font-weight:700; color:#7f1d1d; font-size:0.82rem;">All 3 Abnormal</div>
+              <div style="font-size:0.73rem; color:#991b1b; margin-top:0.1rem;">↑ LAP confirmed</div>
+            </div>
+            <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:10px;"></div><div class="flow-arrow-head"></div></div>
+            <div style="background:#dc2626; border:2px solid #b91c1c; border-radius:9px; padding:0.5rem 0.6rem; text-align:center;">
+              <div style="font-weight:700; color:white; font-size:0.83rem;">🔴 Increased LAP</div>
+              <div style="font-size:0.72rem; color:rgba(255,255,255,0.85); margin-top:0.1rem;">Grade by E/A ratio</div>
+            </div>
+            <div style="width:100%; display:grid; grid-template-columns:1fr 1fr; gap:0.3rem; margin-top:0.3rem;">
+              <div class="branch-col">
+                <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:8px;"></div><div class="flow-arrow-head"></div></div>
+                <div style="background:#fee2e2; border:2px solid #dc2626; border-radius:7px; padding:0.4rem 0.25rem; text-align:center; cursor:pointer;" id="node-grade2" onclick="selectNode('grade2')">
+                  <div style="font-size:0.7rem; font-weight:700; color:#7f1d1d;">E/A &lt;2</div>
+                  <div style="font-size:0.68rem; color:#991b1b;">Grade 2 DD</div>
+                  <div style="font-size:0.65rem; color:#b91c1c;">Mild–Mod ↑ LAP</div>
+                </div>
+              </div>
+              <div class="branch-col">
+                <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:8px;"></div><div class="flow-arrow-head"></div></div>
+                <div style="background:#fecaca; border:2px solid #b91c1c; border-radius:7px; padding:0.4rem 0.25rem; text-align:center; cursor:pointer;" id="node-grade3" onclick="selectNode('grade3')">
+                  <div style="font-size:0.7rem; font-weight:700; color:#7f1d1d;">E/A ≥2</div>
+                  <div style="font-size:0.68rem; color:#991b1b;">Grade 3 DD</div>
+                  <div style="font-size:0.65rem; color:#b91c1c;">Marked ↑ LAP</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
 
         <!-- Exclusions -->
-        <div class="fnode fnode-exclude" id="node-exclusions" onclick="selectNode('exclusions')" style="width:100%; margin-top:0.6rem; display:flex; align-items:flex-start; gap:0.6rem; text-align:left; padding:0.6rem 0.9rem; border-radius:8px;">
+        <div class="fnode fnode-exclude" id="node-exclusions" onclick="selectNode('exclusions')" style="width:100%; margin-top:0.75rem; display:flex; align-items:flex-start; gap:0.6rem; text-align:left; padding:0.6rem 0.9rem; border-radius:8px;">
           <span style="font-size:1rem; flex-shrink:0; margin-top:1px;">⚠</span>
           <div>
             <div style="font-weight:600; font-size:0.82rem; color:var(--gray-700); margin-bottom:0.1rem;">Algorithm Exclusions — see Special Populations tab</div>
