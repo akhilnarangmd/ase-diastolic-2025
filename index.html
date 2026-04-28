@@ -891,9 +891,10 @@
             </div>
             <div class="flow-arrow-down"><div class="flow-arrow-line" style="height:10px;"></div><div class="flow-arrow-head"></div></div>
             <div style="width:100%; display:grid; grid-template-columns:1fr 1fr; gap:0.3rem; text-align:center;">
-              <div style="background:#d1fae5; border:1.5px solid #059669; border-radius:7px; padding:0.4rem 0.25rem;">
-                <div style="font-size:0.7rem; font-weight:700; color:#065f46;">E/A ≤0.8</div>
-                <div style="font-size:0.68rem; color:#047857;">Normal LAP</div>
+              <div style="background:#fef3c7; border:1.5px solid #b7600a; border-radius:7px; padding:0.4rem 0.25rem;">
+                <div style="font-size:0.7rem; font-weight:700; color:#92400e;">E/A ≤0.8</div>
+                <div style="font-size:0.68rem; color:#78350f;">🟡 Grade 1 DD</div>
+                <div style="font-size:0.65rem; color:#78350f;">Normal LAP</div>
               </div>
               <div style="background:#e0f2fe; border:1.5px solid #0284c7; border-radius:7px; padding:0.4rem 0.25rem; cursor:pointer;" onclick="selectNode('supplemental')">
                 <div style="font-size:0.7rem; font-weight:700; color:#0c4a6e;">E/A &gt;0.8</div>
@@ -1245,7 +1246,7 @@
           <li class="indicator-item"><div class="indicator-bullet bullet-teal">1</div>Average values from several cycles; select cycles reflecting average HR</li>
           <li class="indicator-item"><div class="indicator-bullet bullet-teal">2</div>Dual Doppler probe for simultaneous E and e' improves PCWP estimation</li>
           <li class="indicator-item"><div class="indicator-bullet bullet-teal">3</div>Less beat-to-beat mitral inflow variability → more likely elevated LAP</li>
-          <li class="indicator-item"><div class="indicator-bullet bullet-navy">✗</div>LARS should NOT be used in AF patients for LAP assessment</li>
+          <li class="indicator-item"><div class="indicator-bullet bullet-navy">✗</div>LARS should <em>not</em> be used as a <strong>standalone</strong> marker of LAP in AF — only as a secondary discriminator when ≥2 primary criteria are met (per Figure 8)</li>
           <li class="indicator-item"><div class="indicator-bullet bullet-navy">✗</div>Pulmonary vein Ar velocity absent in AF</li>
         </ul>
       </div>
@@ -1348,7 +1349,7 @@
           <tbody>
             <tr><td>E/A ratio</td><td class="val normal">≤0.8</td><td class="val abnormal">≥2</td></tr>
             <tr><td>Lateral E/e'</td><td class="val normal">&lt;8</td><td class="val abnormal">&gt;13</td></tr>
-            <tr><td>LARS</td><td class="val normal">&gt;18%</td><td class="val abnormal">≤16%</td></tr>
+            <tr><td>LARS</td><td class="val normal">&gt;18%</td><td class="val abnormal">≤18% <span style="font-size:0.75rem; font-weight:400">(Fig. 6 algorithm)</span></td></tr>
             <tr><td>LAVi</td><td class="val normal">≤34 mL/m²</td><td class="val abnormal">&gt;34 mL/m²</td></tr>
           </tbody>
         </table>
@@ -1362,7 +1363,7 @@
       <h4>📌 Key Points — Pulmonary Hypertension</h4>
       <ul>
         <li>E/A ≤0.8 favors precapillary PH; E/A ≥2 favors postcapillary (group II) PH</li>
-        <li>LAVi &gt;34 mL/m², lateral E/e' &gt;13, and LARS ≤18% all favor group II PH</li>
+        <li>LAVi &gt;34 mL/m², lateral E/e' &gt;13, and LARS ≤18% all favor group II PH (Figure 6 algorithm uses ≤18%; one study used ≤16% with lateral E/e' — that is study-specific)</li>
         <li>Lateral E/e' 8–13 has weak/no association with LAP → indeterminate zone</li>
         <li>Combining lateral E/e' with E/A or LARS improves diagnostic accuracy</li>
       </ul>
@@ -1499,7 +1500,7 @@
         <li>Ar-A duration ≥30 ms remains a reliable LVEDP indicator regardless of MR severity</li>
         <li>CW Doppler MR velocity profile with early peaking and reduced late gradient → highly specific (not sensitive) for elevated LAP</li>
         <li>E/e' may be considered in patients with depressed EF and secondary MR</li>
-        <li>IVRT/TE-e' &lt;3 predicts PCWP &gt;15 mmHg in MR patients with and without normal EF</li>
+        <li>IVRT/TE-e' &lt;5.6 predicts PCWP &gt;15 mmHg in MR patients with and without normal EF (Table 7); IVRT/TE-e' &lt;3 is an alternative cutoff specifically predicting PCWP &gt;15 mmHg in patients with depressed EF</li>
       </ul>
     </div>
   </div>
@@ -1582,7 +1583,7 @@
           <thead><tr><th>Parameter</th><th>Finding</th></tr></thead>
           <tbody>
             <tr><td>E/A ratio</td><td class="val abnormal">&gt;2.5 *</td></tr>
-            <tr><td>E decel time</td><td class="val abnormal">&lt;150 ms *</td></tr>
+            <tr><td>E decel time (Table 7)</td><td class="val abnormal">&lt;140 ms *</td></tr>
             <tr><td>IVRT</td><td class="val abnormal">&lt;50 ms *</td></tr>
             <tr><td>Average E/e'</td><td class="val abnormal">&gt;14</td></tr>
             <tr><td>Septal e'</td><td class="val abnormal">3–4 cm/s</td></tr>
@@ -1591,7 +1592,7 @@
             <tr><td>LA strain</td><td class="val abnormal">Reduced</td></tr>
           </tbody>
         </table>
-        <p style="font-size:0.75rem; color:var(--gray-500); margin-top:0.4rem;">* Specific but not sensitive</p>
+        <p style="font-size:0.75rem; color:var(--gray-500); margin-top:0.4rem;">* Specific but not sensitive. DT &lt;140 ms is the Table 7 special-population cutoff; advanced disease is often described as DT &lt;150 ms in the text.</p>
       </div>
       <div>
         <p style="font-weight:600; color:var(--navy); margin-bottom:0.5rem;">Cardiac Amyloidosis "Red Flags"</p>
@@ -1760,7 +1761,7 @@
             <tr><td>e' average (cm/s)</td><td class="val">8.7</td><td class="val">19.1</td></tr>
             <tr><td>E/e' lateral</td><td class="val">2.5</td><td class="val">6.3</td></tr>
             <tr><td>E/e' septal</td><td class="val">4.0</td><td class="val">9.1</td></tr>
-            <tr><td>E/e' average</td><td class="val">4.0</td><td class="val">9.1</td></tr>
+            <tr><td>E/e' average</td><td class="val">4.0 †</td><td class="val">9.1 †</td></tr>
           </tbody>
         </table>
       </div>
@@ -1773,6 +1774,7 @@
             <tr><td>LA strain LARS (%)</td><td class="val">29.5</td><td class="val">63.2</td></tr>
           </tbody>
         </table>
+        <p style="font-size:0.75rem; color:var(--gray-500); margin-top:0.5rem;">† E/e' average (4.0–9.1) is identical to septal values for ages 20–39 as published in Table 5 of the guideline. Verify against the original PDF if using for clinical reference.</p>
       </div>
       <div class="card">
         <div class="card-title">📊 Other</div>
@@ -1930,17 +1932,20 @@
     <div class="card">
       <div class="card-title">📋 Step 2: LAP Markers &amp; Structural Surrogates</div>
       <table class="cutoff-table">
-        <thead><tr><th>Parameter</th><th>Cutoff (Abnormal)</th></tr></thead>
+        <thead><tr><th>Parameter</th><th>Cutoff (Abnormal)</th><th>Role</th></tr></thead>
         <tbody>
-          <tr><td>Average E/e' ratio</td><td class="val abnormal">&gt;14</td></tr>
-          <tr><td>LA Reservoir Strain (LARS)</td><td class="val abnormal">≤18%</td></tr>
-          <tr><td>E/A ratio (low)</td><td class="val abnormal">≤0.8</td></tr>
-          <tr><td>E/A ratio (high)</td><td class="val abnormal">≥2</td></tr>
-          <tr><td>LAVi (biplane)</td><td class="val abnormal">&gt;34 mL/m²</td></tr>
-          <tr><td>LV mass index (women)</td><td class="val abnormal">&gt;95 g/m²</td></tr>
-          <tr><td>LV mass index (men)</td><td class="val abnormal">&gt;115 g/m²</td></tr>
+          <tr><td>Average E/e' ratio</td><td class="val abnormal">&gt;14</td><td>↑ LAP marker</td></tr>
+          <tr><td>LA Reservoir Strain (LARS)</td><td class="val abnormal">≤18%</td><td>↑ LAP marker</td></tr>
+          <tr><td>E/A ratio (high)</td><td class="val abnormal">≥2</td><td>↑ LAP marker</td></tr>
+          <tr><td>E/A ratio (low)</td><td class="val abnormal">≤0.8</td><td style="font-size:0.8rem; color:var(--gray-500);">Impaired relaxation (not ↑ LAP)</td></tr>
+          <tr><td>LAVi (biplane)</td><td class="val abnormal">&gt;34 mL/m²</td><td>Structural surrogate</td></tr>
+          <tr><td>LV mass index (women)</td><td class="val abnormal">&gt;95 g/m²</td><td>Structural surrogate</td></tr>
+          <tr><td>LV mass index (men)</td><td class="val abnormal">&gt;115 g/m²</td><td>Structural surrogate</td></tr>
         </tbody>
       </table>
+      <div class="info-box gold" style="margin-top:0.75rem; font-size:0.82rem;">
+        ⚠ <strong>E/A ≤0.8</strong> reflects impaired LV relaxation and helps diagnose DD, but does <em>not</em> indicate elevated LAP. Elevated LAP is supported by E/A ≥2, E/e' &gt;14, LARS ≤18%, and ↑ TR/PASP.
+      </div>
     </div>
   </div>
 
@@ -2029,7 +2034,7 @@
   <div class="key-points" style="margin-top:1.5rem;">
     <h4>📌 Reporting Requirements (Section 12)</h4>
     <ul>
-      <li>All reports must include: diastolic function grade AND filling pressure (LAP normal or elevated)</li>
+      <li>Reports <strong>should include</strong> diastolic function grade and filling pressure (LAP normal or elevated) <em>whenever possible</em>; if grade cannot be determined, filling pressure status should still be mentioned</li>
       <li>Always report: mitral inflow velocities, mitral annular e', peak TR velocity, E/A ratio, average E/e'</li>
       <li>Include if relied upon: LARS, PV S/D ratio, mitral A duration, PV Ar duration, IVRT</li>
       <li>Note any change from previous study when available</li>
@@ -2416,7 +2421,7 @@ function calcPH() {
     if (!isNaN(lars)) {
       if (lars <= 16) {
         result.classList.add('elevated');
-        result.innerHTML = `<div class="result-title">🔴 Elevated LAP</div><div class="result-detail">E/A = ${ea.toFixed(2)} (indeterminate range) but LARS = ${lars}% ≤16% → elevated LAP. Group II PH likely.</div>`;
+        result.innerHTML = `<div class="result-title">🔴 Elevated LAP</div><div class="result-detail">E/A = ${ea.toFixed(2)} (indeterminate range) but LARS = ${lars}% ≤18% → elevated LAP per Figure 6 algorithm. Group II PH likely.</div>`;
       } else if (lars > 18) {
         result.classList.add('normal');
         result.innerHTML = `<div class="result-title">✅ Normal LAP</div><div class="result-detail">E/A = ${ea.toFixed(2)} (indeterminate range) but LARS = ${lars}% >18% → normal LAP.</div>`;
